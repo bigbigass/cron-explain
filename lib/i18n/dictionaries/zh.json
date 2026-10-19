@@ -1,32 +1,32 @@
 {
   "site": {
     "name": "CronExplain",
-    "tagline": "Cron expressions explained, in your language",
-    "skip": "Skip to content",
-    "language": "Language"
+    "tagline": "用你的语言读懂 Cron 表达式",
+    "skip": "跳到正文",
+    "language": "语言"
   },
   "nav": {
-    "home": "Explainer",
-    "cheatsheet": "Cheatsheet",
-    "dialects": "Dialects"
+    "home": "解析器",
+    "cheatsheet": "速查表",
+    "dialects": "方言"
   },
   "footer": {
-    "about": "About",
-    "privacy": "Privacy",
-    "sister": "Sister tools",
-    "contrast": "ContrastCheck – WCAG color contrast checker",
-    "aspect": "Aspect Ratio Calculator",
-    "note": "Everything runs in your browser. No sign-up, no tracking cookies.",
-    "schedules": "Popular schedules"
+    "about": "关于",
+    "privacy": "隐私",
+    "sister": "姊妹工具",
+    "contrast": "ContrastCheck – WCAG 颜色对比度检查器",
+    "aspect": "宽高比计算器",
+    "note": "所有计算都在你的浏览器中完成。无需注册，不使用跟踪 Cookie。",
+    "schedules": "常用调度"
   },
   "common": {
-    "home": "Home",
-    "faqTitle": "Frequently asked questions",
-    "related": "Related pages",
-    "schedules": "Schedules",
+    "home": "首页",
+    "faqTitle": "常见问题",
+    "related": "相关页面",
+    "schedules": "调度",
     "dialectNames": {
-      "standard": "Standard crontab",
-      "seconds": "6-field (seconds)",
+      "standard": "标准 crontab",
+      "seconds": "6 字段（含秒）",
       "quartz": "Quartz",
       "spring": "Spring",
       "aws": "AWS EventBridge",
@@ -34,476 +34,507 @@
       "kubernetes": "Kubernetes CronJob"
     },
     "fieldNames": {
-      "second": "Second",
-      "minute": "Minute",
-      "hour": "Hour",
-      "dayOfMonth": "Day of month",
-      "month": "Month",
-      "dayOfWeek": "Day of week",
-      "year": "Year"
+      "second": "秒",
+      "minute": "分钟",
+      "hour": "小时",
+      "dayOfMonth": "日",
+      "month": "月",
+      "dayOfWeek": "星期",
+      "year": "年"
     },
     "weekdays": [
-      "Sun",
-      "Mon",
-      "Tue",
-      "Wed",
-      "Thu",
-      "Fri",
-      "Sat"
+      "周日",
+      "周一",
+      "周二",
+      "周三",
+      "周四",
+      "周五",
+      "周六"
     ],
     "months": [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
+      "1月",
+      "2月",
+      "3月",
+      "4月",
+      "5月",
+      "6月",
+      "7月",
+      "8月",
+      "9月",
+      "10月",
+      "11月",
+      "12月"
     ]
   },
   "tool": {
-    "label": "Cron expression",
-    "placeholder": "e.g. */15 9-17 * * 1-5",
-    "dialect": "Dialect",
-    "auto": "Auto-detect",
-    "detected": "Detected: {dialect}",
-    "meaning": "What it means",
-    "noDescription": "Valid, but no plain-language description is available for this combination.",
-    "valid": "Valid",
-    "invalid": "Invalid",
-    "nextRuns": "Next 10 runs",
-    "timezone": "Evaluate in time zone",
-    "colZone": "In {tz}",
-    "colLocal": "Your local time",
-    "noRuns": "No run in the next 8 years — check the day and month fields.",
-    "copy": "Copy",
-    "copied": "Copied",
-    "share": "Copy share link",
-    "presets": "Presets",
-    "converter": "Same schedule in other dialects",
-    "builder": "Visual builder",
-    "builderHint": "Pick values per field. The builder writes a standard five-field expression; it is converted to the selected dialect when you use it.",
-    "useExpression": "Use this expression",
+    "label": "Cron 表达式",
+    "placeholder": "例如 */15 9-17 * * 1-5",
+    "dialect": "方言",
+    "auto": "自动识别",
+    "detected": "识别为：{dialect}",
+    "meaning": "含义",
+    "noDescription": "表达式有效，但暂时无法为这种组合生成文字说明。",
+    "valid": "有效",
+    "invalid": "无效",
+    "nextRuns": "接下来 10 次运行",
+    "timezone": "按时区计算",
+    "colZone": "{tz} 时间",
+    "colLocal": "你的本地时间",
+    "noRuns": "未来 8 年内不会运行——请检查日期和月份字段。",
+    "copy": "复制",
+    "copied": "已复制",
+    "share": "复制分享链接",
+    "presets": "预设",
+    "converter": "其他方言中的同一调度",
+    "builder": "可视化生成器",
+    "builderHint": "为每个字段选择取值。生成器输出标准的五字段表达式，使用时会自动转换为当前选择的方言。",
+    "useExpression": "使用此表达式",
     "modes": {
-      "every": "Every",
-      "step": "Every N",
-      "specific": "Specific"
+      "every": "每个",
+      "step": "每隔 N",
+      "specific": "指定值"
     },
-    "interval": "Interval",
+    "interval": "间隔",
     "warnings": {
-      "githubMinInterval": "GitHub Actions runs scheduled workflows at most every 5 minutes.",
-      "githubUtc": "GitHub evaluates schedules in UTC.",
-      "awsUtc": "EventBridge rules use UTC."
+      "githubMinInterval": "GitHub Actions 的定时工作流最短间隔为 5 分钟。",
+      "githubUtc": "GitHub 按 UTC 计算调度时间。",
+      "awsUtc": "EventBridge 规则使用 UTC。"
     },
     "reasons": {
-      "secondsNotSupported": "Not representable: this dialect has no seconds field.",
-      "yearNotSupported": "Not representable: this dialect has no year field.",
-      "specialNotSupported": "Not representable: L, W and # are not supported.",
-      "domDowBoth": "Not representable: the day-of-month and day-of-week rules can’t be combined this way."
+      "secondsNotSupported": "无法表示：该方言没有秒字段。",
+      "yearNotSupported": "无法表示：该方言没有年字段。",
+      "specialNotSupported": "无法表示：不支持 L、W 和 #。",
+      "domDowBoth": "无法表示：无法以相同方式组合“日”和“星期”规则。"
     },
     "errors": {
-      "empty": "Enter a cron expression.",
-      "fieldCount": "Expected {expected} fields for this dialect, but found {got}.",
-      "invalidValue": "{field}: “{value}” is not a valid value.",
-      "outOfRange": "{field}: {value} is out of range (allowed {min}–{max}).",
-      "invalidStep": "{field}: invalid step in “{value}” — put a positive number after “/”.",
-      "invalidRange": "{field}: the range “{value}” starts after it ends.",
-      "questionNotAllowed": "{field}: “?” is not allowed here. Use “*” instead.",
-      "questionRequired": "Use “?” in either day-of-month or day-of-week — this dialect requires exactly one.",
-      "bothQuestion": "Only one of day-of-month and day-of-week can be “?”.",
-      "specialNotAllowed": "{field}: “{value}” uses L, W or #, which this dialect doesn’t support. Try Quartz, Spring or AWS.",
-      "unknownMacro": "Unknown macro “{value}”. Supported: @yearly, @monthly, @weekly, @daily, @hourly.",
-      "macroNotSupported": "Macros such as “{value}” are not supported in this dialect — write out the fields instead.",
-      "rebootNotSchedulable": "@reboot runs once at startup, so there is no schedule to explain."
+      "empty": "请输入 Cron 表达式。",
+      "fieldCount": "该方言需要 {expected} 个字段，但检测到 {got} 个。",
+      "invalidValue": "{field}：“{value}”不是有效值。",
+      "outOfRange": "{field}：{value} 超出范围（允许 {min}–{max}）。",
+      "invalidStep": "{field}：“{value}”中的步长无效——“/”后面应为正整数。",
+      "invalidRange": "{field}：范围“{value}”的起点大于终点。",
+      "questionNotAllowed": "{field}：此处不允许使用“?”，请改用“*”。",
+      "questionRequired": "请在“日”或“星期”字段中使用“?”——该方言要求二者之一必须为“?”。",
+      "bothQuestion": "“日”和“星期”字段不能同时为“?”。",
+      "specialNotAllowed": "{field}：“{value}”使用了 L、W 或 #，该方言不支持。可改用 Quartz、Spring 或 AWS。",
+      "unknownMacro": "未知的宏“{value}”。支持：@yearly、@monthly、@weekly、@daily、@hourly。",
+      "macroNotSupported": "该方言不支持“{value}”这样的宏——请写出完整字段。",
+      "rebootNotSchedulable": "@reboot 只在启动时运行一次，没有可解析的调度。"
     },
     "notes": {
-      "standard": "Five fields: minute, hour, day of month, month, day of week. Sunday is 0 or 7. If both day fields are restricted, the job runs when either one matches.",
-      "seconds": "Six fields with seconds first, as used by node-cron, croner and many libraries.",
-      "quartz": "Quartz: seconds first, optional year, 1 = Sunday. Exactly one day field must be “?”. Supports L, W and #.",
-      "spring": "Spring @Scheduled: six fields with seconds first, 0 or 7 = Sunday; supports L, W, # and macros such as @daily.",
-      "aws": "EventBridge: six fields with no seconds and the year last, 1 = Sunday, one day field must be “?”. Rules run in UTC.",
-      "github": "GitHub Actions: standard five fields, always evaluated in UTC, at most every 5 minutes; runs may be delayed when GitHub is busy.",
-      "kubernetes": "Kubernetes CronJob: standard five fields plus macros. Set spec.timeZone to use a time zone other than the controller’s."
+      "standard": "五个字段：分钟、小时、日、月、星期。星期日为 0 或 7。若“日”和“星期”都有限定，只要其中一个匹配就会运行。",
+      "seconds": "六个字段，第一位为秒，用于 node-cron、croner 等许多库。",
+      "quartz": "Quartz：第一位为秒，可选年字段，1 = 星期日。“日”和“星期”中必须恰好有一个为“?”。支持 L、W 和 #。",
+      "spring": "Spring @Scheduled：六个字段，第一位为秒，0 或 7 = 星期日；支持 L、W、# 以及 @daily 等宏。",
+      "aws": "EventBridge：六个字段，没有秒，年在最后，1 = 星期日，“日”和“星期”之一必须为“?”。规则按 UTC 运行。",
+      "github": "GitHub Actions：标准五字段，始终按 UTC 计算，最短 5 分钟一次；GitHub 繁忙时可能延迟。",
+      "kubernetes": "Kubernetes CronJob：标准五字段，支持宏。设置 spec.timeZone 可使用控制器以外的时区。"
     }
   },
   "pages": {
     "home": {
-      "title": "Cron Expression Explainer & Generator | CronExplain",
-      "description": "Paste a cron expression to see what it means and its next 10 run times. Supports crontab, Quartz, AWS, GitHub Actions and Kubernetes.",
-      "h1": "Cron Expression Explainer & Generator",
-      "intro": "Paste any cron expression to get a plain-language explanation, the next 10 run times in any time zone, and the same schedule converted to Quartz, AWS and Spring syntax. Everything is computed in your browser.",
+      "title": "Cron 表达式解析与生成器 | CronExplain",
+      "description": "粘贴 Cron 表达式，立即查看中文含义和接下来 10 次运行时间。支持 crontab、Quartz、AWS、GitHub Actions 和 Kubernetes。",
+      "h1": "Cron 表达式解析与生成器",
+      "intro": "粘贴任意 Cron 表达式，即可获得通俗易懂的中文解释、任意时区下接下来 10 次运行时间，以及转换为 Quartz、AWS 和 Spring 语法后的同一调度。所有计算都在你的浏览器中完成。",
       "sections": [
         {
-          "h": "How to read a cron expression",
+          "h": "如何阅读 Cron 表达式",
           "p": [
-            "A classic Unix cron expression has five fields separated by spaces: minute (0–59), hour (0–23), day of month (1–31), month (1–12) and day of week (0–6, where 0 and 7 are Sunday). A job runs whenever the current time matches every field. An asterisk means “any value”, so * * * * * runs every minute.",
-            "Inside a field you can combine values: a comma makes a list (1,15), a hyphen makes a range (9-17), and a slash adds a step (*/10 means every 10 units). Month and weekday names such as JAN or MON are accepted by most implementations."
+            "经典的 Unix Cron 表达式由空格分隔的五个字段组成：分钟（0–59）、小时（0–23）、日（1–31）、月（1–12）和星期（0–6，其中 0 和 7 都表示星期日）。当前时间与所有字段都匹配时任务就会运行。星号表示“任意值”，所以 * * * * * 表示每分钟运行一次。",
+            "在一个字段内可以组合多个值：逗号表示列表（1,15），连字符表示范围（9-17），斜杠表示步长（*/10 表示每隔 10 个单位）。大多数实现也接受 JAN、MON 这样的月份和星期英文缩写。"
           ]
         },
         {
-          "h": "Why the dialect matters",
+          "h": "为什么方言很重要",
           "p": [
-            "Not every scheduler speaks the same cron. Quartz and Spring add a seconds field at the front, AWS EventBridge adds a year field at the end, and Quartz and AWS number weekdays from 1 = Sunday instead of 0. Quartz and AWS also require a question mark in either the day-of-month or the day-of-week field. CronExplain detects the dialect from the shape of the expression, and you can override it at any time."
+            "并不是所有调度器都使用同一种 Cron。Quartz 和 Spring 在最前面增加了秒字段，AWS EventBridge 在最后增加了年字段，而且 Quartz 和 AWS 的星期从 1 = 星期日开始编号，而不是 0。Quartz 和 AWS 还要求“日”或“星期”字段之一必须为问号。CronExplain 会根据表达式的结构自动识别方言，你也可以随时手动切换。"
           ]
         },
         {
-          "h": "Next run times and time zones",
+          "h": "下次运行时间与时区",
           "p": [
-            "The run list is evaluated on wall-clock time in the time zone you choose, then shown next to your own local time. Daylight saving time is handled the way most schedulers do it: a time that is skipped when clocks spring forward does not run that day, and a time that repeats when clocks fall back runs once. GitHub Actions and AWS EventBridge rules always use UTC, so the tool switches to UTC for those dialects."
+            "运行时间列表按你所选时区的本地挂钟时间计算，并在旁边显示对应的本地时间。夏令时的处理方式与大多数调度器一致：时钟拨快时被跳过的时间当天不会运行，时钟拨回时重复出现的时间只运行一次。GitHub Actions 和 AWS EventBridge 规则始终使用 UTC，因此在这两种方言下工具会自动切换到 UTC。"
           ]
         },
         {
-          "h": "Build an expression visually",
+          "h": "可视化生成表达式",
           "p": [
-            "If you would rather click than type, use the visual builder: choose “every”, “every N” or specific values for each field and copy the result. Presets cover the most common schedules, from every five minutes to the first day of the month, and every result can be shared with a link that keeps the expression in the URL."
+            "如果你更喜欢点选而不是手写，可以使用可视化生成器：为每个字段选择“每个”“每隔 N”或指定值，然后复制结果。预设覆盖了最常见的调度，从每 5 分钟到每月第一天都有；每个结果都可以通过链接分享，表达式会保存在 URL 中。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "What does */5 * * * * mean?",
-          "a": "It runs every five minutes: at minute 0, 5, 10 and so on, of every hour, every day. The */5 step starts at the lowest value of the field (0) and adds 5 each time."
+          "q": "*/5 * * * * 是什么意思？",
+          "a": "表示每 5 分钟运行一次：每天每小时的第 0、5、10 分钟……依此类推。*/5 从该字段的最小值（0）开始，每次加 5。"
         },
         {
-          "q": "Is Sunday 0 or 7 in cron?",
-          "a": "In standard crontab, Kubernetes, GitHub Actions and Spring both 0 and 7 mean Sunday. In Quartz and AWS EventBridge the week runs from 1 = Sunday to 7 = Saturday, so 0 is invalid."
+          "q": "Cron 中星期日是 0 还是 7？",
+          "a": "在标准 crontab、Kubernetes、GitHub Actions 和 Spring 中，0 和 7 都表示星期日。在 Quartz 和 AWS EventBridge 中，一周从 1 = 星期日到 7 = 星期六，因此 0 是无效值。"
         },
         {
-          "q": "What happens if I set both day of month and day of week?",
-          "a": "Standard cron runs the job when either field matches, so 0 0 13 * 5 runs on the 13th and on every Friday. Quartz and AWS don’t allow both, which is why one of them must be “?”."
+          "q": "同时设置“日”和“星期”会怎样？",
+          "a": "标准 Cron 只要其中一个字段匹配就会运行，所以 0 0 13 * 5 会在每月 13 日以及每个星期五运行。Quartz 和 AWS 不允许同时设置，所以其中一个必须是“?”。"
         },
         {
-          "q": "Which time zone does cron use?",
-          "a": "Crontab uses the server’s local time zone, Kubernetes uses the controller’s zone unless spec.timeZone is set, and GitHub Actions and EventBridge rules use UTC. Pick the zone in the tool to see exact run times."
+          "q": "Cron 使用哪个时区？",
+          "a": "crontab 使用服务器本地时区；Kubernetes 默认使用控制器所在时区，除非设置了 spec.timeZone；GitHub Actions 和 EventBridge 规则使用 UTC。在工具中选择时区即可查看准确的运行时间。"
         },
         {
-          "q": "Is my expression sent to a server?",
-          "a": "No. Parsing, descriptions and next-run calculations all happen in your browser. Nothing you type leaves your device."
+          "q": "我的表达式会被发送到服务器吗？",
+          "a": "不会。解析、文字说明和运行时间计算都在你的浏览器中完成，你输入的内容不会离开你的设备。"
         }
       ]
     },
     "quartz": {
-      "title": "Quartz Cron Expression Generator & Explainer",
-      "description": "Explain and build Quartz Scheduler cron expressions with seconds, year, ?, L, W and #. See the next run times and convert to Unix cron or AWS.",
-      "h1": "Quartz Cron Expression Explainer",
-      "intro": "Quartz Scheduler, the job library behind many Java applications, uses a richer cron format than Unix crontab. Paste a Quartz expression below to read it in plain language, check the next run times and convert it to other dialects.",
+      "title": "Quartz Cron 表达式生成与解析",
+      "description": "解析并生成 Quartz Scheduler 的 Cron 表达式，支持秒、年、?、L、W 和 #。查看下次运行时间，并转换为 Unix Cron 或 AWS 格式。",
+      "h1": "Quartz Cron 表达式解析器",
+      "intro": "Quartz Scheduler 是许多 Java 应用背后的任务调度库，它的 Cron 格式比 Unix crontab 更丰富。在下方粘贴 Quartz 表达式，即可看到中文解释、下次运行时间，并转换为其他方言。",
       "sections": [
         {
-          "h": "Quartz cron format",
+          "h": "Quartz Cron 格式",
           "p": [
-            "A Quartz expression has six or seven fields: seconds, minutes, hours, day of month, month, day of week and an optional year. For example 0 0 12 ? * MON-FRI fires at noon on weekdays. Days of the week are numbered 1 (Sunday) to 7 (Saturday), and names such as MON or FRI are accepted, including in ranges."
+            "Quartz 表达式有六或七个字段：秒、分钟、小时、日、月、星期以及可选的年。例如 0 0 12 ? * MON-FRI 表示工作日中午 12 点触发。星期编号为 1（星期日）到 7（星期六），也可以使用 MON、FRI 等英文缩写，范围中同样适用。"
           ]
         },
         {
-          "h": "The question mark rule",
+          "h": "问号规则",
           "p": [
-            "Quartz does not let you constrain both the day of month and the day of week. Exactly one of these two fields must contain “?”, which means “no specific value”. Writing 0 0 12 * * MON is therefore invalid; use 0 0 12 ? * MON instead. The explainer flags this immediately."
+            "Quartz 不允许同时限定“日”和“星期”。这两个字段中必须恰好有一个为“?”，表示“不指定值”。因此 0 0 12 * * MON 是无效的，应写成 0 0 12 ? * MON。解析器会立即指出这类错误。"
           ]
         },
         {
-          "h": "Special characters L, W and #",
+          "h": "特殊字符 L、W 和 #",
           "p": [
-            "L means “last”: L in the day-of-month field is the last day of the month, L-3 is three days before it, and 6L in the day-of-week field is the last Friday. W finds the nearest weekday to a date without leaving the month, so 15W fires on the weekday closest to the 15th, and LW is the last weekday of the month. The hash selects the nth weekday: 6#3 is the third Friday."
+            "L 表示“最后”：在“日”字段中 L 是当月最后一天，L-3 是最后一天的前三天；在“星期”字段中 6L 表示当月最后一个星期五。W 表示离指定日期最近的工作日且不会跨月，因此 15W 会在离 15 日最近的工作日触发，LW 表示当月最后一个工作日。井号用于选择第 n 个星期几：6#3 表示第三个星期五。"
+          ]
+        },
+        {
+          "h": "Quartz 实战",
+          "p": [
+            "在 Java 代码中，Quartz 表达式挂在触发器上，例如 TriggerBuilder.newTrigger().withSchedule(CronScheduleBuilder.cronSchedule(\"0 0 12 ? * MON-FRI\").inTimeZone(TimeZone.getTimeZone(\"Asia/Shanghai\")))。不调用 inTimeZone 时使用 JVM 的默认时区。错过触发（misfire）策略决定调度器在计划时间宕机时的行为：立即补触发一次，或直接跳到下一个时间点。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "How is Quartz cron different from Unix cron?",
-          "a": "Quartz adds a seconds field at the start and an optional year at the end, numbers weekdays from 1 = Sunday, requires “?” in one day field and supports L, W and #."
+          "q": "Quartz Cron 和 Unix Cron 有什么区别？",
+          "a": "Quartz 在开头增加了秒字段、末尾可选年字段，星期从 1 = 星期日开始编号，要求“日”或“星期”之一为“?”，并支持 L、W 和 #。"
         },
         {
-          "q": "Can I convert a Quartz expression to crontab?",
-          "a": "Yes, as long as the seconds are 0, no year is set and L, W or # aren’t used. The converter shows the crontab equivalent or explains why there isn’t one."
+          "q": "能把 Quartz 表达式转换成 crontab 吗？",
+          "a": "可以，只要秒为 0、没有设置年，且没有使用 L、W 或 #。转换器会给出等价的 crontab 表达式，或说明无法转换的原因。"
         },
         {
-          "q": "What does 0 0/5 * * * ? mean?",
-          "a": "It fires every five minutes, at second 0, starting at minute 0 of every hour, every day."
+          "q": "0 0/5 * * * ? 是什么意思？",
+          "a": "表示每 5 分钟触发一次：每天每小时从第 0 分钟开始，在第 0 秒触发。"
         },
         {
-          "q": "Is Spring’s @Scheduled cron the same as Quartz?",
-          "a": "Very close, but Spring numbers Sunday as 0 or 7, has no year field and doesn’t require “?”. Use the Spring page for Spring expressions."
+          "q": "Spring 的 @Scheduled cron 和 Quartz 一样吗？",
+          "a": "非常相似，但 Spring 用 0 或 7 表示星期日、没有年字段，也不强制使用“?”。Spring 表达式请使用 Spring 页面。"
         }
       ]
     },
     "aws": {
-      "title": "AWS EventBridge Cron Expression Explainer",
-      "description": "Validate and explain AWS EventBridge and CloudWatch cron(...) expressions, preview the next UTC run times, and convert them to crontab or Quartz.",
-      "h1": "AWS Cron Expression Explainer (EventBridge)",
-      "intro": "Amazon EventBridge (formerly CloudWatch Events) schedules use a six-field cron syntax wrapped in cron(...). Paste a rule expression to check it, read it in plain language and see exactly when it will run.",
+      "title": "AWS EventBridge Cron 表达式解析",
+      "description": "验证并解析 AWS EventBridge 与 CloudWatch 的 cron(...) 表达式，预览接下来按 UTC 的运行时间，并转换为 crontab 或 Quartz。",
+      "h1": "AWS Cron 表达式解析器（EventBridge）",
+      "intro": "Amazon EventBridge（前身为 CloudWatch Events）的定时规则使用包裹在 cron(...) 中的六字段 Cron 语法。粘贴规则表达式即可校验、阅读中文解释，并准确看到它何时运行。",
       "sections": [
         {
-          "h": "AWS cron syntax",
+          "h": "AWS Cron 语法",
           "p": [
-            "An EventBridge expression looks like cron(0 12 * * ? *) and has six fields: minutes, hours, day of month, month, day of week and year. There is no seconds field, so the finest resolution is one minute. Days of the week run from 1 (Sunday) to 7 (Saturday), and names like MON-FRI work too."
+            "EventBridge 表达式形如 cron(0 12 * * ? *)，包含六个字段：分钟、小时、日、月、星期和年。它没有秒字段，所以最小精度是 1 分钟。星期编号为 1（星期日）到 7（星期六），也可以写成 MON-FRI 这样的英文缩写。"
           ]
         },
         {
-          "h": "Rules you must follow",
+          "h": "必须遵守的规则",
           "p": [
-            "One of the two day fields must be “?”: use cron(0 8 ? * MON-FRI *) for weekday mornings and cron(0 8 1 * ? *) for the first of the month. The year field is required; use * for every year. L, W and # are supported in the day fields, for example cron(0 18 L * ? *) for the last day of each month."
+            "两个日期字段之一必须为“?”：工作日早上可写 cron(0 8 ? * MON-FRI *)，每月 1 日可写 cron(0 8 1 * ? *)。年字段是必填的，每年都运行时写 *。日期字段支持 L、W 和 #，例如 cron(0 18 L * ? *) 表示每月最后一天。"
           ]
         },
         {
-          "h": "Time zones",
+          "h": "时区",
           "p": [
-            "Scheduled EventBridge rules always run in UTC, so the tool evaluates AWS expressions in UTC by default and shows your local time next to each run. EventBridge Scheduler can attach a time zone to a schedule; in that case pick the same zone in the time-zone selector to preview it correctly."
+            "EventBridge 定时规则始终按 UTC 运行，因此工具默认按 UTC 计算 AWS 表达式，并在每次运行旁边显示你的本地时间。EventBridge Scheduler 可以为调度设置时区；这种情况下请在时区选择器中选择相同的时区，以便正确预览。"
+          ]
+        },
+        {
+          "h": "用 cron 还是 rate？",
+          "p": [
+            "对于每 15 分钟这样的固定间隔，rate 表达式更简单：rate(15 minutes) 从规则创建时开始计时。如果任务必须在日历时间运行——工作日 08:00、每月最后一天或仅限某一年——就用 cron。EventBridge Scheduler 还支持一次性的 at(...) 调度，以及可以分散调用的弹性时间窗口。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "Why does AWS reject my cron expression?",
-          "a": "The usual causes are five fields instead of six, a missing year field, or no “?” in the day-of-month or day-of-week field. The error message names the field that’s wrong."
+          "q": "为什么 AWS 拒绝了我的 Cron 表达式？",
+          "a": "常见原因是写了五个字段而不是六个、缺少年字段，或者“日”和“星期”字段中都没有“?”。错误信息会指出出错的字段。"
         },
         {
-          "q": "How do I run a Lambda every 5 minutes with cron?",
-          "a": "Use cron(0/5 * * * ? *). For simple intervals EventBridge also accepts rate(5 minutes)."
+          "q": "如何用 Cron 让 Lambda 每 5 分钟运行一次？",
+          "a": "使用 cron(0/5 * * * ? *)。对于简单的间隔，EventBridge 也支持 rate(5 minutes)。"
         },
         {
-          "q": "Is AWS cron in UTC?",
-          "a": "Yes for EventBridge rules. EventBridge Scheduler lets you set a time zone per schedule."
+          "q": "AWS Cron 使用 UTC 吗？",
+          "a": "EventBridge 规则是的。EventBridge Scheduler 允许为每个调度单独设置时区。"
         },
         {
-          "q": "What is the minimum interval?",
-          "a": "One minute, because AWS cron has no seconds field."
+          "q": "最短间隔是多少？",
+          "a": "1 分钟，因为 AWS Cron 没有秒字段。"
         }
       ]
     },
     "github": {
-      "title": "GitHub Actions Cron Schedule Explainer",
-      "description": "Check on.schedule cron expressions for GitHub Actions workflows: plain-language meaning, next UTC runs and the 5-minute minimum interval.",
-      "h1": "GitHub Actions Cron Schedule Explainer",
-      "intro": "GitHub Actions starts workflows on a schedule using standard five-field cron in the on.schedule trigger. Paste your cron string to see what it means and when it will run in UTC.",
+      "title": "GitHub Actions 定时任务 Cron 解析",
+      "description": "检查 GitHub Actions 工作流 on.schedule 中的 Cron 表达式：中文含义、接下来按 UTC 的运行时间，以及 5 分钟最短间隔提示。",
+      "h1": "GitHub Actions Cron 定时解析器",
+      "intro": "GitHub Actions 通过 on.schedule 触发器，使用标准五字段 Cron 定时启动工作流。粘贴你的 Cron 字符串，即可查看它的含义以及按 UTC 的运行时间。",
       "sections": [
         {
-          "h": "Using cron in a workflow",
+          "h": "在工作流中使用 Cron",
           "p": [
-            "Add a schedule trigger to your workflow file: on: schedule: - cron: '30 5 * * 1-5'. The expression uses the usual five fields (minute, hour, day of month, month, day of week) and must be quoted in YAML because * is a special character. You can list several cron entries, and github.event.schedule tells the job which one fired."
+            "在工作流文件中添加定时触发器：on: schedule: - cron: '30 5 * * 1-5'。表达式使用常见的五个字段（分钟、小时、日、月、星期），并且在 YAML 中必须加引号，因为 * 是特殊字符。你可以列出多个 cron 条目，github.event.schedule 会告诉任务是哪一个触发的。"
           ]
         },
         {
-          "h": "UTC and the 5-minute limit",
+          "h": "UTC 与 5 分钟限制",
           "p": [
-            "Schedules are always evaluated in UTC, so 0 9 * * * runs at 09:00 UTC, not in your local time; use the tool’s local-time column to translate. The shortest interval GitHub supports is every five minutes. Macros such as @daily are not supported, so write out the fields."
+            "调度始终按 UTC 计算，所以 0 9 * * * 是在 UTC 09:00 运行，而不是你的本地时间；可以借助工具中的本地时间列进行换算。GitHub 支持的最短间隔为 5 分钟。不支持 @daily 等宏，请写出完整字段。"
           ]
         },
         {
-          "h": "Delays and inactive repositories",
+          "h": "延迟与不活跃的仓库",
           "p": [
-            "Scheduled runs can start late during periods of high load, especially at the top of the hour, so choose an odd minute such as 17 instead of 0 when timing isn’t critical. In public repositories, scheduled workflows are disabled automatically after 60 days without repository activity."
+            "在高负载期间，尤其是整点时，定时运行可能会延迟启动；如果对时间要求不严格，可以选择 17 这样的非整点分钟。在公开仓库中，如果 60 天内没有任何仓库活动，定时工作流会被自动禁用。"
+          ]
+        },
+        {
+          "h": "测试定时工作流",
+          "p": [
+            "在 schedule 旁边加上 workflow_dispatch，测试时就可以手动启动工作流。记住，定时任务只在默认分支上运行，所以在功能分支上修改 cron 在合并前不会生效。使用 concurrency 分组可以防止一次较慢的运行与下一次定时运行重叠。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "What time zone does GitHub Actions cron use?",
-          "a": "UTC, always. There is no setting to change it, so convert your local time to UTC when writing the expression."
+          "q": "GitHub Actions 的 Cron 使用什么时区？",
+          "a": "始终是 UTC，且无法修改。编写表达式时请把本地时间换算成 UTC。"
         },
         {
-          "q": "Can a workflow run every minute?",
-          "a": "No. The minimum interval is five minutes; more frequent schedules are run at most every five minutes."
+          "q": "工作流可以每分钟运行一次吗？",
+          "a": "不可以。最短间隔为 5 分钟，更频繁的调度最多每 5 分钟运行一次。"
         },
         {
-          "q": "Why didn’t my scheduled workflow run on time?",
-          "a": "Scheduled jobs are queued and may be delayed under load, and they only run on the default branch. Workflows in inactive public repositories are also paused."
+          "q": "为什么我的定时工作流没有准时运行？",
+          "a": "定时任务需要排队，负载高时可能延迟，并且只在默认分支上运行。不活跃公开仓库中的工作流也会被暂停。"
         },
         {
-          "q": "Can I use @daily in GitHub Actions?",
-          "a": "No. Use the equivalent five fields, for example 0 0 * * *."
+          "q": "GitHub Actions 能用 @daily 吗？",
+          "a": "不能。请使用等价的五个字段，例如 0 0 * * *。"
         }
       ]
     },
     "kubernetes": {
-      "title": "Kubernetes CronJob Schedule Explainer",
-      "description": "Explain the schedule field of a Kubernetes CronJob, preview the next runs in any time zone with spec.timeZone, and check the syntax before you apply.",
-      "h1": "Kubernetes CronJob Schedule Explainer",
-      "intro": "A Kubernetes CronJob creates Jobs on a repeating schedule written in standard cron syntax. Paste the value of spec.schedule to see what it means and when the next Jobs will be created.",
+      "title": "Kubernetes CronJob 调度表达式解析",
+      "description": "解析 Kubernetes CronJob 的 schedule 字段，结合 spec.timeZone 在任意时区预览下次运行时间，并在 apply 之前检查语法。",
+      "h1": "Kubernetes CronJob 调度解析器",
+      "intro": "Kubernetes CronJob 会按照用标准 Cron 语法编写的重复调度来创建 Job。粘贴 spec.schedule 的值，即可查看它的含义以及接下来何时创建 Job。",
       "sections": [
         {
-          "h": "The schedule field",
+          "h": "schedule 字段",
           "p": [
-            "spec.schedule takes a five-field cron expression, for example \"0 */6 * * *\" for every six hours. Kubernetes also accepts macros such as @hourly, @daily, @weekly, @monthly and @yearly. Quote the value in YAML so the asterisks are not misread."
+            "spec.schedule 接受五字段的 Cron 表达式，例如 \"0 */6 * * *\" 表示每 6 小时一次。Kubernetes 也支持 @hourly、@daily、@weekly、@monthly 和 @yearly 等宏。请在 YAML 中给值加上引号，避免星号被误解析。"
           ]
         },
         {
-          "h": "Time zones with spec.timeZone",
+          "h": "使用 spec.timeZone 设置时区",
           "p": [
-            "Without a time zone, schedules are interpreted in the time zone of the kube-controller-manager, which is usually UTC. Since Kubernetes 1.27 you can set spec.timeZone to an IANA name such as Europe/Berlin. Select the same zone in the tool to preview the exact creation times, including daylight-saving transitions."
+            "如果不设置时区，调度会按 kube-controller-manager 所在时区解释，通常是 UTC。从 Kubernetes 1.27 起，可以把 spec.timeZone 设置为 Asia/Shanghai 这样的 IANA 名称。在工具中选择相同时区，即可预览准确的创建时间，包括夏令时切换。"
           ]
         },
         {
-          "h": "Missed runs and concurrency",
+          "h": "错过的运行与并发",
           "p": [
-            "If the controller misses a scheduled time, startingDeadlineSeconds decides how late a Job may still start. concurrencyPolicy controls what happens when a run is still active: Allow, Forbid or Replace. Keep those settings in mind when you choose frequent schedules such as every minute."
+            "如果控制器错过了某个调度时间，startingDeadlineSeconds 决定 Job 最晚还能延迟多久启动。concurrencyPolicy 控制上一次运行仍在进行时的行为：Allow、Forbid 或 Replace。选择每分钟这类频繁调度时，要特别注意这些设置。",
+            "测试时可以用 kubectl create job --from=cronjob/<name> <job-name> 立即触发一次运行，并用 kubectl get cronjob 查看 LAST SCHEDULE 和 ACTIVE 列。CronJob 对象上的事件会说明某个调度时间为何被跳过，或 Job 为何启动失败。"
+          ]
+        },
+        {
+          "h": "最小清单示例",
+          "p": [
+            "CronJob 使用 apiVersion batch/v1 和 kind CronJob，包含 spec.schedule、可选的 spec.timeZone 以及描述要运行 Pod 的 jobTemplate。设置 suspend: true 可以暂停调度而不删除它；successfulJobsHistoryLimit 和 failedJobsHistoryLimit 控制保留多少已完成的 Job 以便排查问题。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "Does a Kubernetes CronJob support seconds?",
-          "a": "No. The schedule has five fields, so the smallest interval is one minute."
+          "q": "Kubernetes CronJob 支持秒吗？",
+          "a": "不支持。schedule 只有五个字段，所以最短间隔是 1 分钟。"
         },
         {
-          "q": "Can I use CRON_TZ in the schedule?",
-          "a": "No. TZ and CRON_TZ prefixes are not supported; use the spec.timeZone field instead."
+          "q": "schedule 里可以使用 CRON_TZ 吗？",
+          "a": "不可以。不支持 TZ 和 CRON_TZ 前缀，请改用 spec.timeZone 字段。"
         },
         {
-          "q": "What does 0 */6 * * * mean?",
-          "a": "Every six hours on the hour: 00:00, 06:00, 12:00 and 18:00."
+          "q": "0 */6 * * * 是什么意思？",
+          "a": "每 6 小时整点运行一次：00:00、06:00、12:00 和 18:00。"
         },
         {
-          "q": "Why did my CronJob run twice or not at all?",
-          "a": "Check startingDeadlineSeconds and concurrencyPolicy, and whether the controller was down. CronJobs aim for roughly one Job per scheduled time but don’t guarantee it."
+          "q": "为什么我的 CronJob 运行了两次或者根本没运行？",
+          "a": "请检查 startingDeadlineSeconds 和 concurrencyPolicy，以及控制器当时是否宕机。CronJob 会尽量做到每个调度时间创建一个 Job，但并不保证。"
         }
       ]
     },
     "spring": {
-      "title": "Spring @Scheduled Cron Expression Explainer",
-      "description": "Explain Spring Framework @Scheduled cron expressions with seconds, L, W, # and macros, preview the next runs and convert to crontab or Quartz.",
-      "h1": "Spring Cron Expression Explainer",
-      "intro": "Spring’s @Scheduled(cron = \"...\") annotation uses a six-field cron format with seconds first. Paste a Spring expression to read it in plain language and check its next run times in your server’s time zone.",
+      "title": "Spring @Scheduled Cron 表达式解析",
+      "description": "解析 Spring Framework @Scheduled 的 Cron 表达式，支持秒、L、W、# 和宏，预览下次运行时间，并转换为 crontab 或 Quartz。",
+      "h1": "Spring Cron 表达式解析器",
+      "intro": "Spring 的 @Scheduled(cron = \"...\") 注解使用秒在最前的六字段 Cron 格式。粘贴 Spring 表达式，即可阅读中文解释，并按服务器所在时区查看下次运行时间。",
       "sections": [
         {
-          "h": "Spring cron format",
+          "h": "Spring Cron 格式",
           "p": [
-            "A Spring expression has six fields: second, minute, hour, day of month, month and day of week, for example 0 0 9 * * MON-FRI for 09:00 on weekdays. Sunday can be written as 0, 7 or SUN. Since Spring Framework 5.3 the parser also understands L, W and # in the day fields, plus macros such as @hourly and @daily."
+            "Spring 表达式有六个字段：秒、分钟、小时、日、月和星期，例如 0 0 9 * * MON-FRI 表示工作日 09:00。星期日可以写成 0、7 或 SUN。从 Spring Framework 5.3 起，解析器还支持日期字段中的 L、W 和 #，以及 @hourly、@daily 等宏。"
           ]
         },
         {
-          "h": "Time zone of @Scheduled",
+          "h": "@Scheduled 的时区",
           "p": [
-            "By default expressions are evaluated in the server’s default time zone. Set the zone attribute, for example @Scheduled(cron = \"0 0 2 * * *\", zone = \"Europe/Paris\"), to make the schedule independent of the host. Choose the same zone in the tool to preview the runs."
+            "默认情况下，表达式按服务器的默认时区计算。设置 zone 属性，例如 @Scheduled(cron = \"0 0 2 * * *\", zone = \"Asia/Shanghai\")，可以让调度与主机无关。在工具中选择相同时区即可预览运行时间。"
           ]
         },
         {
-          "h": "Spring vs Quartz",
+          "h": "Spring 与 Quartz 的区别",
           "p": [
-            "Spring expressions look like Quartz ones but differ in details: there is no year field, Sunday is 0 rather than 1, and “?” is accepted but not required. When both day fields are restricted Spring requires both to match. The converter shows the Quartz equivalent when it exists."
+            "Spring 表达式看起来和 Quartz 很像，但细节不同：没有年字段，星期日是 0 而不是 1，“?”可以使用但不是必需的。当“日”和“星期”都有限定时，Spring 要求两者同时匹配。若存在等价写法，转换器会给出 Quartz 版本。"
+          ]
+        },
+        {
+          "h": "启用调度",
+          "p": [
+            "只有用 @EnableScheduling 开启调度后，cron 方法才会运行。Spring 默认只使用一个线程，长任务会拖慢其他所有定时方法；如果有多个任务，请配置 ThreadPoolTaskScheduler 或 spring.task.scheduling.pool.size。在集群中每个实例都会触发同一个 cron，如果任务只能运行一次，请使用 ShedLock 之类的锁。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "Why does Spring say my cron expression must have six fields?",
-          "a": "Spring needs a seconds field. Prepend 0 to a five-field crontab expression: 0 */5 * * * * runs every five minutes."
+          "q": "为什么 Spring 提示 Cron 表达式必须有六个字段？",
+          "a": "Spring 需要秒字段。在五字段 crontab 表达式前加上 0 即可：0 */5 * * * * 表示每 5 分钟运行一次。"
         },
         {
-          "q": "How do I disable a @Scheduled cron job?",
-          "a": "Use the special value \"-\" (Scheduled.CRON_DISABLED), usually through a property placeholder."
+          "q": "如何禁用 @Scheduled 定时任务？",
+          "a": "使用特殊值 \"-\"（Scheduled.CRON_DISABLED），通常通过属性占位符来设置。"
         },
         {
-          "q": "Does Spring support the last day of the month?",
-          "a": "Yes, since 5.3: 0 0 0 L * * runs at midnight on the last day of every month."
+          "q": "Spring 支持每月最后一天吗？",
+          "a": "支持，从 5.3 开始：0 0 0 L * * 表示每月最后一天的午夜运行。"
         },
         {
-          "q": "Can I read the cron expression from configuration?",
-          "a": "Yes, for example @Scheduled(cron = \"${jobs.cleanup.cron}\"), so the schedule can change per environment."
+          "q": "可以从配置文件读取 Cron 表达式吗？",
+          "a": "可以，例如 @Scheduled(cron = \"${jobs.cleanup.cron}\")，这样不同环境可以使用不同的调度。"
         }
       ]
     },
     "cheatsheet": {
-      "title": "Cron Syntax Cheatsheet: Fields, Symbols & Examples",
-      "description": "A compact cron syntax reference: field order and ranges for crontab, Quartz and AWS, special characters * , - / ? L W #, macros and common examples.",
-      "h1": "Cron Syntax Cheatsheet",
-      "intro": "A one-page reference for cron syntax across the common dialects: which fields exist, what values they accept, and what every special character does. Try any example in the explainer above.",
-      "fieldsTitle": "Fields and allowed values",
+      "title": "Cron 语法速查表：字段、符号与示例",
+      "description": "简明的 Cron 语法参考：crontab、Quartz 和 AWS 的字段顺序与取值范围，特殊字符 * , - / ? L W #、宏以及常用示例。",
+      "h1": "Cron 语法速查表",
+      "intro": "一页看懂常见方言的 Cron 语法：有哪些字段、各自接受什么值，以及每个特殊字符的作用。所有示例都可以在解析器中试用。",
+      "fieldsTitle": "字段与取值范围",
       "fieldsHead": [
-        "Field",
-        "Values",
-        "Notes"
+        "字段",
+        "取值",
+        "说明"
       ],
       "fields": [
         [
-          "Second",
+          "秒",
           "0–59",
-          "Quartz, Spring and 6-field crons only"
+          "仅 Quartz、Spring 和 6 字段 Cron"
         ],
         [
-          "Minute",
+          "分钟",
           "0–59",
-          "First field in crontab and AWS"
+          "crontab 和 AWS 中的第一个字段"
         ],
         [
-          "Hour",
+          "小时",
           "0–23",
-          "24-hour clock"
+          "24 小时制"
         ],
         [
-          "Day of month",
+          "日",
           "1–31",
-          "L, W and LW in Quartz, Spring, AWS"
+          "Quartz、Spring、AWS 支持 L、W 和 LW"
         ],
         [
-          "Month",
-          "1–12 or JAN–DEC",
-          "Names are case-insensitive"
+          "月",
+          "1–12 或 JAN–DEC",
+          "英文缩写不区分大小写"
         ],
         [
-          "Day of week",
-          "0–7 or SUN–SAT",
-          "Quartz and AWS: 1–7, 1 = Sunday"
+          "星期",
+          "0–7 或 SUN–SAT",
+          "Quartz 和 AWS：1–7，1 = 星期日"
         ],
         [
-          "Year",
+          "年",
           "1970–2199",
-          "Optional in Quartz, required in AWS"
+          "Quartz 中可选，AWS 中必填"
         ]
       ],
-      "symbolsTitle": "Special characters",
+      "symbolsTitle": "特殊字符",
       "symbolsHead": [
-        "Symbol",
-        "Meaning",
-        "Example"
+        "符号",
+        "含义",
+        "示例"
       ],
       "symbols": [
         [
           "*",
-          "Any value",
-          "* * * * * — every minute"
+          "任意值",
+          "* * * * * — 每分钟"
         ],
         [
           ",",
-          "List of values",
-          "0 9,17 * * * — 09:00 and 17:00"
+          "值列表",
+          "0 9,17 * * * — 09:00 和 17:00"
         ],
         [
           "-",
-          "Range",
-          "0 9 * * 1-5 — weekdays at 09:00"
+          "范围",
+          "0 9 * * 1-5 — 工作日 09:00"
         ],
         [
           "/",
-          "Step",
-          "*/15 * * * * — every 15 minutes"
+          "步长",
+          "*/15 * * * * — 每 15 分钟"
         ],
         [
           "?",
-          "No specific value (day fields)",
+          "不指定值（日期字段）",
           "0 0 12 ? * MON — Quartz"
         ],
         [
           "L",
-          "Last day / last weekday",
-          "0 0 0 L * ? — last day of month"
+          "最后一天 / 最后一个星期几",
+          "0 0 0 L * ? — 每月最后一天"
         ],
         [
           "W",
-          "Nearest weekday",
-          "0 0 9 15W * ? — weekday nearest the 15th"
+          "最近的工作日",
+          "0 0 9 15W * ? — 离 15 日最近的工作日"
         ],
         [
           "#",
-          "Nth weekday of the month",
-          "0 0 9 ? * 2#1 — first Monday"
+          "当月第 n 个星期几",
+          "0 0 9 ? * 2#1 — 第一个星期一"
         ]
       ],
-      "macrosTitle": "Macros",
+      "macrosTitle": "宏",
       "macros": [
         [
           "@yearly / @annually",
@@ -528,253 +559,267 @@
       ],
       "sections": [
         {
-          "h": "Reading order",
+          "h": "阅读顺序",
           "p": [
-            "Read an expression from the smallest unit to the largest: 30 2 * * 1 is minute 30 of hour 2 on any day of the month, in any month, when the weekday is Monday — 02:30 every Monday. In Quartz and Spring, prepend the seconds field; in AWS, append the year."
+            "从最小的时间单位读到最大的：30 2 * * 1 表示在任意日、任意月、且星期为一时的 2 点 30 分——也就是每周一 02:30。Quartz 和 Spring 要在前面加上秒字段，AWS 要在最后加上年字段。"
           ]
         },
         {
-          "h": "Common pitfalls",
+          "h": "常见陷阱",
           "p": [
-            "*/7 in the minute field does not mean “every seven minutes forever”: it restarts at each hour, so it fires at 0, 7, … 56 and then at 0 again. Restricting both day fields in crontab means either can match. And 0 in the day-of-week field is invalid in Quartz and AWS, where the week starts at 1."
+            "分钟字段中的 */7 并不是“永远每 7 分钟一次”：它在每个小时重新开始，所以会在 0、7……56 分触发，然后又回到 0 分。在 crontab 中同时限定两个日期字段时，只要其一匹配就会运行。而在 Quartz 和 AWS 中，星期字段的 0 是无效值，因为一周从 1 开始。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "What is the order of cron fields?",
-          "a": "Minute, hour, day of month, month, day of week. Quartz and Spring put seconds in front; AWS adds a year at the end."
+          "q": "Cron 字段的顺序是什么？",
+          "a": "分钟、小时、日、月、星期。Quartz 和 Spring 在前面加秒，AWS 在最后加年。"
         },
         {
-          "q": "What does the question mark mean in cron?",
-          "a": "“No specific value”. Quartz and AWS require it in one of the two day fields; standard crontab doesn’t accept it."
+          "q": "Cron 中的问号是什么意思？",
+          "a": "表示“不指定值”。Quartz 和 AWS 要求在两个日期字段之一使用它；标准 crontab 不接受问号。"
         },
         {
-          "q": "How do I write “every 90 minutes”?",
-          "a": "Cron can’t express intervals that don’t divide the hour or day evenly in one line. Use two entries, such as 0 0-21/3 * * * and 30 1-22/3 * * *."
+          "q": "如何写“每 90 分钟一次”？",
+          "a": "如果间隔不能整除小时或天，一行 Cron 无法表达。可以用两条，例如 0 0-21/3 * * * 和 30 1-22/3 * * *。"
         },
         {
-          "q": "Are month and weekday names case-sensitive?",
-          "a": "No. JAN, Jan and jan are equivalent in every dialect covered here."
+          "q": "月份和星期的英文缩写区分大小写吗？",
+          "a": "不区分。在本站涵盖的所有方言中，JAN、Jan 和 jan 都是等价的。"
         }
       ]
     },
     "about": {
-      "title": "About CronExplain – Free Cron Expression Tool",
-      "description": "CronExplain is a free, open, browser-only tool to explain, build and convert cron expressions for crontab, Quartz, Spring, AWS, GitHub and Kubernetes.",
-      "h1": "About CronExplain",
-      "intro": "CronExplain is a small, free utility for developers and operators who need to read or write cron expressions quickly and get them right the first time.",
+      "title": "关于 CronExplain – 免费 Cron 表达式工具",
+      "description": "CronExplain 是免费、纯浏览器端的工具，用于解析、生成和转换 crontab、Quartz、Spring、AWS、GitHub 和 Kubernetes 的 Cron 表达式。",
+      "h1": "关于 CronExplain",
+      "intro": "CronExplain 是一个免费的小工具，帮助开发和运维人员快速读懂、写对 Cron 表达式，一次就做对。",
       "sections": [
         {
-          "h": "What it does",
+          "h": "它能做什么",
           "p": [
-            "The explainer turns an expression into a plain-language sentence in seven languages, lists the next ten run times in any IANA time zone and converts the schedule between standard crontab, Quartz, Spring and AWS EventBridge syntax. The visual builder and presets help when you are starting from scratch."
+            "解析器会把表达式转换成七种语言的通俗说明，列出任意 IANA 时区下接下来的十次运行时间，并在标准 crontab、Quartz、Spring 和 AWS EventBridge 语法之间转换调度。从零开始时，可视化生成器和预设能帮你快速上手。",
+            "每个页面都提供七种语言版本，另有二十个调度页面把常用调度——每 5 分钟、每月第一天等等——在七种方言中并排列出，可直接复制到 crontab、工作流文件、Kubernetes 清单或 Java 注解中。"
           ]
         },
         {
-          "h": "How it works",
+          "h": "工作原理",
           "p": [
-            "The parser and scheduler are written in TypeScript and run entirely in your browser. Run times are calculated on wall-clock time with the time-zone data built into your browser, so no external service is involved. Descriptions are generated with the open-source cronstrue library. Each dialect’s rules — field counts, weekday numbering, the question-mark requirement and special characters — are validated separately, so errors point to the exact field."
+            "解析器和调度器用 TypeScript 编写，完全在你的浏览器中运行。运行时间基于挂钟时间，使用浏览器内置的时区数据计算，不依赖任何外部服务。文字说明由开源库 cronstrue 生成。每种方言的规则——字段数量、星期编号、问号要求和特殊字符——都会分别校验，因此错误信息能准确指向出错的字段。"
           ]
         },
         {
-          "h": "Who makes it",
+          "h": "谁在做这个工具",
           "p": [
-            "CronExplain is an independent project, made by the team behind ContrastCheck and the Aspect Ratio Calculator. It is free to use, has no accounts and shows no pop-ups. Suggestions for new dialects or schedules are welcome."
+            "CronExplain 是一个独立项目，由 ContrastCheck 和宽高比计算器的团队打造。它可以免费使用，无需账号，也没有弹窗。欢迎提出新方言或常用调度的建议。"
+          ]
+        },
+        {
+          "h": "准确性与限制",
+          "p": [
+            "CronExplain 模拟的是各调度器有文档说明的行为，而不是所有厂商扩展。Jenkins 的 H 哈希语法、systemd 的 OnCalendar 定时器以及 @reboot 都不会被计算，真实调度器也可能有自身的延迟。当调度很关键时，请再对照调度器官方文档或在预发布环境中确认结果。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "Is CronExplain free?",
-          "a": "Yes, completely free with no sign-up."
+          "q": "CronExplain 免费吗？",
+          "a": "是的，完全免费，无需注册。"
         },
         {
-          "q": "Which cron dialects are supported?",
-          "a": "Standard crontab, 6-field cron with seconds, Quartz, Spring, AWS EventBridge, GitHub Actions and Kubernetes CronJob."
+          "q": "支持哪些 Cron 方言？",
+          "a": "标准 crontab、含秒的 6 字段 Cron、Quartz、Spring、AWS EventBridge、GitHub Actions 和 Kubernetes CronJob。"
         },
         {
-          "q": "How accurate are the next run times?",
-          "a": "They follow each dialect’s documented rules, including daylight-saving transitions. Real schedulers can still start jobs a little late under load."
+          "q": "下次运行时间有多准确？",
+          "a": "计算遵循各方言的官方规则，包括夏令时切换。不过真实调度器在高负载时仍可能稍晚启动任务。"
         },
         {
-          "q": "Can I link to a specific expression?",
-          "a": "Yes. The URL updates as you type; use “Copy share link” to share it."
+          "q": "可以链接到某个特定表达式吗？",
+          "a": "可以。URL 会随输入实时更新；点击“复制分享链接”即可分享。"
         }
       ]
     },
     "privacy": {
-      "title": "Privacy Policy | CronExplain",
-      "description": "CronExplain processes every cron expression in your browser. No accounts, no tracking cookies; only cookieless, aggregate Vercel Analytics.",
-      "h1": "Privacy Policy",
-      "intro": "Short version: what you type stays on your device. This page explains the little data the site does handle.",
+      "title": "隐私政策 | CronExplain",
+      "description": "CronExplain 在你的浏览器中处理所有 Cron 表达式。无账号、无跟踪 Cookie，仅使用无 Cookie 的匿名汇总 Vercel Analytics。",
+      "h1": "隐私政策",
+      "intro": "简而言之：你输入的内容只留在你的设备上。本页说明网站处理的少量数据。",
       "sections": [
         {
-          "h": "Processing happens in your browser",
+          "h": "所有处理都在浏览器中完成",
           "p": [
-            "Cron expressions, time-zone choices and builder selections are processed entirely by JavaScript in your browser. They are never sent to a server. The expression appears in the page URL only so that you can share or bookmark it; if you share that link, the recipient can see the expression."
+            "Cron 表达式、时区选择和生成器中的选项都完全由浏览器中的 JavaScript 处理，绝不会发送到服务器。表达式出现在页面 URL 中只是为了方便你分享或收藏；如果你分享了该链接，接收者可以看到其中的表达式。"
           ]
         },
         {
-          "h": "Analytics",
+          "h": "统计分析",
           "p": [
-            "We use Vercel Web Analytics to count page views and a few anonymous events, such as copying a result, clicking a preset or switching language. Vercel Analytics is cookieless: it does not set cookies, does not build cross-site profiles and reports only aggregate numbers. No advertising or third-party trackers are loaded."
+            "我们使用 Vercel Web Analytics 统计页面浏览量和少量匿名事件，例如复制结果、点击预设或切换语言。Vercel Analytics 不使用 Cookie：它不会设置 Cookie，不会建立跨站用户画像，只提供汇总数据。网站不加载任何广告或第三方跟踪器。",
+            "自定义事件只有三个：copy_output（复制了哪类结果）、preset_click（使用了哪个预设）和 locale_switch（从哪种语言切换到哪种语言）。它们都不包含表达式文本，也不包含任何可以在其他网站追踪你的标识符。"
           ]
         },
         {
-          "h": "Hosting and contact",
+          "h": "托管与联系",
           "p": [
-            "The site is a set of static files served by Vercel, which, like any web host, processes your IP address to deliver the pages. We do not store personal data, run accounts or send email. If this policy changes, the updated version will be published on this page."
+            "本站是一组由 Vercel 托管的静态文件。与任何网站托管服务一样，Vercel 会处理你的 IP 地址以便传送页面。我们不存储个人数据、不提供账号，也不发送邮件。如果本政策有变更，更新后的版本会发布在本页。"
+          ]
+        },
+        {
+          "h": "你的选择",
+          "p": [
+            "由于我们不存储个人数据，我们这边没有任何可导出或删除的内容。本工具不会使用 localStorage 或其他浏览器存储来保存你的表达式。即使你屏蔽了统计脚本，工具也能完全正常工作。关于 Vercel 如何处理请求数据，请参阅 Vercel 自己的隐私政策。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "Do you store the cron expressions I enter?",
-          "a": "No. They are processed in your browser and are not transmitted."
+          "q": "你们会保存我输入的 Cron 表达式吗？",
+          "a": "不会。它们只在你的浏览器中处理，不会被传输。"
         },
         {
-          "q": "Does the site use cookies?",
-          "a": "No. Neither the tool nor Vercel Analytics sets cookies."
+          "q": "网站使用 Cookie 吗？",
+          "a": "不使用。工具本身和 Vercel Analytics 都不会设置 Cookie。"
         },
         {
-          "q": "What do the analytics events contain?",
-          "a": "Only the event name and a short label, such as which preset was clicked — never the expression you typed."
+          "q": "统计事件包含哪些内容？",
+          "a": "只有事件名称和简短标签，例如点击了哪个预设——绝不包含你输入的表达式。"
         },
         {
-          "q": "Can I use the tool offline?",
-          "a": "Once the page has loaded, all calculations work without a network connection."
+          "q": "可以离线使用这个工具吗？",
+          "a": "页面加载完成后，所有计算都可以在没有网络的情况下进行。"
         }
       ]
     }
   },
   "every": {
-    "title": "Cron Expression for {name} ({expr})",
-    "description": "Cron expression for {name}: {expr}. Copy it for crontab, Quartz, AWS, GitHub Actions, Kubernetes and Spring, with the next run times.",
-    "h1": "Cron expression for {name}",
-    "tableTitle": "The same schedule in every dialect",
-    "tableDialect": "Dialect",
-    "tableExpr": "Expression",
+    "title": "Cron 表达式：{name}（{expr}）",
+    "description": "{name}的 Cron 表达式：{expr}。可直接复制到 crontab、Quartz、AWS、GitHub Actions 和 Kubernetes，并查看下次运行时间。",
+    "h1": "{name}的 Cron 表达式",
+    "tableTitle": "各方言中的同一调度",
+    "tableDialect": "方言",
+    "tableExpr": "表达式",
     "sections": [
       {
-        "h": "How this expression works",
+        "h": "这个表达式如何工作",
         "p": [
-          "The expression {expr} is written in {dialect} syntax. Read it field by field from left to right: each field narrows down when the job may run, and the scheduler starts the job whenever the current time matches all of them. In plain language it means: {meaning}."
+          "表达式 {expr} 使用 {dialect} 语法编写。从左到右逐个字段阅读：每个字段都会进一步限定任务可以运行的时间，当前时间与所有字段都匹配时调度器就会启动任务。用通俗的话说，它的含义是：{meaning}。"
         ]
       },
       {
-        "h": "Adapting it to your scheduler",
+        "h": "适配你的调度器",
         "p": [
-          "Crontab, Kubernetes and GitHub Actions use the five-field form. Quartz and Spring expect a seconds field in front, and Quartz and AWS also need “?” in one of the two day fields — the table above already takes care of those differences. Remember that GitHub Actions and AWS EventBridge rules run in UTC, while crontab uses the server’s time zone, so the same expression can fire at different local times depending on where it runs."
+          "crontab、Kubernetes 和 GitHub Actions 使用五字段格式。Quartz 和 Spring 需要在前面加上秒字段，Quartz 和 AWS 还要求两个日期字段之一为“?”——上方表格已经处理好了这些差异。请记住，GitHub Actions 和 AWS EventBridge 规则按 UTC 运行，而 crontab 使用服务器所在时区，因此同一个表达式在不同环境下可能在不同的本地时间触发。"
         ]
       },
       {
-        "h": "Check before you deploy",
+        "h": "部署前先检查",
         "p": [
-          "Paste your final expression into the explainer above and choose the time zone of the machine that will run it. The list of next runs shows exactly when the job will start, including around daylight-saving changes, so you can catch an off-by-one-hour mistake before it reaches production."
+          "把最终的表达式粘贴到上方的解析器中，并选择实际运行它的机器所在的时区。接下来运行时间列表会准确显示任务何时启动，包括夏令时切换前后，让你在上线前就发现相差一小时之类的错误。"
         ]
       }
     ],
     "faq": [
       {
-        "q": "What is the cron expression for {name}?",
-        "a": "In standard crontab it is {standard}. In Quartz it is {quartz}, and in AWS EventBridge it is {aws}."
+        "q": "{name}的 Cron 表达式是什么？",
+        "a": "在标准 crontab 中是 {standard}。在 Quartz 中是 {quartz}，在 AWS EventBridge 中是 {aws}。"
       },
       {
-        "q": "Which time zone will it run in?",
-        "a": "Crontab uses the server’s local time zone, Kubernetes the controller’s zone or spec.timeZone, and GitHub Actions and AWS EventBridge rules use UTC."
+        "q": "它会按哪个时区运行？",
+        "a": "crontab 使用服务器本地时区，Kubernetes 使用控制器时区或 spec.timeZone，GitHub Actions 和 AWS EventBridge 规则使用 UTC。"
       },
       {
-        "q": "How can I test the schedule?",
-        "a": "Paste it into the explainer on this page: it shows the next 10 run times in any time zone, next to your local time."
+        "q": "如何测试这个调度？",
+        "a": "把它粘贴到本页的解析器中：它会显示任意时区下接下来 10 次运行时间，并在旁边显示你的本地时间。"
       },
       {
-        "q": "Can I change it slightly?",
-        "a": "Yes. Edit the expression in the tool or use the visual builder; the description and run times update as you type."
+        "q": "可以稍作修改吗？",
+        "a": "可以。在工具中编辑表达式或使用可视化生成器，文字说明和运行时间会随输入实时更新。"
       }
     ],
+    "unsupported": "无法直接表示（见上方表格）",
     "items": {
       "every-minute": {
-        "name": "every minute",
-        "useCase": "Running a job every minute is the most frequent schedule classic cron allows. It suits lightweight health checks, queue pollers and metric collectors, but make sure each run finishes well within 60 seconds so runs don’t overlap."
+        "name": "每分钟",
+        "useCase": "每分钟运行是经典 Cron 允许的最高频率，适合轻量的健康检查、队列轮询和指标采集。但要确保每次运行都能在 60 秒内完成，避免运行重叠。"
       },
       "every-5-minutes": {
-        "name": "every 5 minutes",
-        "useCase": "Every five minutes is a popular interval for syncing data, refreshing caches and checking external services. It is also the shortest schedule GitHub Actions supports."
+        "name": "每 5 分钟",
+        "useCase": "每 5 分钟是同步数据、刷新缓存和检查外部服务时常用的间隔，也是 GitHub Actions 支持的最短调度。"
       },
       "every-10-minutes": {
-        "name": "every 10 minutes",
-        "useCase": "A ten-minute interval balances freshness and load, which makes it a good fit for importing feeds, sending batched notifications or cleaning temporary files."
+        "name": "每 10 分钟",
+        "useCase": "10 分钟的间隔在数据新鲜度和负载之间取得平衡，非常适合导入订阅源、发送批量通知或清理临时文件。"
       },
       "every-15-minutes": {
-        "name": "every 15 minutes",
-        "useCase": "Quarter-hourly jobs line up with the clock at :00, :15, :30 and :45, which keeps logs and reports easy to read. They are common for report snapshots and incremental backups."
+        "name": "每 15 分钟",
+        "useCase": "每刻钟一次的任务与时钟的 :00、:15、:30 和 :45 对齐，日志和报表更易阅读，常用于报表快照和增量备份。"
       },
       "every-30-minutes": {
-        "name": "every 30 minutes",
-        "useCase": "Running twice an hour, on the hour and at half past, is a good default for tasks such as sitemap regeneration, price updates or reminder emails."
+        "name": "每 30 分钟",
+        "useCase": "每小时运行两次——整点和半点——是重新生成站点地图、更新价格或发送提醒邮件等任务的理想默认值。"
       },
       "every-hour": {
-        "name": "every hour",
-        "useCase": "An hourly job at minute 0 is the classic choice for log rotation, aggregating statistics and rebuilding search indexes. If many jobs run on the hour, consider an odd minute to spread the load."
+        "name": "每小时",
+        "useCase": "在第 0 分钟运行的每小时任务是日志轮转、统计汇总和重建搜索索引的经典选择。如果很多任务都在整点运行，可以考虑选一个非整点分钟来分散负载。"
       },
       "every-2-hours": {
-        "name": "every 2 hours",
-        "useCase": "Every two hours, on even hours starting at midnight, gives twelve runs a day — enough for periodic data exports or certificate checks without constant load."
+        "name": "每 2 小时",
+        "useCase": "从午夜开始每逢偶数小时运行一次，每天 12 次——足以满足定期数据导出或证书检查，又不会持续占用资源。"
       },
       "every-6-hours": {
-        "name": "every 6 hours",
-        "useCase": "Four runs a day at 00:00, 06:00, 12:00 and 18:00 suit tasks such as dependency updates, database maintenance or pulling exchange rates."
+        "name": "每 6 小时",
+        "useCase": "每天在 00:00、06:00、12:00 和 18:00 运行四次，适合依赖更新、数据库维护或拉取汇率等任务。"
       },
       "every-12-hours": {
-        "name": "every 12 hours",
-        "useCase": "Twice a day, at midnight and at noon, is a common schedule for backups, security scans and report e-mails that should cover both halves of the day."
+        "name": "每 12 小时",
+        "useCase": "每天两次，在午夜和中午运行，是备份、安全扫描以及需要覆盖上下半天的报表邮件的常用调度。"
       },
       "every-day-at-midnight": {
-        "name": "every day at midnight",
-        "useCase": "A daily job at 00:00 is the default for nightly batches: backups, data warehouse loads, invoice generation and cleanup. Mind the time zone, since midnight on the server may not be midnight for your users."
+        "name": "每天午夜",
+        "useCase": "每天 00:00 运行是夜间批处理的默认选择：备份、数据仓库加载、生成发票和清理。注意时区——服务器上的午夜不一定是你用户的午夜。"
       },
       "every-day-at-noon": {
-        "name": "every day at noon",
-        "useCase": "Running at 12:00 every day is useful for daily summaries and digests that should be ready during working hours, or for tasks you want to watch while the team is online."
+        "name": "每天中午",
+        "useCase": "每天 12:00 运行适合需要在工作时间内准备好的每日汇总和摘要，也适合希望在团队在线时观察执行情况的任务。"
       },
       "every-day-at-9am": {
-        "name": "every day at 9 AM",
-        "useCase": "A 09:00 daily job is ideal for morning reports, stand-up reminders and dashboards that people check at the start of the day."
+        "name": "每天上午 9 点",
+        "useCase": "每天 09:00 的任务非常适合晨间报表、站会提醒，以及大家一上班就会查看的仪表盘。"
       },
       "every-monday": {
-        "name": "every Monday",
-        "useCase": "A weekly job at midnight between Sunday and Monday is a natural fit for weekly reports, rotating credentials and resetting usage quotas."
+        "name": "每周一",
+        "useCase": "在周日与周一交界的午夜运行的每周任务，天然适合周报、轮换凭据和重置用量配额。"
       },
       "every-weekday": {
-        "name": "every weekday at 9 AM",
-        "useCase": "Monday to Friday at 09:00 covers business-day tasks such as stand-up reminders, daily sales reports or opening a support queue, while skipping weekends."
+        "name": "工作日上午 9 点",
+        "useCase": "周一至周五 09:00 适合工作日任务，例如站会提醒、每日销售报表或开启客服队列，同时跳过周末。"
       },
       "every-weekend": {
-        "name": "weekends at 10 AM",
-        "useCase": "Saturday and Sunday at 10:00 is handy for heavier maintenance, full re-indexing or weekend-only promotions, when traffic is usually lower."
+        "name": "周末上午 10 点",
+        "useCase": "周六和周日 10:00 适合较重的维护、全量重建索引或仅限周末的促销活动，此时流量通常较低。"
       },
       "every-sunday-at-3am": {
-        "name": "every Sunday at 3 AM",
-        "useCase": "Sunday 03:00 is a classic maintenance window: full backups, database vacuuming and system updates run when almost nobody is using the service."
+        "name": "每周日凌晨 3 点",
+        "useCase": "周日 03:00 是经典的维护窗口：全量备份、数据库清理和系统更新都在几乎没人使用服务时进行。"
       },
       "first-day-of-month": {
-        "name": "the first day of the month",
-        "useCase": "Midnight on the 1st is the standard schedule for monthly billing, invoices, usage resets and monthly reports."
+        "name": "每月第一天",
+        "useCase": "每月 1 日午夜是月度计费、开具发票、重置用量和月度报表的标准调度。"
       },
       "last-day-of-month": {
-        "name": "the last day of the month",
-        "useCase": "Month-end jobs such as closing the books or archiving data need the last day of every month, whether it has 28, 29, 30 or 31 days. Quartz, Spring and AWS express this with L; standard crontab cannot, so a common workaround is to run on days 28–31 and check the date in the script."
+        "name": "每月最后一天",
+        "useCase": "结账、归档数据等月末任务需要在每月最后一天运行，不论当月有 28、29、30 还是 31 天。Quartz、Spring 和 AWS 用 L 表示；标准 crontab 做不到，常见做法是在 28–31 日运行并在脚本中检查日期。"
       },
       "every-quarter": {
-        "name": "every quarter",
-        "useCase": "Midnight on the first day of January, April, July and October marks the start of each quarter — the right time for quarterly reports, audits and archive rotations."
+        "name": "每季度",
+        "useCase": "1 月、4 月、7 月和 10 月 1 日的午夜标志着每个季度的开始——正是生成季度报表、审计和轮换归档的时机。"
       },
       "every-year": {
-        "name": "every year",
-        "useCase": "Midnight on January 1 runs a job once a year, for tasks such as annual rollovers, yearly archives or renewing long-lived settings."
+        "name": "每年",
+        "useCase": "1 月 1 日午夜每年运行一次任务，适合年度结转、年度归档或续期长期有效的设置。"
       }
-    },
-    "unsupported": "not directly expressible (see the table above)"
+    }
   }
 }

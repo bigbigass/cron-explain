@@ -1,32 +1,32 @@
 {
   "site": {
     "name": "CronExplain",
-    "tagline": "Cron expressions explained, in your language",
-    "skip": "Skip to content",
-    "language": "Language"
+    "tagline": "Cron 式をわかりやすい日本語で",
+    "skip": "本文へスキップ",
+    "language": "言語"
   },
   "nav": {
-    "home": "Explainer",
-    "cheatsheet": "Cheatsheet",
-    "dialects": "Dialects"
+    "home": "解説ツール",
+    "cheatsheet": "早見表",
+    "dialects": "方言"
   },
   "footer": {
-    "about": "About",
-    "privacy": "Privacy",
-    "sister": "Sister tools",
-    "contrast": "ContrastCheck – WCAG color contrast checker",
-    "aspect": "Aspect Ratio Calculator",
-    "note": "Everything runs in your browser. No sign-up, no tracking cookies.",
-    "schedules": "Popular schedules"
+    "about": "このサイトについて",
+    "privacy": "プライバシー",
+    "sister": "姉妹ツール",
+    "contrast": "ContrastCheck – WCAG コントラストチェッカー",
+    "aspect": "アスペクト比計算ツール",
+    "note": "すべての処理はブラウザ内で行われます。登録不要、トラッキング Cookie なし。",
+    "schedules": "よく使うスケジュール"
   },
   "common": {
-    "home": "Home",
-    "faqTitle": "Frequently asked questions",
-    "related": "Related pages",
-    "schedules": "Schedules",
+    "home": "ホーム",
+    "faqTitle": "よくある質問",
+    "related": "関連ページ",
+    "schedules": "スケジュール",
     "dialectNames": {
-      "standard": "Standard crontab",
-      "seconds": "6-field (seconds)",
+      "standard": "標準 crontab",
+      "seconds": "6 フィールド（秒あり）",
       "quartz": "Quartz",
       "spring": "Spring",
       "aws": "AWS EventBridge",
@@ -34,476 +34,507 @@
       "kubernetes": "Kubernetes CronJob"
     },
     "fieldNames": {
-      "second": "Second",
-      "minute": "Minute",
-      "hour": "Hour",
-      "dayOfMonth": "Day of month",
-      "month": "Month",
-      "dayOfWeek": "Day of week",
-      "year": "Year"
+      "second": "秒",
+      "minute": "分",
+      "hour": "時",
+      "dayOfMonth": "日",
+      "month": "月",
+      "dayOfWeek": "曜日",
+      "year": "年"
     },
     "weekdays": [
-      "Sun",
-      "Mon",
-      "Tue",
-      "Wed",
-      "Thu",
-      "Fri",
-      "Sat"
+      "日",
+      "月",
+      "火",
+      "水",
+      "木",
+      "金",
+      "土"
     ],
     "months": [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
+      "1月",
+      "2月",
+      "3月",
+      "4月",
+      "5月",
+      "6月",
+      "7月",
+      "8月",
+      "9月",
+      "10月",
+      "11月",
+      "12月"
     ]
   },
   "tool": {
-    "label": "Cron expression",
-    "placeholder": "e.g. */15 9-17 * * 1-5",
-    "dialect": "Dialect",
-    "auto": "Auto-detect",
-    "detected": "Detected: {dialect}",
-    "meaning": "What it means",
-    "noDescription": "Valid, but no plain-language description is available for this combination.",
-    "valid": "Valid",
-    "invalid": "Invalid",
-    "nextRuns": "Next 10 runs",
-    "timezone": "Evaluate in time zone",
-    "colZone": "In {tz}",
-    "colLocal": "Your local time",
-    "noRuns": "No run in the next 8 years — check the day and month fields.",
-    "copy": "Copy",
-    "copied": "Copied",
-    "share": "Copy share link",
-    "presets": "Presets",
-    "converter": "Same schedule in other dialects",
-    "builder": "Visual builder",
-    "builderHint": "Pick values per field. The builder writes a standard five-field expression; it is converted to the selected dialect when you use it.",
-    "useExpression": "Use this expression",
+    "label": "Cron 式",
+    "placeholder": "例: */15 9-17 * * 1-5",
+    "dialect": "方言",
+    "auto": "自動判定",
+    "detected": "判定結果: {dialect}",
+    "meaning": "意味",
+    "noDescription": "有効な式ですが、この組み合わせには文章による説明を生成できません。",
+    "valid": "有効",
+    "invalid": "無効",
+    "nextRuns": "次の 10 回の実行",
+    "timezone": "計算するタイムゾーン",
+    "colZone": "{tz} の時刻",
+    "colLocal": "あなたの現地時刻",
+    "noRuns": "今後 8 年間に実行されません。日と月のフィールドを確認してください。",
+    "copy": "コピー",
+    "copied": "コピーしました",
+    "share": "共有リンクをコピー",
+    "presets": "プリセット",
+    "converter": "他の方言での同じスケジュール",
+    "builder": "ビジュアルビルダー",
+    "builderHint": "フィールドごとに値を選択します。ビルダーは標準の 5 フィールド式を作成し、使用時に選択中の方言へ変換します。",
+    "useExpression": "この式を使う",
     "modes": {
-      "every": "Every",
-      "step": "Every N",
-      "specific": "Specific"
+      "every": "毎",
+      "step": "N ごと",
+      "specific": "指定"
     },
-    "interval": "Interval",
+    "interval": "間隔",
     "warnings": {
-      "githubMinInterval": "GitHub Actions runs scheduled workflows at most every 5 minutes.",
-      "githubUtc": "GitHub evaluates schedules in UTC.",
-      "awsUtc": "EventBridge rules use UTC."
+      "githubMinInterval": "GitHub Actions のスケジュール実行は最短 5 分間隔です。",
+      "githubUtc": "GitHub はスケジュールを UTC で評価します。",
+      "awsUtc": "EventBridge ルールは UTC を使用します。"
     },
     "reasons": {
-      "secondsNotSupported": "Not representable: this dialect has no seconds field.",
-      "yearNotSupported": "Not representable: this dialect has no year field.",
-      "specialNotSupported": "Not representable: L, W and # are not supported.",
-      "domDowBoth": "Not representable: the day-of-month and day-of-week rules can’t be combined this way."
+      "secondsNotSupported": "表現できません: この方言には秒フィールドがありません。",
+      "yearNotSupported": "表現できません: この方言には年フィールドがありません。",
+      "specialNotSupported": "表現できません: L・W・# はサポートされていません。",
+      "domDowBoth": "表現できません: 日と曜日の条件をこの形で組み合わせることはできません。"
     },
     "errors": {
-      "empty": "Enter a cron expression.",
-      "fieldCount": "Expected {expected} fields for this dialect, but found {got}.",
-      "invalidValue": "{field}: “{value}” is not a valid value.",
-      "outOfRange": "{field}: {value} is out of range (allowed {min}–{max}).",
-      "invalidStep": "{field}: invalid step in “{value}” — put a positive number after “/”.",
-      "invalidRange": "{field}: the range “{value}” starts after it ends.",
-      "questionNotAllowed": "{field}: “?” is not allowed here. Use “*” instead.",
-      "questionRequired": "Use “?” in either day-of-month or day-of-week — this dialect requires exactly one.",
-      "bothQuestion": "Only one of day-of-month and day-of-week can be “?”.",
-      "specialNotAllowed": "{field}: “{value}” uses L, W or #, which this dialect doesn’t support. Try Quartz, Spring or AWS.",
-      "unknownMacro": "Unknown macro “{value}”. Supported: @yearly, @monthly, @weekly, @daily, @hourly.",
-      "macroNotSupported": "Macros such as “{value}” are not supported in this dialect — write out the fields instead.",
-      "rebootNotSchedulable": "@reboot runs once at startup, so there is no schedule to explain."
+      "empty": "Cron 式を入力してください。",
+      "fieldCount": "この方言では {expected} 個のフィールドが必要ですが、{got} 個あります。",
+      "invalidValue": "{field}: 「{value}」は有効な値ではありません。",
+      "outOfRange": "{field}: {value} は範囲外です（{min}–{max} が有効）。",
+      "invalidStep": "{field}: 「{value}」のステップが無効です。「/」の後には正の整数を指定してください。",
+      "invalidRange": "{field}: 範囲「{value}」の開始が終了より後になっています。",
+      "questionNotAllowed": "{field}: ここでは「?」は使えません。代わりに「*」を使ってください。",
+      "questionRequired": "日または曜日のどちらかに「?」を指定してください。この方言ではちょうど一方が必要です。",
+      "bothQuestion": "日と曜日の両方を「?」にすることはできません。",
+      "specialNotAllowed": "{field}: 「{value}」は L・W・# を使っていますが、この方言では使えません。Quartz・Spring・AWS をお試しください。",
+      "unknownMacro": "不明なマクロ「{value}」です。使用可能: @yearly、@monthly、@weekly、@daily、@hourly。",
+      "macroNotSupported": "この方言では「{value}」のようなマクロは使えません。各フィールドを記述してください。",
+      "rebootNotSchedulable": "@reboot は起動時に 1 回実行されるだけなので、説明するスケジュールがありません。"
     },
     "notes": {
-      "standard": "Five fields: minute, hour, day of month, month, day of week. Sunday is 0 or 7. If both day fields are restricted, the job runs when either one matches.",
-      "seconds": "Six fields with seconds first, as used by node-cron, croner and many libraries.",
-      "quartz": "Quartz: seconds first, optional year, 1 = Sunday. Exactly one day field must be “?”. Supports L, W and #.",
-      "spring": "Spring @Scheduled: six fields with seconds first, 0 or 7 = Sunday; supports L, W, # and macros such as @daily.",
-      "aws": "EventBridge: six fields with no seconds and the year last, 1 = Sunday, one day field must be “?”. Rules run in UTC.",
-      "github": "GitHub Actions: standard five fields, always evaluated in UTC, at most every 5 minutes; runs may be delayed when GitHub is busy.",
-      "kubernetes": "Kubernetes CronJob: standard five fields plus macros. Set spec.timeZone to use a time zone other than the controller’s."
+      "standard": "5 つのフィールド: 分・時・日・月・曜日。日曜日は 0 または 7。日と曜日の両方を指定すると、どちらか一方が一致したときに実行されます。",
+      "seconds": "先頭に秒がある 6 フィールド形式。node-cron、croner など多くのライブラリで使われます。",
+      "quartz": "Quartz: 先頭が秒、年は任意、1 = 日曜日。日と曜日のどちらか一方を必ず「?」にします。L・W・# に対応。",
+      "spring": "Spring @Scheduled: 先頭が秒の 6 フィールド、0 または 7 = 日曜日。L・W・# と @daily などのマクロに対応。",
+      "aws": "EventBridge: 秒なしの 6 フィールドで年が最後、1 = 日曜日、日と曜日の一方は「?」。ルールは UTC で実行されます。",
+      "github": "GitHub Actions: 標準の 5 フィールド、常に UTC、最短 5 分間隔。混雑時は実行が遅れることがあります。",
+      "kubernetes": "Kubernetes CronJob: 標準の 5 フィールドとマクロ。spec.timeZone を設定するとコントローラー以外のタイムゾーンを使えます。"
     }
   },
   "pages": {
     "home": {
-      "title": "Cron Expression Explainer & Generator | CronExplain",
-      "description": "Paste a cron expression to see what it means and its next 10 run times. Supports crontab, Quartz, AWS, GitHub Actions and Kubernetes.",
-      "h1": "Cron Expression Explainer & Generator",
-      "intro": "Paste any cron expression to get a plain-language explanation, the next 10 run times in any time zone, and the same schedule converted to Quartz, AWS and Spring syntax. Everything is computed in your browser.",
+      "title": "Cron 式の解説・生成ツール | CronExplain",
+      "description": "Cron 式を貼り付けるだけで、意味と次の 10 回の実行時刻を表示。crontab、Quartz、AWS、GitHub Actions、Kubernetes に対応。",
+      "h1": "Cron 式の解説・生成ツール",
+      "intro": "任意の Cron 式を貼り付けると、わかりやすい日本語の説明、任意のタイムゾーンでの次の 10 回の実行時刻、そして Quartz・AWS・Spring 構文に変換した同じスケジュールが表示されます。計算はすべてブラウザ内で行われます。",
       "sections": [
         {
-          "h": "How to read a cron expression",
+          "h": "Cron 式の読み方",
           "p": [
-            "A classic Unix cron expression has five fields separated by spaces: minute (0–59), hour (0–23), day of month (1–31), month (1–12) and day of week (0–6, where 0 and 7 are Sunday). A job runs whenever the current time matches every field. An asterisk means “any value”, so * * * * * runs every minute.",
-            "Inside a field you can combine values: a comma makes a list (1,15), a hyphen makes a range (9-17), and a slash adds a step (*/10 means every 10 units). Month and weekday names such as JAN or MON are accepted by most implementations."
+            "Unix の標準的な Cron 式は、スペースで区切られた 5 つのフィールドで構成されます。分（0–59）、時（0–23）、日（1–31）、月（1–12）、曜日（0–6、0 と 7 は日曜日）です。現在時刻がすべてのフィールドに一致したときにジョブが実行されます。アスタリスクは「任意の値」を意味するので、* * * * * は毎分実行されます。",
+            "1 つのフィールド内では値を組み合わせられます。カンマはリスト（1,15）、ハイフンは範囲（9-17）、スラッシュはステップ（*/10 は 10 単位ごと）を表します。多くの実装では JAN や MON といった英語の略称も使えます。"
           ]
         },
         {
-          "h": "Why the dialect matters",
+          "h": "方言が重要な理由",
           "p": [
-            "Not every scheduler speaks the same cron. Quartz and Spring add a seconds field at the front, AWS EventBridge adds a year field at the end, and Quartz and AWS number weekdays from 1 = Sunday instead of 0. Quartz and AWS also require a question mark in either the day-of-month or the day-of-week field. CronExplain detects the dialect from the shape of the expression, and you can override it at any time."
+            "すべてのスケジューラーが同じ Cron を話すわけではありません。Quartz と Spring は先頭に秒フィールドを追加し、AWS EventBridge は末尾に年フィールドを追加します。また Quartz と AWS は曜日を 0 ではなく 1 = 日曜日から数えます。さらに Quartz と AWS では、日または曜日のどちらかに疑問符が必須です。CronExplain は式の形から方言を自動判定し、いつでも手動で切り替えられます。"
           ]
         },
         {
-          "h": "Next run times and time zones",
+          "h": "次回実行時刻とタイムゾーン",
           "p": [
-            "The run list is evaluated on wall-clock time in the time zone you choose, then shown next to your own local time. Daylight saving time is handled the way most schedulers do it: a time that is skipped when clocks spring forward does not run that day, and a time that repeats when clocks fall back runs once. GitHub Actions and AWS EventBridge rules always use UTC, so the tool switches to UTC for those dialects."
+            "実行時刻の一覧は、選択したタイムゾーンの壁時計時刻で計算され、あなたの現地時刻と並べて表示されます。夏時間は多くのスケジューラーと同じように扱います。時計が進むときにスキップされる時刻はその日は実行されず、時計が戻るときに繰り返される時刻は 1 回だけ実行されます。GitHub Actions と AWS EventBridge のルールは常に UTC を使うため、これらの方言ではツールが自動的に UTC に切り替わります。"
           ]
         },
         {
-          "h": "Build an expression visually",
+          "h": "ビジュアルに式を作成",
           "p": [
-            "If you would rather click than type, use the visual builder: choose “every”, “every N” or specific values for each field and copy the result. Presets cover the most common schedules, from every five minutes to the first day of the month, and every result can be shared with a link that keeps the expression in the URL."
+            "入力よりクリックで作りたい場合はビジュアルビルダーを使いましょう。各フィールドで「毎」「N ごと」「指定」を選び、結果をコピーするだけです。プリセットは 5 分ごとから毎月 1 日まで、よく使うスケジュールを網羅しています。結果は式を URL に保持したリンクで共有できます。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "What does */5 * * * * mean?",
-          "a": "It runs every five minutes: at minute 0, 5, 10 and so on, of every hour, every day. The */5 step starts at the lowest value of the field (0) and adds 5 each time."
+          "q": "*/5 * * * * はどういう意味ですか？",
+          "a": "5 分ごとに実行されます。毎日、毎時 0 分、5 分、10 分…に実行されます。*/5 はそのフィールドの最小値（0）から始まり、5 ずつ加算されます。"
         },
         {
-          "q": "Is Sunday 0 or 7 in cron?",
-          "a": "In standard crontab, Kubernetes, GitHub Actions and Spring both 0 and 7 mean Sunday. In Quartz and AWS EventBridge the week runs from 1 = Sunday to 7 = Saturday, so 0 is invalid."
+          "q": "Cron で日曜日は 0 ですか、7 ですか？",
+          "a": "標準 crontab、Kubernetes、GitHub Actions、Spring では 0 と 7 のどちらも日曜日です。Quartz と AWS EventBridge では 1 = 日曜日〜7 = 土曜日なので、0 は無効です。"
         },
         {
-          "q": "What happens if I set both day of month and day of week?",
-          "a": "Standard cron runs the job when either field matches, so 0 0 13 * 5 runs on the 13th and on every Friday. Quartz and AWS don’t allow both, which is why one of them must be “?”."
+          "q": "日と曜日の両方を指定するとどうなりますか？",
+          "a": "標準の Cron では、どちらか一方が一致すれば実行されます。そのため 0 0 13 * 5 は毎月 13 日と毎週金曜日に実行されます。Quartz と AWS では両方を指定できないため、一方を「?」にする必要があります。"
         },
         {
-          "q": "Which time zone does cron use?",
-          "a": "Crontab uses the server’s local time zone, Kubernetes uses the controller’s zone unless spec.timeZone is set, and GitHub Actions and EventBridge rules use UTC. Pick the zone in the tool to see exact run times."
+          "q": "Cron はどのタイムゾーンを使いますか？",
+          "a": "crontab はサーバーのローカルタイムゾーン、Kubernetes は spec.timeZone を設定しない限りコントローラーのタイムゾーン、GitHub Actions と EventBridge ルールは UTC を使います。ツールでタイムゾーンを選ぶと正確な実行時刻を確認できます。"
         },
         {
-          "q": "Is my expression sent to a server?",
-          "a": "No. Parsing, descriptions and next-run calculations all happen in your browser. Nothing you type leaves your device."
+          "q": "入力した式はサーバーに送信されますか？",
+          "a": "いいえ。解析、説明文の生成、実行時刻の計算はすべてブラウザ内で行われます。入力内容が端末の外に出ることはありません。"
         }
       ]
     },
     "quartz": {
-      "title": "Quartz Cron Expression Generator & Explainer",
-      "description": "Explain and build Quartz Scheduler cron expressions with seconds, year, ?, L, W and #. See the next run times and convert to Unix cron or AWS.",
-      "h1": "Quartz Cron Expression Explainer",
-      "intro": "Quartz Scheduler, the job library behind many Java applications, uses a richer cron format than Unix crontab. Paste a Quartz expression below to read it in plain language, check the next run times and convert it to other dialects.",
+      "title": "Quartz Cron 式の解説・生成ツール",
+      "description": "秒・年・?・L・W・# を含む Quartz Scheduler の Cron 式を解説・作成。次回実行時刻を確認し、Unix Cron や AWS 形式に変換できます。",
+      "h1": "Quartz Cron 式の解説",
+      "intro": "Quartz Scheduler は多くの Java アプリケーションで使われるジョブライブラリで、Unix の crontab より表現力の高い Cron 形式を使います。下に Quartz の式を貼り付けると、日本語の説明と次回実行時刻を確認し、他の方言に変換できます。",
       "sections": [
         {
-          "h": "Quartz cron format",
+          "h": "Quartz Cron の形式",
           "p": [
-            "A Quartz expression has six or seven fields: seconds, minutes, hours, day of month, month, day of week and an optional year. For example 0 0 12 ? * MON-FRI fires at noon on weekdays. Days of the week are numbered 1 (Sunday) to 7 (Saturday), and names such as MON or FRI are accepted, including in ranges."
+            "Quartz の式は 6 つまたは 7 つのフィールドを持ちます。秒、分、時、日、月、曜日、そして任意の年です。たとえば 0 0 12 ? * MON-FRI は平日の正午に実行されます。曜日は 1（日曜日）〜 7（土曜日）で表し、MON や FRI といった略称も範囲指定を含めて使えます。"
           ]
         },
         {
-          "h": "The question mark rule",
+          "h": "疑問符のルール",
           "p": [
-            "Quartz does not let you constrain both the day of month and the day of week. Exactly one of these two fields must contain “?”, which means “no specific value”. Writing 0 0 12 * * MON is therefore invalid; use 0 0 12 ? * MON instead. The explainer flags this immediately."
+            "Quartz では日と曜日を同時に指定できません。2 つのフィールドのうちちょうど一方に「特定の値なし」を意味する「?」を入れる必要があります。そのため 0 0 12 * * MON は無効で、0 0 12 ? * MON と書きます。解説ツールはこの誤りをすぐに指摘します。"
           ]
         },
         {
-          "h": "Special characters L, W and #",
+          "h": "特殊文字 L・W・#",
           "p": [
-            "L means “last”: L in the day-of-month field is the last day of the month, L-3 is three days before it, and 6L in the day-of-week field is the last Friday. W finds the nearest weekday to a date without leaving the month, so 15W fires on the weekday closest to the 15th, and LW is the last weekday of the month. The hash selects the nth weekday: 6#3 is the third Friday."
+            "L は「最後」を意味します。日フィールドの L は月末日、L-3 は月末の 3 日前、曜日フィールドの 6L はその月の最後の金曜日です。W は月をまたがずに指定日に最も近い平日を表し、15W は 15 日に最も近い平日、LW は月の最終平日です。シャープは第 n 曜日を選び、6#3 は第 3 金曜日です。"
+          ]
+        },
+        {
+          "h": "Quartz の実践",
+          "p": [
+            "Java コードでは、Quartz の式はトリガーに設定します。例: TriggerBuilder.newTrigger().withSchedule(CronScheduleBuilder.cronSchedule(\"0 0 12 ? * MON-FRI\").inTimeZone(TimeZone.getTimeZone(\"Asia/Tokyo\")))。inTimeZone を指定しないと JVM のデフォルトタイムゾーンが使われます。ミスファイア設定は、予定時刻にスケジューラーが停止していた場合の動作（すぐに 1 回実行するか、次の時刻まで飛ばすか）を決めます。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "How is Quartz cron different from Unix cron?",
-          "a": "Quartz adds a seconds field at the start and an optional year at the end, numbers weekdays from 1 = Sunday, requires “?” in one day field and supports L, W and #."
+          "q": "Quartz Cron と Unix Cron の違いは？",
+          "a": "Quartz は先頭に秒、末尾に任意の年を追加し、曜日を 1 = 日曜日から数え、日か曜日の一方に「?」を必須とし、L・W・# に対応しています。"
         },
         {
-          "q": "Can I convert a Quartz expression to crontab?",
-          "a": "Yes, as long as the seconds are 0, no year is set and L, W or # aren’t used. The converter shows the crontab equivalent or explains why there isn’t one."
+          "q": "Quartz の式を crontab に変換できますか？",
+          "a": "秒が 0 で、年が指定されておらず、L・W・# を使っていなければ可能です。変換ツールが crontab の等価な式を表示するか、変換できない理由を説明します。"
         },
         {
-          "q": "What does 0 0/5 * * * ? mean?",
-          "a": "It fires every five minutes, at second 0, starting at minute 0 of every hour, every day."
+          "q": "0 0/5 * * * ? はどういう意味ですか？",
+          "a": "毎日、毎時 0 分から 5 分ごとに、0 秒の時点で実行されます。"
         },
         {
-          "q": "Is Spring’s @Scheduled cron the same as Quartz?",
-          "a": "Very close, but Spring numbers Sunday as 0 or 7, has no year field and doesn’t require “?”. Use the Spring page for Spring expressions."
+          "q": "Spring の @Scheduled の Cron は Quartz と同じですか？",
+          "a": "よく似ていますが、Spring は日曜日を 0 または 7 で表し、年フィールドがなく、「?」も必須ではありません。Spring の式は Spring のページをご利用ください。"
         }
       ]
     },
     "aws": {
-      "title": "AWS EventBridge Cron Expression Explainer",
-      "description": "Validate and explain AWS EventBridge and CloudWatch cron(...) expressions, preview the next UTC run times, and convert them to crontab or Quartz.",
-      "h1": "AWS Cron Expression Explainer (EventBridge)",
-      "intro": "Amazon EventBridge (formerly CloudWatch Events) schedules use a six-field cron syntax wrapped in cron(...). Paste a rule expression to check it, read it in plain language and see exactly when it will run.",
+      "title": "AWS EventBridge Cron 式の解説",
+      "description": "AWS EventBridge・CloudWatch の cron(...) 式を検証・解説。UTC での次回実行時刻をプレビューし、crontab や Quartz に変換できます。",
+      "h1": "AWS Cron 式の解説（EventBridge）",
+      "intro": "Amazon EventBridge（旧 CloudWatch Events）のスケジュールは、cron(...) で囲んだ 6 フィールドの Cron 構文を使います。ルールの式を貼り付けて検証し、日本語で読み、いつ実行されるかを正確に確認しましょう。",
       "sections": [
         {
-          "h": "AWS cron syntax",
+          "h": "AWS Cron の構文",
           "p": [
-            "An EventBridge expression looks like cron(0 12 * * ? *) and has six fields: minutes, hours, day of month, month, day of week and year. There is no seconds field, so the finest resolution is one minute. Days of the week run from 1 (Sunday) to 7 (Saturday), and names like MON-FRI work too."
+            "EventBridge の式は cron(0 12 * * ? *) のような形で、分・時・日・月・曜日・年の 6 フィールドを持ちます。秒フィールドがないため、最小単位は 1 分です。曜日は 1（日曜日）〜 7（土曜日）で、MON-FRI のような略称も使えます。"
           ]
         },
         {
-          "h": "Rules you must follow",
+          "h": "守るべきルール",
           "p": [
-            "One of the two day fields must be “?”: use cron(0 8 ? * MON-FRI *) for weekday mornings and cron(0 8 1 * ? *) for the first of the month. The year field is required; use * for every year. L, W and # are supported in the day fields, for example cron(0 18 L * ? *) for the last day of each month."
+            "2 つの日付フィールドのどちらかは「?」にする必要があります。平日の朝なら cron(0 8 ? * MON-FRI *)、毎月 1 日なら cron(0 8 1 * ? *) です。年フィールドは必須で、毎年なら * を指定します。日付フィールドでは L・W・# が使え、たとえば cron(0 18 L * ? *) は毎月の最終日です。"
           ]
         },
         {
-          "h": "Time zones",
+          "h": "タイムゾーン",
           "p": [
-            "Scheduled EventBridge rules always run in UTC, so the tool evaluates AWS expressions in UTC by default and shows your local time next to each run. EventBridge Scheduler can attach a time zone to a schedule; in that case pick the same zone in the time-zone selector to preview it correctly."
+            "EventBridge のスケジュールルールは常に UTC で実行されます。そのためツールは AWS の式をデフォルトで UTC で評価し、各実行の横にあなたの現地時刻を表示します。EventBridge Scheduler ではスケジュールにタイムゾーンを設定できるので、その場合はセレクターで同じタイムゾーンを選ぶと正しくプレビューできます。"
+          ]
+        },
+        {
+          "h": "cron と rate のどちらを使う？",
+          "p": [
+            "15 分ごとのような固定間隔なら rate 式のほうが簡単です。rate(15 minutes) はルール作成時からカウントを始めます。平日の 08:00、月末、特定の年だけなど、カレンダー上の時刻に実行したい場合は cron を使います。EventBridge Scheduler では、1 回限りの at(...) スケジュールや、呼び出しを分散させるフレキシブルタイムウィンドウも使えます。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "Why does AWS reject my cron expression?",
-          "a": "The usual causes are five fields instead of six, a missing year field, or no “?” in the day-of-month or day-of-week field. The error message names the field that’s wrong."
+          "q": "AWS が Cron 式を受け付けないのはなぜですか？",
+          "a": "よくある原因は、6 つではなく 5 つのフィールドしかない、年フィールドがない、日または曜日に「?」がない、のいずれかです。エラーメッセージが問題のフィールドを示します。"
         },
         {
-          "q": "How do I run a Lambda every 5 minutes with cron?",
-          "a": "Use cron(0/5 * * * ? *). For simple intervals EventBridge also accepts rate(5 minutes)."
+          "q": "Lambda を 5 分ごとに実行するには？",
+          "a": "cron(0/5 * * * ? *) を使います。単純な間隔なら EventBridge は rate(5 minutes) も受け付けます。"
         },
         {
-          "q": "Is AWS cron in UTC?",
-          "a": "Yes for EventBridge rules. EventBridge Scheduler lets you set a time zone per schedule."
+          "q": "AWS の Cron は UTC ですか？",
+          "a": "EventBridge ルールは UTC です。EventBridge Scheduler ではスケジュールごとにタイムゾーンを設定できます。"
         },
         {
-          "q": "What is the minimum interval?",
-          "a": "One minute, because AWS cron has no seconds field."
+          "q": "最短の間隔は？",
+          "a": "1 分です。AWS の Cron には秒フィールドがないためです。"
         }
       ]
     },
     "github": {
-      "title": "GitHub Actions Cron Schedule Explainer",
-      "description": "Check on.schedule cron expressions for GitHub Actions workflows: plain-language meaning, next UTC runs and the 5-minute minimum interval.",
-      "h1": "GitHub Actions Cron Schedule Explainer",
-      "intro": "GitHub Actions starts workflows on a schedule using standard five-field cron in the on.schedule trigger. Paste your cron string to see what it means and when it will run in UTC.",
+      "title": "GitHub Actions の Cron スケジュール解説",
+      "description": "GitHub Actions の on.schedule で使う Cron 式をチェック。日本語での意味、UTC での次回実行時刻、5 分間隔の制限を確認できます。",
+      "h1": "GitHub Actions Cron スケジュールの解説",
+      "intro": "GitHub Actions は on.schedule トリガーで、標準の 5 フィールド Cron を使ってワークフローを定期実行します。Cron 文字列を貼り付けて、その意味と UTC での実行時刻を確認しましょう。",
       "sections": [
         {
-          "h": "Using cron in a workflow",
+          "h": "ワークフローで Cron を使う",
           "p": [
-            "Add a schedule trigger to your workflow file: on: schedule: - cron: '30 5 * * 1-5'. The expression uses the usual five fields (minute, hour, day of month, month, day of week) and must be quoted in YAML because * is a special character. You can list several cron entries, and github.event.schedule tells the job which one fired."
+            "ワークフローファイルにスケジュールトリガーを追加します: on: schedule: - cron: '30 5 * * 1-5'。式は通常の 5 フィールド（分・時・日・月・曜日）を使い、* は YAML の特殊文字なので必ず引用符で囲みます。複数の cron を並べることもでき、どれが起動したかは github.event.schedule で分かります。"
           ]
         },
         {
-          "h": "UTC and the 5-minute limit",
+          "h": "UTC と 5 分の制限",
           "p": [
-            "Schedules are always evaluated in UTC, so 0 9 * * * runs at 09:00 UTC, not in your local time; use the tool’s local-time column to translate. The shortest interval GitHub supports is every five minutes. Macros such as @daily are not supported, so write out the fields."
+            "スケジュールは常に UTC で評価されるため、0 9 * * * は現地時刻ではなく UTC の 09:00 に実行されます。ツールの現地時刻列で換算しましょう。GitHub がサポートする最短間隔は 5 分です。@daily などのマクロは使えないので、各フィールドを記述してください。"
           ]
         },
         {
-          "h": "Delays and inactive repositories",
+          "h": "遅延と非アクティブなリポジトリ",
           "p": [
-            "Scheduled runs can start late during periods of high load, especially at the top of the hour, so choose an odd minute such as 17 instead of 0 when timing isn’t critical. In public repositories, scheduled workflows are disabled automatically after 60 days without repository activity."
+            "負荷が高い時間帯、特に毎時 0 分には、スケジュール実行の開始が遅れることがあります。時刻が厳密でなくてよければ、0 分ではなく 17 分のような半端な分を選びましょう。公開リポジトリでは、60 日間アクティビティがないとスケジュールされたワークフローが自動的に無効化されます。"
+          ]
+        },
+        {
+          "h": "スケジュールワークフローのテスト",
+          "p": [
+            "schedule と並べて workflow_dispatch を追加すると、テスト中に手動でワークフローを起動できます。スケジュールはデフォルトブランチからのみ実行されるため、機能ブランチで cron を変更してもマージするまで反映されません。concurrency グループを使えば、遅い実行が次のスケジュール実行と重なるのを防げます。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "What time zone does GitHub Actions cron use?",
-          "a": "UTC, always. There is no setting to change it, so convert your local time to UTC when writing the expression."
+          "q": "GitHub Actions の Cron はどのタイムゾーンですか？",
+          "a": "常に UTC で、変更はできません。式を書くときは現地時刻を UTC に換算してください。"
         },
         {
-          "q": "Can a workflow run every minute?",
-          "a": "No. The minimum interval is five minutes; more frequent schedules are run at most every five minutes."
+          "q": "ワークフローを毎分実行できますか？",
+          "a": "できません。最短間隔は 5 分で、それより頻繁なスケジュールでも最大で 5 分ごとにしか実行されません。"
         },
         {
-          "q": "Why didn’t my scheduled workflow run on time?",
-          "a": "Scheduled jobs are queued and may be delayed under load, and they only run on the default branch. Workflows in inactive public repositories are also paused."
+          "q": "スケジュールしたワークフローが時間どおりに動かないのはなぜ？",
+          "a": "スケジュールジョブはキューに入るため高負荷時に遅れることがあり、デフォルトブランチでのみ実行されます。非アクティブな公開リポジトリのワークフローも停止されます。"
         },
         {
-          "q": "Can I use @daily in GitHub Actions?",
-          "a": "No. Use the equivalent five fields, for example 0 0 * * *."
+          "q": "GitHub Actions で @daily は使えますか？",
+          "a": "使えません。0 0 * * * のような等価な 5 フィールドを使ってください。"
         }
       ]
     },
     "kubernetes": {
-      "title": "Kubernetes CronJob Schedule Explainer",
-      "description": "Explain the schedule field of a Kubernetes CronJob, preview the next runs in any time zone with spec.timeZone, and check the syntax before you apply.",
-      "h1": "Kubernetes CronJob Schedule Explainer",
-      "intro": "A Kubernetes CronJob creates Jobs on a repeating schedule written in standard cron syntax. Paste the value of spec.schedule to see what it means and when the next Jobs will be created.",
+      "title": "Kubernetes CronJob スケジュールの解説",
+      "description": "Kubernetes CronJob の schedule フィールドを解説。spec.timeZone を使って任意のタイムゾーンで次回実行をプレビューし、適用前に構文を確認。",
+      "h1": "Kubernetes CronJob スケジュールの解説",
+      "intro": "Kubernetes の CronJob は、標準の Cron 構文で書かれた繰り返しスケジュールに従って Job を作成します。spec.schedule の値を貼り付けて、その意味と次に Job が作成される時刻を確認しましょう。",
       "sections": [
         {
-          "h": "The schedule field",
+          "h": "schedule フィールド",
           "p": [
-            "spec.schedule takes a five-field cron expression, for example \"0 */6 * * *\" for every six hours. Kubernetes also accepts macros such as @hourly, @daily, @weekly, @monthly and @yearly. Quote the value in YAML so the asterisks are not misread."
+            "spec.schedule には 5 フィールドの Cron 式を指定します。たとえば \"0 */6 * * *\" は 6 時間ごとです。Kubernetes は @hourly、@daily、@weekly、@monthly、@yearly などのマクロにも対応しています。アスタリスクが誤解釈されないよう、YAML では値を引用符で囲みましょう。"
           ]
         },
         {
-          "h": "Time zones with spec.timeZone",
+          "h": "spec.timeZone によるタイムゾーン指定",
           "p": [
-            "Without a time zone, schedules are interpreted in the time zone of the kube-controller-manager, which is usually UTC. Since Kubernetes 1.27 you can set spec.timeZone to an IANA name such as Europe/Berlin. Select the same zone in the tool to preview the exact creation times, including daylight-saving transitions."
+            "タイムゾーンを指定しない場合、スケジュールは kube-controller-manager のタイムゾーン（通常は UTC）で解釈されます。Kubernetes 1.27 以降は spec.timeZone に Asia/Tokyo のような IANA 名を設定できます。ツールで同じタイムゾーンを選ぶと、夏時間の切り替えも含めて正確な作成時刻をプレビューできます。"
           ]
         },
         {
-          "h": "Missed runs and concurrency",
+          "h": "実行の取りこぼしと同時実行",
           "p": [
-            "If the controller misses a scheduled time, startingDeadlineSeconds decides how late a Job may still start. concurrencyPolicy controls what happens when a run is still active: Allow, Forbid or Replace. Keep those settings in mind when you choose frequent schedules such as every minute."
+            "コントローラーが予定時刻を逃した場合、startingDeadlineSeconds によって Job がどれだけ遅れて開始できるかが決まります。concurrencyPolicy は前回の実行がまだ動いているときの動作（Allow、Forbid、Replace）を制御します。毎分のような高頻度のスケジュールでは特に注意しましょう。",
+            "テスト中は kubectl create job --from=cronjob/<name> <job-name> ですぐに 1 回実行でき、kubectl get cronjob で LAST SCHEDULE と ACTIVE の列を確認できます。CronJob オブジェクトのイベントを見ると、予定時刻がスキップされた理由や Job の起動に失敗した理由が分かります。"
+          ]
+        },
+        {
+          "h": "最小限のマニフェスト",
+          "p": [
+            "CronJob は apiVersion batch/v1、kind CronJob を使い、spec.schedule、任意の spec.timeZone、実行する Pod を記述する jobTemplate を持ちます。suspend: true を設定すると削除せずにスケジュールを一時停止でき、successfulJobsHistoryLimit と failedJobsHistoryLimit でデバッグ用に残す完了済み Job の数を調整できます。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "Does a Kubernetes CronJob support seconds?",
-          "a": "No. The schedule has five fields, so the smallest interval is one minute."
+          "q": "Kubernetes CronJob は秒に対応していますか？",
+          "a": "いいえ。スケジュールは 5 フィールドなので、最短間隔は 1 分です。"
         },
         {
-          "q": "Can I use CRON_TZ in the schedule?",
-          "a": "No. TZ and CRON_TZ prefixes are not supported; use the spec.timeZone field instead."
+          "q": "スケジュールに CRON_TZ は使えますか？",
+          "a": "使えません。TZ や CRON_TZ の接頭辞はサポートされていないので、spec.timeZone フィールドを使ってください。"
         },
         {
-          "q": "What does 0 */6 * * * mean?",
-          "a": "Every six hours on the hour: 00:00, 06:00, 12:00 and 18:00."
+          "q": "0 */6 * * * はどういう意味ですか？",
+          "a": "6 時間ごとの正時、つまり 00:00、06:00、12:00、18:00 に実行されます。"
         },
         {
-          "q": "Why did my CronJob run twice or not at all?",
-          "a": "Check startingDeadlineSeconds and concurrencyPolicy, and whether the controller was down. CronJobs aim for roughly one Job per scheduled time but don’t guarantee it."
+          "q": "CronJob が 2 回実行された、または実行されなかったのはなぜ？",
+          "a": "startingDeadlineSeconds と concurrencyPolicy、そしてコントローラーが停止していなかったかを確認してください。CronJob は予定時刻ごとにおおむね 1 つの Job を作成しますが、保証はされません。"
         }
       ]
     },
     "spring": {
-      "title": "Spring @Scheduled Cron Expression Explainer",
-      "description": "Explain Spring Framework @Scheduled cron expressions with seconds, L, W, # and macros, preview the next runs and convert to crontab or Quartz.",
-      "h1": "Spring Cron Expression Explainer",
-      "intro": "Spring’s @Scheduled(cron = \"...\") annotation uses a six-field cron format with seconds first. Paste a Spring expression to read it in plain language and check its next run times in your server’s time zone.",
+      "title": "Spring @Scheduled の Cron 式解説",
+      "description": "Spring Framework の @Scheduled で使う Cron 式を解説。秒・L・W・#・マクロに対応し、次回実行の確認と crontab・Quartz への変換も可能。",
+      "h1": "Spring Cron 式の解説",
+      "intro": "Spring の @Scheduled(cron = \"...\") アノテーションは、先頭が秒の 6 フィールド Cron 形式を使います。Spring の式を貼り付けて日本語で読み、サーバーのタイムゾーンでの次回実行時刻を確認しましょう。",
       "sections": [
         {
-          "h": "Spring cron format",
+          "h": "Spring Cron の形式",
           "p": [
-            "A Spring expression has six fields: second, minute, hour, day of month, month and day of week, for example 0 0 9 * * MON-FRI for 09:00 on weekdays. Sunday can be written as 0, 7 or SUN. Since Spring Framework 5.3 the parser also understands L, W and # in the day fields, plus macros such as @hourly and @daily."
+            "Spring の式は秒・分・時・日・月・曜日の 6 フィールドです。たとえば 0 0 9 * * MON-FRI は平日の 09:00 を表します。日曜日は 0、7、SUN のいずれでも書けます。Spring Framework 5.3 以降は、日付フィールドの L・W・# や、@hourly・@daily などのマクロも解釈できます。"
           ]
         },
         {
-          "h": "Time zone of @Scheduled",
+          "h": "@Scheduled のタイムゾーン",
           "p": [
-            "By default expressions are evaluated in the server’s default time zone. Set the zone attribute, for example @Scheduled(cron = \"0 0 2 * * *\", zone = \"Europe/Paris\"), to make the schedule independent of the host. Choose the same zone in the tool to preview the runs."
+            "デフォルトでは、式はサーバーのデフォルトタイムゾーンで評価されます。@Scheduled(cron = \"0 0 2 * * *\", zone = \"Asia/Tokyo\") のように zone 属性を設定すると、ホストに依存しないスケジュールになります。ツールで同じタイムゾーンを選んで実行時刻を確認しましょう。"
           ]
         },
         {
-          "h": "Spring vs Quartz",
+          "h": "Spring と Quartz の違い",
           "p": [
-            "Spring expressions look like Quartz ones but differ in details: there is no year field, Sunday is 0 rather than 1, and “?” is accepted but not required. When both day fields are restricted Spring requires both to match. The converter shows the Quartz equivalent when it exists."
+            "Spring の式は Quartz とよく似ていますが、細部が異なります。年フィールドがなく、日曜日は 1 ではなく 0、そして「?」は使えますが必須ではありません。日と曜日の両方を指定した場合、Spring では両方の一致が必要です。等価な式があれば、変換ツールが Quartz 版を表示します。"
+          ]
+        },
+        {
+          "h": "スケジューリングの有効化",
+          "p": [
+            "cron メソッドは @EnableScheduling でスケジューリングを有効にしたときだけ実行されます。Spring はデフォルトでスレッドを 1 つしか使わないため、長いタスクがほかのすべての定期メソッドを遅らせます。複数のジョブがある場合は ThreadPoolTaskScheduler か spring.task.scheduling.pool.size を設定しましょう。クラスタではすべてのインスタンスが同じ cron で起動するので、1 回だけ実行したいジョブには ShedLock などのロックを使います。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "Why does Spring say my cron expression must have six fields?",
-          "a": "Spring needs a seconds field. Prepend 0 to a five-field crontab expression: 0 */5 * * * * runs every five minutes."
+          "q": "Spring で Cron 式は 6 フィールド必要と言われるのはなぜ？",
+          "a": "Spring には秒フィールドが必要だからです。5 フィールドの crontab 式の先頭に 0 を付けます。0 */5 * * * * は 5 分ごとに実行されます。"
         },
         {
-          "q": "How do I disable a @Scheduled cron job?",
-          "a": "Use the special value \"-\" (Scheduled.CRON_DISABLED), usually through a property placeholder."
+          "q": "@Scheduled の Cron ジョブを無効にするには？",
+          "a": "特別な値 \"-\"（Scheduled.CRON_DISABLED）を使います。通常はプロパティのプレースホルダー経由で設定します。"
         },
         {
-          "q": "Does Spring support the last day of the month?",
-          "a": "Yes, since 5.3: 0 0 0 L * * runs at midnight on the last day of every month."
+          "q": "Spring は月末日に対応していますか？",
+          "a": "はい、5.3 以降は対応しています。0 0 0 L * * は毎月最終日の午前 0 時に実行されます。"
         },
         {
-          "q": "Can I read the cron expression from configuration?",
-          "a": "Yes, for example @Scheduled(cron = \"${jobs.cleanup.cron}\"), so the schedule can change per environment."
+          "q": "Cron 式を設定ファイルから読み込めますか？",
+          "a": "はい。@Scheduled(cron = \"${jobs.cleanup.cron}\") のようにすれば、環境ごとにスケジュールを変えられます。"
         }
       ]
     },
     "cheatsheet": {
-      "title": "Cron Syntax Cheatsheet: Fields, Symbols & Examples",
-      "description": "A compact cron syntax reference: field order and ranges for crontab, Quartz and AWS, special characters * , - / ? L W #, macros and common examples.",
-      "h1": "Cron Syntax Cheatsheet",
-      "intro": "A one-page reference for cron syntax across the common dialects: which fields exist, what values they accept, and what every special character does. Try any example in the explainer above.",
-      "fieldsTitle": "Fields and allowed values",
+      "title": "Cron 構文早見表：フィールド・記号・例",
+      "description": "Cron 構文のコンパクトなリファレンス。crontab・Quartz・AWS のフィールド順と範囲、特殊文字 * , - / ? L W #、マクロとよく使う例。",
+      "h1": "Cron 構文早見表",
+      "intro": "主要な方言の Cron 構文を 1 ページにまとめたリファレンスです。どんなフィールドがあり、どんな値を受け付け、各特殊文字が何をするのかが分かります。例はすべて解説ツールで試せます。",
+      "fieldsTitle": "フィールドと指定できる値",
       "fieldsHead": [
-        "Field",
-        "Values",
-        "Notes"
+        "フィールド",
+        "値",
+        "備考"
       ],
       "fields": [
         [
-          "Second",
+          "秒",
           "0–59",
-          "Quartz, Spring and 6-field crons only"
+          "Quartz・Spring・6 フィールド Cron のみ"
         ],
         [
-          "Minute",
+          "分",
           "0–59",
-          "First field in crontab and AWS"
+          "crontab と AWS の最初のフィールド"
         ],
         [
-          "Hour",
+          "時",
           "0–23",
-          "24-hour clock"
+          "24 時間表記"
         ],
         [
-          "Day of month",
+          "日",
           "1–31",
-          "L, W and LW in Quartz, Spring, AWS"
+          "Quartz・Spring・AWS で L・W・LW"
         ],
         [
-          "Month",
-          "1–12 or JAN–DEC",
-          "Names are case-insensitive"
+          "月",
+          "1–12 または JAN–DEC",
+          "略称は大文字・小文字を区別しない"
         ],
         [
-          "Day of week",
-          "0–7 or SUN–SAT",
-          "Quartz and AWS: 1–7, 1 = Sunday"
+          "曜日",
+          "0–7 または SUN–SAT",
+          "Quartz と AWS: 1–7、1 = 日曜日"
         ],
         [
-          "Year",
+          "年",
           "1970–2199",
-          "Optional in Quartz, required in AWS"
+          "Quartz では任意、AWS では必須"
         ]
       ],
-      "symbolsTitle": "Special characters",
+      "symbolsTitle": "特殊文字",
       "symbolsHead": [
-        "Symbol",
-        "Meaning",
-        "Example"
+        "記号",
+        "意味",
+        "例"
       ],
       "symbols": [
         [
           "*",
-          "Any value",
-          "* * * * * — every minute"
+          "任意の値",
+          "* * * * * — 毎分"
         ],
         [
           ",",
-          "List of values",
-          "0 9,17 * * * — 09:00 and 17:00"
+          "値のリスト",
+          "0 9,17 * * * — 09:00 と 17:00"
         ],
         [
           "-",
-          "Range",
-          "0 9 * * 1-5 — weekdays at 09:00"
+          "範囲",
+          "0 9 * * 1-5 — 平日の 09:00"
         ],
         [
           "/",
-          "Step",
-          "*/15 * * * * — every 15 minutes"
+          "ステップ",
+          "*/15 * * * * — 15 分ごと"
         ],
         [
           "?",
-          "No specific value (day fields)",
+          "特定の値なし（日付フィールド）",
           "0 0 12 ? * MON — Quartz"
         ],
         [
           "L",
-          "Last day / last weekday",
-          "0 0 0 L * ? — last day of month"
+          "最終日 / 最後の曜日",
+          "0 0 0 L * ? — 毎月の最終日"
         ],
         [
           "W",
-          "Nearest weekday",
-          "0 0 9 15W * ? — weekday nearest the 15th"
+          "最も近い平日",
+          "0 0 9 15W * ? — 15 日に最も近い平日"
         ],
         [
           "#",
-          "Nth weekday of the month",
-          "0 0 9 ? * 2#1 — first Monday"
+          "月の第 n 曜日",
+          "0 0 9 ? * 2#1 — 第 1 月曜日"
         ]
       ],
-      "macrosTitle": "Macros",
+      "macrosTitle": "マクロ",
       "macros": [
         [
           "@yearly / @annually",
@@ -528,253 +559,267 @@
       ],
       "sections": [
         {
-          "h": "Reading order",
+          "h": "読む順番",
           "p": [
-            "Read an expression from the smallest unit to the largest: 30 2 * * 1 is minute 30 of hour 2 on any day of the month, in any month, when the weekday is Monday — 02:30 every Monday. In Quartz and Spring, prepend the seconds field; in AWS, append the year."
+            "式は小さい単位から大きい単位へ読みます。30 2 * * 1 は、任意の日、任意の月で、曜日が月曜日のときの 2 時 30 分、つまり毎週月曜日の 02:30 です。Quartz と Spring では先頭に秒、AWS では末尾に年を追加します。"
           ]
         },
         {
-          "h": "Common pitfalls",
+          "h": "よくある落とし穴",
           "p": [
-            "*/7 in the minute field does not mean “every seven minutes forever”: it restarts at each hour, so it fires at 0, 7, … 56 and then at 0 again. Restricting both day fields in crontab means either can match. And 0 in the day-of-week field is invalid in Quartz and AWS, where the week starts at 1."
+            "分フィールドの */7 は「永遠に 7 分ごと」ではありません。毎時リセットされるため、0、7、…56 分に実行され、次はまた 0 分です。crontab で日付フィールドを両方指定すると、どちらか一方の一致で実行されます。また Quartz と AWS では週が 1 から始まるため、曜日の 0 は無効です。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "What is the order of cron fields?",
-          "a": "Minute, hour, day of month, month, day of week. Quartz and Spring put seconds in front; AWS adds a year at the end."
+          "q": "Cron のフィールドの順番は？",
+          "a": "分・時・日・月・曜日です。Quartz と Spring は先頭に秒を置き、AWS は末尾に年を追加します。"
         },
         {
-          "q": "What does the question mark mean in cron?",
-          "a": "“No specific value”. Quartz and AWS require it in one of the two day fields; standard crontab doesn’t accept it."
+          "q": "Cron の疑問符はどういう意味ですか？",
+          "a": "「特定の値なし」です。Quartz と AWS では 2 つの日付フィールドの一方に必須で、標準 crontab では使えません。"
         },
         {
-          "q": "How do I write “every 90 minutes”?",
-          "a": "Cron can’t express intervals that don’t divide the hour or day evenly in one line. Use two entries, such as 0 0-21/3 * * * and 30 1-22/3 * * *."
+          "q": "「90 分ごと」はどう書きますか？",
+          "a": "時間や日を割り切れない間隔は 1 行の Cron では表現できません。0 0-21/3 * * * と 30 1-22/3 * * * のように 2 行に分けます。"
         },
         {
-          "q": "Are month and weekday names case-sensitive?",
-          "a": "No. JAN, Jan and jan are equivalent in every dialect covered here."
+          "q": "月や曜日の略称は大文字・小文字を区別しますか？",
+          "a": "区別しません。このサイトで扱うすべての方言で、JAN・Jan・jan は同じ意味です。"
         }
       ]
     },
     "about": {
-      "title": "About CronExplain – Free Cron Expression Tool",
-      "description": "CronExplain is a free, open, browser-only tool to explain, build and convert cron expressions for crontab, Quartz, Spring, AWS, GitHub and Kubernetes.",
-      "h1": "About CronExplain",
-      "intro": "CronExplain is a small, free utility for developers and operators who need to read or write cron expressions quickly and get them right the first time.",
+      "title": "CronExplain について – 無料の Cron 式ツール",
+      "description": "CronExplain は、crontab・Quartz・Spring・AWS・GitHub・Kubernetes の Cron 式を解説・作成・変換できる、ブラウザだけで動く無料ツールです。",
+      "h1": "CronExplain について",
+      "intro": "CronExplain は、Cron 式をすばやく読み書きし、一度で正しく設定したい開発者や運用担当者のための小さな無料ツールです。",
       "sections": [
         {
-          "h": "What it does",
+          "h": "できること",
           "p": [
-            "The explainer turns an expression into a plain-language sentence in seven languages, lists the next ten run times in any IANA time zone and converts the schedule between standard crontab, Quartz, Spring and AWS EventBridge syntax. The visual builder and presets help when you are starting from scratch."
+            "解説ツールは式を 7 か国語のわかりやすい文章に変換し、任意の IANA タイムゾーンで次の 10 回の実行時刻を一覧表示し、標準 crontab・Quartz・Spring・AWS EventBridge の構文間でスケジュールを変換します。ゼロから作るときはビジュアルビルダーとプリセットが役立ちます。",
+            "すべてのページは 7 か国語で提供され、20 のスケジュールページでは、5 分ごとや毎月 1 日などのよく使うスケジュールを 7 つの方言で並べて表示します。crontab、ワークフローファイル、Kubernetes マニフェスト、Java アノテーションにそのままコピーできます。"
           ]
         },
         {
-          "h": "How it works",
+          "h": "仕組み",
           "p": [
-            "The parser and scheduler are written in TypeScript and run entirely in your browser. Run times are calculated on wall-clock time with the time-zone data built into your browser, so no external service is involved. Descriptions are generated with the open-source cronstrue library. Each dialect’s rules — field counts, weekday numbering, the question-mark requirement and special characters — are validated separately, so errors point to the exact field."
+            "パーサーとスケジューラーは TypeScript で書かれており、すべてブラウザ内で動作します。実行時刻はブラウザに組み込まれたタイムゾーンデータを使って壁時計時刻で計算するため、外部サービスは使いません。説明文はオープンソースライブラリ cronstrue で生成しています。フィールド数、曜日の番号、疑問符の要否、特殊文字といった方言ごとのルールを個別に検証するので、エラーは問題のフィールドを正確に示します。"
           ]
         },
         {
-          "h": "Who makes it",
+          "h": "運営者",
           "p": [
-            "CronExplain is an independent project, made by the team behind ContrastCheck and the Aspect Ratio Calculator. It is free to use, has no accounts and shows no pop-ups. Suggestions for new dialects or schedules are welcome."
+            "CronExplain は、ContrastCheck とアスペクト比計算ツールを手がけるチームによる独立したプロジェクトです。無料で使え、アカウントもポップアップもありません。新しい方言やスケジュールのご提案を歓迎します。"
+          ]
+        },
+        {
+          "h": "精度と制限",
+          "p": [
+            "CronExplain は各スケジューラーのドキュメントに記載された動作を再現するもので、ベンダー独自の拡張すべてに対応しているわけではありません。Jenkins の H 構文、systemd の OnCalendar タイマー、@reboot は評価されず、実際のスケジューラーには独自の遅延もあり得ます。重要なスケジュールは、スケジューラーの公式ドキュメントやステージング環境でも確認してください。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "Is CronExplain free?",
-          "a": "Yes, completely free with no sign-up."
+          "q": "CronExplain は無料ですか？",
+          "a": "はい、完全無料で登録も不要です。"
         },
         {
-          "q": "Which cron dialects are supported?",
-          "a": "Standard crontab, 6-field cron with seconds, Quartz, Spring, AWS EventBridge, GitHub Actions and Kubernetes CronJob."
+          "q": "どの Cron 方言に対応していますか？",
+          "a": "標準 crontab、秒ありの 6 フィールド Cron、Quartz、Spring、AWS EventBridge、GitHub Actions、Kubernetes CronJob です。"
         },
         {
-          "q": "How accurate are the next run times?",
-          "a": "They follow each dialect’s documented rules, including daylight-saving transitions. Real schedulers can still start jobs a little late under load."
+          "q": "次回実行時刻はどのくらい正確ですか？",
+          "a": "夏時間の切り替えを含め、各方言の公式ルールに従っています。ただし実際のスケジューラーは高負荷時に少し遅れて開始することがあります。"
         },
         {
-          "q": "Can I link to a specific expression?",
-          "a": "Yes. The URL updates as you type; use “Copy share link” to share it."
+          "q": "特定の式へのリンクを作れますか？",
+          "a": "はい。入力に合わせて URL が更新されます。「共有リンクをコピー」で共有できます。"
         }
       ]
     },
     "privacy": {
-      "title": "Privacy Policy | CronExplain",
-      "description": "CronExplain processes every cron expression in your browser. No accounts, no tracking cookies; only cookieless, aggregate Vercel Analytics.",
-      "h1": "Privacy Policy",
-      "intro": "Short version: what you type stays on your device. This page explains the little data the site does handle.",
+      "title": "プライバシーポリシー | CronExplain",
+      "description": "CronExplain はすべての Cron 式をブラウザ内で処理します。アカウントもトラッキング Cookie もなく、Cookie を使わない集計型の Vercel Analytics のみ利用。",
+      "h1": "プライバシーポリシー",
+      "intro": "要点: 入力した内容はあなたの端末から出ません。このページでは、サイトが扱うわずかなデータについて説明します。",
       "sections": [
         {
-          "h": "Processing happens in your browser",
+          "h": "処理はブラウザ内で行われます",
           "p": [
-            "Cron expressions, time-zone choices and builder selections are processed entirely by JavaScript in your browser. They are never sent to a server. The expression appears in the page URL only so that you can share or bookmark it; if you share that link, the recipient can see the expression."
+            "Cron 式、選択したタイムゾーン、ビルダーの選択内容はすべてブラウザ内の JavaScript で処理され、サーバーに送信されることはありません。式がページの URL に含まれるのは、共有やブックマークを可能にするためだけです。そのリンクを共有すると、受け取った人は式を見ることができます。"
           ]
         },
         {
-          "h": "Analytics",
+          "h": "アクセス解析",
           "p": [
-            "We use Vercel Web Analytics to count page views and a few anonymous events, such as copying a result, clicking a preset or switching language. Vercel Analytics is cookieless: it does not set cookies, does not build cross-site profiles and reports only aggregate numbers. No advertising or third-party trackers are loaded."
+            "ページビューと、結果のコピー、プリセットのクリック、言語の切り替えといった少数の匿名イベントを数えるために Vercel Web Analytics を使用しています。Vercel Analytics は Cookie を使用せず、サイトをまたいだプロファイルも作成せず、集計された数値のみを提供します。広告やサードパーティのトラッカーは読み込みません。",
+            "独自イベントは 3 つだけです: copy_output（どの種類の結果をコピーしたか）、preset_click（どのプリセットを使ったか）、locale_switch（どの言語からどの言語へ切り替えたか）。いずれも式のテキストや、他のサイトであなたを追跡できる識別子は含みません。"
           ]
         },
         {
-          "h": "Hosting and contact",
+          "h": "ホスティングとお問い合わせ",
           "p": [
-            "The site is a set of static files served by Vercel, which, like any web host, processes your IP address to deliver the pages. We do not store personal data, run accounts or send email. If this policy changes, the updated version will be published on this page."
+            "このサイトは Vercel が配信する静的ファイルで構成されています。一般的なウェブホスティングと同様に、Vercel はページを届けるために IP アドレスを処理します。私たちは個人データを保存せず、アカウントも運用せず、メールも送信しません。本ポリシーを変更する場合は、このページで公開します。"
+          ]
+        },
+        {
+          "h": "あなたの選択",
+          "p": [
+            "個人データを保存していないため、こちら側でエクスポートや削除をするデータはありません。このツールは、入力された式を localStorage などのブラウザストレージに保存しません。解析スクリプトをブロックしても、ツールはまったく同じように動作します。Vercel によるリクエストデータの扱いについては、Vercel のプライバシーポリシーをご覧ください。"
           ]
         }
       ],
       "faq": [
         {
-          "q": "Do you store the cron expressions I enter?",
-          "a": "No. They are processed in your browser and are not transmitted."
+          "q": "入力した Cron 式は保存されますか？",
+          "a": "いいえ。ブラウザ内で処理され、送信されません。"
         },
         {
-          "q": "Does the site use cookies?",
-          "a": "No. Neither the tool nor Vercel Analytics sets cookies."
+          "q": "このサイトは Cookie を使いますか？",
+          "a": "いいえ。ツールも Vercel Analytics も Cookie を設定しません。"
         },
         {
-          "q": "What do the analytics events contain?",
-          "a": "Only the event name and a short label, such as which preset was clicked — never the expression you typed."
+          "q": "解析イベントには何が含まれますか？",
+          "a": "イベント名と、どのプリセットをクリックしたかといった短いラベルだけです。入力した式は含まれません。"
         },
         {
-          "q": "Can I use the tool offline?",
-          "a": "Once the page has loaded, all calculations work without a network connection."
+          "q": "オフラインでも使えますか？",
+          "a": "ページを読み込んだ後は、すべての計算がネットワークなしで動作します。"
         }
       ]
     }
   },
   "every": {
-    "title": "Cron Expression for {name} ({expr})",
-    "description": "Cron expression for {name}: {expr}. Copy it for crontab, Quartz, AWS, GitHub Actions, Kubernetes and Spring, with the next run times.",
-    "h1": "Cron expression for {name}",
-    "tableTitle": "The same schedule in every dialect",
-    "tableDialect": "Dialect",
-    "tableExpr": "Expression",
+    "title": "{name}実行する Cron 式（{expr}）",
+    "description": "{name}実行する Cron 式は {expr}。crontab・Quartz・AWS・GitHub Actions・Kubernetes 用の式と次回実行時刻をすぐに確認できます。",
+    "h1": "{name}実行する Cron 式",
+    "tableTitle": "各方言での同じスケジュール",
+    "tableDialect": "方言",
+    "tableExpr": "式",
     "sections": [
       {
-        "h": "How this expression works",
+        "h": "この式の仕組み",
         "p": [
-          "The expression {expr} is written in {dialect} syntax. Read it field by field from left to right: each field narrows down when the job may run, and the scheduler starts the job whenever the current time matches all of them. In plain language it means: {meaning}."
+          "式 {expr} は {dialect} の構文で書かれています。左から右へフィールドごとに読みます。各フィールドがジョブを実行できるタイミングを絞り込み、現在時刻がすべてのフィールドに一致したときにスケジューラーがジョブを開始します。わかりやすく言うと「{meaning}」という意味です。"
         ]
       },
       {
-        "h": "Adapting it to your scheduler",
+        "h": "スケジューラーに合わせる",
         "p": [
-          "Crontab, Kubernetes and GitHub Actions use the five-field form. Quartz and Spring expect a seconds field in front, and Quartz and AWS also need “?” in one of the two day fields — the table above already takes care of those differences. Remember that GitHub Actions and AWS EventBridge rules run in UTC, while crontab uses the server’s time zone, so the same expression can fire at different local times depending on where it runs."
+          "crontab、Kubernetes、GitHub Actions は 5 フィールド形式を使います。Quartz と Spring は先頭に秒フィールドが必要で、Quartz と AWS はさらに 2 つの日付フィールドの一方に「?」が必要です。上の表はこれらの違いをすでに反映しています。GitHub Actions と AWS EventBridge のルールは UTC で実行され、crontab はサーバーのタイムゾーンを使うため、同じ式でも実行環境によって現地時刻が変わる点に注意してください。"
         ]
       },
       {
-        "h": "Check before you deploy",
+        "h": "デプロイ前に確認",
         "p": [
-          "Paste your final expression into the explainer above and choose the time zone of the machine that will run it. The list of next runs shows exactly when the job will start, including around daylight-saving changes, so you can catch an off-by-one-hour mistake before it reaches production."
+          "最終的な式を上の解説ツールに貼り付け、実際に実行するマシンのタイムゾーンを選びましょう。次回実行時刻の一覧で、夏時間の切り替え前後も含めてジョブがいつ開始されるかが正確に分かるので、1 時間ずれるようなミスを本番前に見つけられます。"
         ]
       }
     ],
     "faq": [
       {
-        "q": "What is the cron expression for {name}?",
-        "a": "In standard crontab it is {standard}. In Quartz it is {quartz}, and in AWS EventBridge it is {aws}."
+        "q": "{name}実行する Cron 式は？",
+        "a": "標準 crontab では {standard} です。Quartz では {quartz}、AWS EventBridge では {aws} です。"
       },
       {
-        "q": "Which time zone will it run in?",
-        "a": "Crontab uses the server’s local time zone, Kubernetes the controller’s zone or spec.timeZone, and GitHub Actions and AWS EventBridge rules use UTC."
+        "q": "どのタイムゾーンで実行されますか？",
+        "a": "crontab はサーバーのローカルタイムゾーン、Kubernetes はコントローラーのタイムゾーンまたは spec.timeZone、GitHub Actions と AWS EventBridge のルールは UTC を使います。"
       },
       {
-        "q": "How can I test the schedule?",
-        "a": "Paste it into the explainer on this page: it shows the next 10 run times in any time zone, next to your local time."
+        "q": "スケジュールをテストするには？",
+        "a": "このページの解説ツールに貼り付けてください。任意のタイムゾーンでの次の 10 回の実行時刻を、現地時刻と並べて表示します。"
       },
       {
-        "q": "Can I change it slightly?",
-        "a": "Yes. Edit the expression in the tool or use the visual builder; the description and run times update as you type."
+        "q": "少し変更できますか？",
+        "a": "はい。ツールで式を編集するか、ビジュアルビルダーを使ってください。説明と実行時刻は入力に合わせて更新されます。"
       }
     ],
+    "unsupported": "直接は表現できません（上の表を参照）",
     "items": {
       "every-minute": {
-        "name": "every minute",
-        "useCase": "Running a job every minute is the most frequent schedule classic cron allows. It suits lightweight health checks, queue pollers and metric collectors, but make sure each run finishes well within 60 seconds so runs don’t overlap."
+        "name": "毎分",
+        "useCase": "毎分の実行は、従来の Cron で可能な最も頻繁なスケジュールです。軽量なヘルスチェック、キューのポーリング、メトリクス収集に向いていますが、実行が重ならないよう各回が 60 秒以内に確実に終わるようにしましょう。"
       },
       "every-5-minutes": {
-        "name": "every 5 minutes",
-        "useCase": "Every five minutes is a popular interval for syncing data, refreshing caches and checking external services. It is also the shortest schedule GitHub Actions supports."
+        "name": "5 分ごとに",
+        "useCase": "5 分ごとは、データ同期、キャッシュの更新、外部サービスの監視でよく使われる間隔です。GitHub Actions がサポートする最短のスケジュールでもあります。"
       },
       "every-10-minutes": {
-        "name": "every 10 minutes",
-        "useCase": "A ten-minute interval balances freshness and load, which makes it a good fit for importing feeds, sending batched notifications or cleaning temporary files."
+        "name": "10 分ごとに",
+        "useCase": "10 分間隔は鮮度と負荷のバランスがよく、フィードの取り込み、通知のまとめ送信、一時ファイルの削除などに適しています。"
       },
       "every-15-minutes": {
-        "name": "every 15 minutes",
-        "useCase": "Quarter-hourly jobs line up with the clock at :00, :15, :30 and :45, which keeps logs and reports easy to read. They are common for report snapshots and incremental backups."
+        "name": "15 分ごとに",
+        "useCase": "15 分ごとのジョブは時計の :00、:15、:30、:45 にそろうため、ログやレポートが読みやすくなります。レポートのスナップショットや増分バックアップによく使われます。"
       },
       "every-30-minutes": {
-        "name": "every 30 minutes",
-        "useCase": "Running twice an hour, on the hour and at half past, is a good default for tasks such as sitemap regeneration, price updates or reminder emails."
+        "name": "30 分ごとに",
+        "useCase": "1 時間に 2 回、正時と 30 分に実行するのは、サイトマップの再生成、価格の更新、リマインダーメールなどの定番設定です。"
       },
       "every-hour": {
-        "name": "every hour",
-        "useCase": "An hourly job at minute 0 is the classic choice for log rotation, aggregating statistics and rebuilding search indexes. If many jobs run on the hour, consider an odd minute to spread the load."
+        "name": "毎時",
+        "useCase": "毎時 0 分のジョブは、ログのローテーション、統計の集計、検索インデックスの再構築の定番です。正時に多くのジョブが集中する場合は、半端な分を選んで負荷を分散しましょう。"
       },
       "every-2-hours": {
-        "name": "every 2 hours",
-        "useCase": "Every two hours, on even hours starting at midnight, gives twelve runs a day — enough for periodic data exports or certificate checks without constant load."
+        "name": "2 時間ごとに",
+        "useCase": "午前 0 時から偶数時ごとに実行すると 1 日 12 回になり、定期的なデータエクスポートや証明書のチェックに十分で、常に負荷をかけることもありません。"
       },
       "every-6-hours": {
-        "name": "every 6 hours",
-        "useCase": "Four runs a day at 00:00, 06:00, 12:00 and 18:00 suit tasks such as dependency updates, database maintenance or pulling exchange rates."
+        "name": "6 時間ごとに",
+        "useCase": "00:00、06:00、12:00、18:00 の 1 日 4 回は、依存関係の更新、データベースのメンテナンス、為替レートの取得などに向いています。"
       },
       "every-12-hours": {
-        "name": "every 12 hours",
-        "useCase": "Twice a day, at midnight and at noon, is a common schedule for backups, security scans and report e-mails that should cover both halves of the day."
+        "name": "12 時間ごとに",
+        "useCase": "午前 0 時と正午の 1 日 2 回は、バックアップ、セキュリティスキャン、1 日の前半と後半をカバーしたいレポートメールでよく使われます。"
       },
       "every-day-at-midnight": {
-        "name": "every day at midnight",
-        "useCase": "A daily job at 00:00 is the default for nightly batches: backups, data warehouse loads, invoice generation and cleanup. Mind the time zone, since midnight on the server may not be midnight for your users."
+        "name": "毎日午前 0 時に",
+        "useCase": "毎日 00:00 のジョブは夜間バッチの定番です。バックアップ、データウェアハウスへのロード、請求書の作成、クリーンアップなど。タイムゾーンに注意しましょう。サーバーの午前 0 時がユーザーの午前 0 時とは限りません。"
       },
       "every-day-at-noon": {
-        "name": "every day at noon",
-        "useCase": "Running at 12:00 every day is useful for daily summaries and digests that should be ready during working hours, or for tasks you want to watch while the team is online."
+        "name": "毎日正午に",
+        "useCase": "毎日 12:00 の実行は、業務時間中に用意しておきたい日次サマリーやダイジェスト、チームがオンラインの間に見守りたいタスクに便利です。"
       },
       "every-day-at-9am": {
-        "name": "every day at 9 AM",
-        "useCase": "A 09:00 daily job is ideal for morning reports, stand-up reminders and dashboards that people check at the start of the day."
+        "name": "毎日午前 9 時に",
+        "useCase": "毎日 09:00 のジョブは、朝のレポート、朝会のリマインダー、始業時に確認するダッシュボードに最適です。"
       },
       "every-monday": {
-        "name": "every Monday",
-        "useCase": "A weekly job at midnight between Sunday and Monday is a natural fit for weekly reports, rotating credentials and resetting usage quotas."
+        "name": "毎週月曜日に",
+        "useCase": "日曜から月曜に変わる午前 0 時の週次ジョブは、週次レポート、認証情報のローテーション、利用枠のリセットにぴったりです。"
       },
       "every-weekday": {
-        "name": "every weekday at 9 AM",
-        "useCase": "Monday to Friday at 09:00 covers business-day tasks such as stand-up reminders, daily sales reports or opening a support queue, while skipping weekends."
+        "name": "平日の午前 9 時に",
+        "useCase": "月曜から金曜の 09:00 は、朝会のリマインダー、日次の売上レポート、サポート窓口のオープンなど、週末を除いた営業日のタスクに対応します。"
       },
       "every-weekend": {
-        "name": "weekends at 10 AM",
-        "useCase": "Saturday and Sunday at 10:00 is handy for heavier maintenance, full re-indexing or weekend-only promotions, when traffic is usually lower."
+        "name": "週末の午前 10 時に",
+        "useCase": "土曜と日曜の 10:00 は、重めのメンテナンス、インデックスの全面再構築、週末限定キャンペーンなど、トラフィックが比較的少ない時間帯の作業に便利です。"
       },
       "every-sunday-at-3am": {
-        "name": "every Sunday at 3 AM",
-        "useCase": "Sunday 03:00 is a classic maintenance window: full backups, database vacuuming and system updates run when almost nobody is using the service."
+        "name": "毎週日曜日の午前 3 時に",
+        "useCase": "日曜 03:00 は定番のメンテナンス時間帯です。フルバックアップ、データベースの整理、システム更新を、ほとんど誰もサービスを使っていない時間に行えます。"
       },
       "first-day-of-month": {
-        "name": "the first day of the month",
-        "useCase": "Midnight on the 1st is the standard schedule for monthly billing, invoices, usage resets and monthly reports."
+        "name": "毎月 1 日に",
+        "useCase": "毎月 1 日の午前 0 時は、月次請求、請求書の発行、利用量のリセット、月次レポートの標準的なスケジュールです。"
       },
       "last-day-of-month": {
-        "name": "the last day of the month",
-        "useCase": "Month-end jobs such as closing the books or archiving data need the last day of every month, whether it has 28, 29, 30 or 31 days. Quartz, Spring and AWS express this with L; standard crontab cannot, so a common workaround is to run on days 28–31 and check the date in the script."
+        "name": "毎月末日に",
+        "useCase": "決算処理やデータのアーカイブなど月末のジョブは、28・29・30・31 日のどれで終わる月でも最終日に実行する必要があります。Quartz・Spring・AWS では L で表せますが、標準 crontab では表現できないため、28〜31 日に実行してスクリプト内で日付を確認するのが一般的な回避策です。"
       },
       "every-quarter": {
-        "name": "every quarter",
-        "useCase": "Midnight on the first day of January, April, July and October marks the start of each quarter — the right time for quarterly reports, audits and archive rotations."
+        "name": "四半期ごとに",
+        "useCase": "1 月・4 月・7 月・10 月の 1 日午前 0 時は各四半期の始まりで、四半期レポート、監査、アーカイブのローテーションに最適なタイミングです。"
       },
       "every-year": {
-        "name": "every year",
-        "useCase": "Midnight on January 1 runs a job once a year, for tasks such as annual rollovers, yearly archives or renewing long-lived settings."
+        "name": "毎年",
+        "useCase": "1 月 1 日の午前 0 時に年 1 回ジョブを実行します。年次の繰り越し、年次アーカイブ、長期設定の更新などに使えます。"
       }
-    },
-    "unsupported": "not directly expressible (see the table above)"
+    }
   }
 }

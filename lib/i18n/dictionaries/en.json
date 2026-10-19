@@ -210,6 +210,12 @@
           "p": [
             "L means “last”: L in the day-of-month field is the last day of the month, L-3 is three days before it, and 6L in the day-of-week field is the last Friday. W finds the nearest weekday to a date without leaving the month, so 15W fires on the weekday closest to the 15th, and LW is the last weekday of the month. The hash selects the nth weekday: 6#3 is the third Friday."
           ]
+        },
+        {
+          "h": "Quartz in practice",
+          "p": [
+            "In Java code a Quartz expression is attached to a trigger, for example TriggerBuilder.newTrigger().withSchedule(CronScheduleBuilder.cronSchedule(\"0 0 12 ? * MON-FRI\").inTimeZone(TimeZone.getTimeZone(\"Europe/London\"))). Without inTimeZone the JVM default zone is used. Misfire instructions decide what happens when the scheduler was down at a planned time: fire once now, or skip to the next slot."
+          ]
         }
       ],
       "faq": [
@@ -253,6 +259,12 @@
           "h": "Time zones",
           "p": [
             "Scheduled EventBridge rules always run in UTC, so the tool evaluates AWS expressions in UTC by default and shows your local time next to each run. EventBridge Scheduler can attach a time zone to a schedule; in that case pick the same zone in the time-zone selector to preview it correctly."
+          ]
+        },
+        {
+          "h": "Cron or rate?",
+          "p": [
+            "For fixed intervals such as every 15 minutes a rate expression is simpler: rate(15 minutes) starts counting when the rule is created. Use cron when the job must run at calendar times — 08:00 on weekdays, the last day of the month, or only in a given year. EventBridge Scheduler additionally supports one-time at(...) schedules and flexible time windows that spread invocations."
           ]
         }
       ],
@@ -298,6 +310,12 @@
           "p": [
             "Scheduled runs can start late during periods of high load, especially at the top of the hour, so choose an odd minute such as 17 instead of 0 when timing isn’t critical. In public repositories, scheduled workflows are disabled automatically after 60 days without repository activity."
           ]
+        },
+        {
+          "h": "Testing scheduled workflows",
+          "p": [
+            "Add workflow_dispatch next to schedule so you can start the workflow manually while you test it. Remember that schedules only run from the default branch, so a cron change on a feature branch has no effect until it is merged. A concurrency group prevents a slow run from overlapping with the next scheduled one."
+          ]
         }
       ],
       "faq": [
@@ -340,7 +358,14 @@
         {
           "h": "Missed runs and concurrency",
           "p": [
-            "If the controller misses a scheduled time, startingDeadlineSeconds decides how late a Job may still start. concurrencyPolicy controls what happens when a run is still active: Allow, Forbid or Replace. Keep those settings in mind when you choose frequent schedules such as every minute."
+            "If the controller misses a scheduled time, startingDeadlineSeconds decides how late a Job may still start. concurrencyPolicy controls what happens when a run is still active: Allow, Forbid or Replace. Keep those settings in mind when you choose frequent schedules such as every minute.",
+            "Use kubectl create job --from=cronjob/<name> <job-name> to start a run immediately while testing, and kubectl get cronjob to check the LAST SCHEDULE and ACTIVE columns. Events on the CronJob object explain why a scheduled time was skipped or why a Job failed to start."
+          ]
+        },
+        {
+          "h": "A minimal manifest",
+          "p": [
+            "A CronJob uses apiVersion batch/v1 and kind CronJob, with spec.schedule, an optional spec.timeZone and a jobTemplate that describes the Pod to run. Set suspend: true to pause the schedule without deleting it, and successfulJobsHistoryLimit and failedJobsHistoryLimit to control how many finished Jobs are kept for debugging."
           ]
         }
       ],
@@ -385,6 +410,12 @@
           "h": "Spring vs Quartz",
           "p": [
             "Spring expressions look like Quartz ones but differ in details: there is no year field, Sunday is 0 rather than 1, and “?” is accepted but not required. When both day fields are restricted Spring requires both to match. The converter shows the Quartz equivalent when it exists."
+          ]
+        },
+        {
+          "h": "Enabling scheduling",
+          "p": [
+            "Cron methods only run when scheduling is switched on with @EnableScheduling. By default Spring uses a single thread, so a long task delays every other scheduled method; configure a ThreadPoolTaskScheduler or spring.task.scheduling.pool.size when you have several jobs. In a cluster every instance fires the same cron, so use a lock such as ShedLock if a job must run only once."
           ]
         }
       ],
@@ -568,7 +599,8 @@
         {
           "h": "What it does",
           "p": [
-            "The explainer turns an expression into a plain-language sentence in seven languages, lists the next ten run times in any IANA time zone and converts the schedule between standard crontab, Quartz, Spring and AWS EventBridge syntax. The visual builder and presets help when you are starting from scratch."
+            "The explainer turns an expression into a plain-language sentence in seven languages, lists the next ten run times in any IANA time zone and converts the schedule between standard crontab, Quartz, Spring and AWS EventBridge syntax. The visual builder and presets help when you are starting from scratch.",
+            "Every page is available in seven languages, and twenty schedule pages show a common schedule — every five minutes, the first day of the month and many more — side by side in all seven dialects, ready to copy into crontab, a workflow file, a Kubernetes manifest or a Java annotation."
           ]
         },
         {
@@ -581,6 +613,12 @@
           "h": "Who makes it",
           "p": [
             "CronExplain is an independent project, made by the team behind ContrastCheck and the Aspect Ratio Calculator. It is free to use, has no accounts and shows no pop-ups. Suggestions for new dialects or schedules are welcome."
+          ]
+        },
+        {
+          "h": "Accuracy and limits",
+          "p": [
+            "CronExplain models the documented behaviour of each scheduler, not every vendor extension. Jenkins’ H hash syntax, systemd OnCalendar timers and @reboot are not evaluated, and real schedulers may add their own delays. When a schedule matters, confirm the result in the scheduler’s own documentation or a staging environment."
           ]
         }
       ],
@@ -618,13 +656,20 @@
         {
           "h": "Analytics",
           "p": [
-            "We use Vercel Web Analytics to count page views and a few anonymous events, such as copying a result, clicking a preset or switching language. Vercel Analytics is cookieless: it does not set cookies, does not build cross-site profiles and reports only aggregate numbers. No advertising or third-party trackers are loaded."
+            "We use Vercel Web Analytics to count page views and a few anonymous events, such as copying a result, clicking a preset or switching language. Vercel Analytics is cookieless: it does not set cookies, does not build cross-site profiles and reports only aggregate numbers. No advertising or third-party trackers are loaded.",
+            "Only three custom events exist: copy_output (which kind of result was copied), preset_click (which preset was used) and locale_switch (from which language to which). None of them contains the text of an expression or any identifier that could follow you to other websites."
           ]
         },
         {
           "h": "Hosting and contact",
           "p": [
             "The site is a set of static files served by Vercel, which, like any web host, processes your IP address to deliver the pages. We do not store personal data, run accounts or send email. If this policy changes, the updated version will be published on this page."
+          ]
+        },
+        {
+          "h": "Your choices",
+          "p": [
+            "Because we do not store personal data, there is nothing to export or delete on our side. The tool does not use localStorage or other browser storage for your expressions. If you block analytics scripts, the tool keeps working exactly the same. For details on how Vercel handles request data, see Vercel’s own privacy policy."
           ]
         }
       ],
