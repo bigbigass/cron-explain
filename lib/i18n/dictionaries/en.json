@@ -1,0 +1,780 @@
+{
+  "site": {
+    "name": "CronExplain",
+    "tagline": "Cron expressions explained, in your language",
+    "skip": "Skip to content",
+    "language": "Language"
+  },
+  "nav": {
+    "home": "Explainer",
+    "cheatsheet": "Cheatsheet",
+    "dialects": "Dialects"
+  },
+  "footer": {
+    "about": "About",
+    "privacy": "Privacy",
+    "sister": "Sister tools",
+    "contrast": "ContrastCheck – WCAG color contrast checker",
+    "aspect": "Aspect Ratio Calculator",
+    "note": "Everything runs in your browser. No sign-up, no tracking cookies.",
+    "schedules": "Popular schedules"
+  },
+  "common": {
+    "home": "Home",
+    "faqTitle": "Frequently asked questions",
+    "related": "Related pages",
+    "schedules": "Schedules",
+    "dialectNames": {
+      "standard": "Standard crontab",
+      "seconds": "6-field (seconds)",
+      "quartz": "Quartz",
+      "spring": "Spring",
+      "aws": "AWS EventBridge",
+      "github": "GitHub Actions",
+      "kubernetes": "Kubernetes CronJob"
+    },
+    "fieldNames": {
+      "second": "Second",
+      "minute": "Minute",
+      "hour": "Hour",
+      "dayOfMonth": "Day of month",
+      "month": "Month",
+      "dayOfWeek": "Day of week",
+      "year": "Year"
+    },
+    "weekdays": [
+      "Sun",
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat"
+    ],
+    "months": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ]
+  },
+  "tool": {
+    "label": "Cron expression",
+    "placeholder": "e.g. */15 9-17 * * 1-5",
+    "dialect": "Dialect",
+    "auto": "Auto-detect",
+    "detected": "Detected: {dialect}",
+    "meaning": "What it means",
+    "noDescription": "Valid, but no plain-language description is available for this combination.",
+    "valid": "Valid",
+    "invalid": "Invalid",
+    "nextRuns": "Next 10 runs",
+    "timezone": "Evaluate in time zone",
+    "colZone": "In {tz}",
+    "colLocal": "Your local time",
+    "noRuns": "No run in the next 8 years — check the day and month fields.",
+    "copy": "Copy",
+    "copied": "Copied",
+    "share": "Copy share link",
+    "presets": "Presets",
+    "converter": "Same schedule in other dialects",
+    "builder": "Visual builder",
+    "builderHint": "Pick values per field. The builder writes a standard five-field expression; it is converted to the selected dialect when you use it.",
+    "useExpression": "Use this expression",
+    "modes": {
+      "every": "Every",
+      "step": "Every N",
+      "specific": "Specific"
+    },
+    "interval": "Interval",
+    "warnings": {
+      "githubMinInterval": "GitHub Actions runs scheduled workflows at most every 5 minutes.",
+      "githubUtc": "GitHub evaluates schedules in UTC.",
+      "awsUtc": "EventBridge rules use UTC."
+    },
+    "reasons": {
+      "secondsNotSupported": "Not representable: this dialect has no seconds field.",
+      "yearNotSupported": "Not representable: this dialect has no year field.",
+      "specialNotSupported": "Not representable: L, W and # are not supported.",
+      "domDowBoth": "Not representable: the day-of-month and day-of-week rules can’t be combined this way."
+    },
+    "errors": {
+      "empty": "Enter a cron expression.",
+      "fieldCount": "Expected {expected} fields for this dialect, but found {got}.",
+      "invalidValue": "{field}: “{value}” is not a valid value.",
+      "outOfRange": "{field}: {value} is out of range (allowed {min}–{max}).",
+      "invalidStep": "{field}: invalid step in “{value}” — put a positive number after “/”.",
+      "invalidRange": "{field}: the range “{value}” starts after it ends.",
+      "questionNotAllowed": "{field}: “?” is not allowed here. Use “*” instead.",
+      "questionRequired": "Use “?” in either day-of-month or day-of-week — this dialect requires exactly one.",
+      "bothQuestion": "Only one of day-of-month and day-of-week can be “?”.",
+      "specialNotAllowed": "{field}: “{value}” uses L, W or #, which this dialect doesn’t support. Try Quartz, Spring or AWS.",
+      "unknownMacro": "Unknown macro “{value}”. Supported: @yearly, @monthly, @weekly, @daily, @hourly.",
+      "macroNotSupported": "Macros such as “{value}” are not supported in this dialect — write out the fields instead.",
+      "rebootNotSchedulable": "@reboot runs once at startup, so there is no schedule to explain."
+    },
+    "notes": {
+      "standard": "Five fields: minute, hour, day of month, month, day of week. Sunday is 0 or 7. If both day fields are restricted, the job runs when either one matches.",
+      "seconds": "Six fields with seconds first, as used by node-cron, croner and many libraries.",
+      "quartz": "Quartz: seconds first, optional year, 1 = Sunday. Exactly one day field must be “?”. Supports L, W and #.",
+      "spring": "Spring @Scheduled: six fields with seconds first, 0 or 7 = Sunday; supports L, W, # and macros such as @daily.",
+      "aws": "EventBridge: six fields with no seconds and the year last, 1 = Sunday, one day field must be “?”. Rules run in UTC.",
+      "github": "GitHub Actions: standard five fields, always evaluated in UTC, at most every 5 minutes; runs may be delayed when GitHub is busy.",
+      "kubernetes": "Kubernetes CronJob: standard five fields plus macros. Set spec.timeZone to use a time zone other than the controller’s."
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Cron Expression Explainer & Generator | CronExplain",
+      "description": "Paste a cron expression to see what it means and its next 10 run times. Supports crontab, Quartz, AWS, GitHub Actions and Kubernetes.",
+      "h1": "Cron Expression Explainer & Generator",
+      "intro": "Paste any cron expression to get a plain-language explanation, the next 10 run times in any time zone, and the same schedule converted to Quartz, AWS and Spring syntax. Everything is computed in your browser.",
+      "sections": [
+        {
+          "h": "How to read a cron expression",
+          "p": [
+            "A classic Unix cron expression has five fields separated by spaces: minute (0–59), hour (0–23), day of month (1–31), month (1–12) and day of week (0–6, where 0 and 7 are Sunday). A job runs whenever the current time matches every field. An asterisk means “any value”, so * * * * * runs every minute.",
+            "Inside a field you can combine values: a comma makes a list (1,15), a hyphen makes a range (9-17), and a slash adds a step (*/10 means every 10 units). Month and weekday names such as JAN or MON are accepted by most implementations."
+          ]
+        },
+        {
+          "h": "Why the dialect matters",
+          "p": [
+            "Not every scheduler speaks the same cron. Quartz and Spring add a seconds field at the front, AWS EventBridge adds a year field at the end, and Quartz and AWS number weekdays from 1 = Sunday instead of 0. Quartz and AWS also require a question mark in either the day-of-month or the day-of-week field. CronExplain detects the dialect from the shape of the expression, and you can override it at any time."
+          ]
+        },
+        {
+          "h": "Next run times and time zones",
+          "p": [
+            "The run list is evaluated on wall-clock time in the time zone you choose, then shown next to your own local time. Daylight saving time is handled the way most schedulers do it: a time that is skipped when clocks spring forward does not run that day, and a time that repeats when clocks fall back runs once. GitHub Actions and AWS EventBridge rules always use UTC, so the tool switches to UTC for those dialects."
+          ]
+        },
+        {
+          "h": "Build an expression visually",
+          "p": [
+            "If you would rather click than type, use the visual builder: choose “every”, “every N” or specific values for each field and copy the result. Presets cover the most common schedules, from every five minutes to the first day of the month, and every result can be shared with a link that keeps the expression in the URL."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "What does */5 * * * * mean?",
+          "a": "It runs every five minutes: at minute 0, 5, 10 and so on, of every hour, every day. The */5 step starts at the lowest value of the field (0) and adds 5 each time."
+        },
+        {
+          "q": "Is Sunday 0 or 7 in cron?",
+          "a": "In standard crontab, Kubernetes, GitHub Actions and Spring both 0 and 7 mean Sunday. In Quartz and AWS EventBridge the week runs from 1 = Sunday to 7 = Saturday, so 0 is invalid."
+        },
+        {
+          "q": "What happens if I set both day of month and day of week?",
+          "a": "Standard cron runs the job when either field matches, so 0 0 13 * 5 runs on the 13th and on every Friday. Quartz and AWS don’t allow both, which is why one of them must be “?”."
+        },
+        {
+          "q": "Which time zone does cron use?",
+          "a": "Crontab uses the server’s local time zone, Kubernetes uses the controller’s zone unless spec.timeZone is set, and GitHub Actions and EventBridge rules use UTC. Pick the zone in the tool to see exact run times."
+        },
+        {
+          "q": "Is my expression sent to a server?",
+          "a": "No. Parsing, descriptions and next-run calculations all happen in your browser. Nothing you type leaves your device."
+        }
+      ]
+    },
+    "quartz": {
+      "title": "Quartz Cron Expression Generator & Explainer",
+      "description": "Explain and build Quartz Scheduler cron expressions with seconds, year, ?, L, W and #. See the next run times and convert to Unix cron or AWS.",
+      "h1": "Quartz Cron Expression Explainer",
+      "intro": "Quartz Scheduler, the job library behind many Java applications, uses a richer cron format than Unix crontab. Paste a Quartz expression below to read it in plain language, check the next run times and convert it to other dialects.",
+      "sections": [
+        {
+          "h": "Quartz cron format",
+          "p": [
+            "A Quartz expression has six or seven fields: seconds, minutes, hours, day of month, month, day of week and an optional year. For example 0 0 12 ? * MON-FRI fires at noon on weekdays. Days of the week are numbered 1 (Sunday) to 7 (Saturday), and names such as MON or FRI are accepted, including in ranges."
+          ]
+        },
+        {
+          "h": "The question mark rule",
+          "p": [
+            "Quartz does not let you constrain both the day of month and the day of week. Exactly one of these two fields must contain “?”, which means “no specific value”. Writing 0 0 12 * * MON is therefore invalid; use 0 0 12 ? * MON instead. The explainer flags this immediately."
+          ]
+        },
+        {
+          "h": "Special characters L, W and #",
+          "p": [
+            "L means “last”: L in the day-of-month field is the last day of the month, L-3 is three days before it, and 6L in the day-of-week field is the last Friday. W finds the nearest weekday to a date without leaving the month, so 15W fires on the weekday closest to the 15th, and LW is the last weekday of the month. The hash selects the nth weekday: 6#3 is the third Friday."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "How is Quartz cron different from Unix cron?",
+          "a": "Quartz adds a seconds field at the start and an optional year at the end, numbers weekdays from 1 = Sunday, requires “?” in one day field and supports L, W and #."
+        },
+        {
+          "q": "Can I convert a Quartz expression to crontab?",
+          "a": "Yes, as long as the seconds are 0, no year is set and L, W or # aren’t used. The converter shows the crontab equivalent or explains why there isn’t one."
+        },
+        {
+          "q": "What does 0 0/5 * * * ? mean?",
+          "a": "It fires every five minutes, at second 0, starting at minute 0 of every hour, every day."
+        },
+        {
+          "q": "Is Spring’s @Scheduled cron the same as Quartz?",
+          "a": "Very close, but Spring numbers Sunday as 0 or 7, has no year field and doesn’t require “?”. Use the Spring page for Spring expressions."
+        }
+      ]
+    },
+    "aws": {
+      "title": "AWS EventBridge Cron Expression Explainer",
+      "description": "Validate and explain AWS EventBridge and CloudWatch cron(...) expressions, preview the next UTC run times, and convert them to crontab or Quartz.",
+      "h1": "AWS Cron Expression Explainer (EventBridge)",
+      "intro": "Amazon EventBridge (formerly CloudWatch Events) schedules use a six-field cron syntax wrapped in cron(...). Paste a rule expression to check it, read it in plain language and see exactly when it will run.",
+      "sections": [
+        {
+          "h": "AWS cron syntax",
+          "p": [
+            "An EventBridge expression looks like cron(0 12 * * ? *) and has six fields: minutes, hours, day of month, month, day of week and year. There is no seconds field, so the finest resolution is one minute. Days of the week run from 1 (Sunday) to 7 (Saturday), and names like MON-FRI work too."
+          ]
+        },
+        {
+          "h": "Rules you must follow",
+          "p": [
+            "One of the two day fields must be “?”: use cron(0 8 ? * MON-FRI *) for weekday mornings and cron(0 8 1 * ? *) for the first of the month. The year field is required; use * for every year. L, W and # are supported in the day fields, for example cron(0 18 L * ? *) for the last day of each month."
+          ]
+        },
+        {
+          "h": "Time zones",
+          "p": [
+            "Scheduled EventBridge rules always run in UTC, so the tool evaluates AWS expressions in UTC by default and shows your local time next to each run. EventBridge Scheduler can attach a time zone to a schedule; in that case pick the same zone in the time-zone selector to preview it correctly."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Why does AWS reject my cron expression?",
+          "a": "The usual causes are five fields instead of six, a missing year field, or no “?” in the day-of-month or day-of-week field. The error message names the field that’s wrong."
+        },
+        {
+          "q": "How do I run a Lambda every 5 minutes with cron?",
+          "a": "Use cron(0/5 * * * ? *). For simple intervals EventBridge also accepts rate(5 minutes)."
+        },
+        {
+          "q": "Is AWS cron in UTC?",
+          "a": "Yes for EventBridge rules. EventBridge Scheduler lets you set a time zone per schedule."
+        },
+        {
+          "q": "What is the minimum interval?",
+          "a": "One minute, because AWS cron has no seconds field."
+        }
+      ]
+    },
+    "github": {
+      "title": "GitHub Actions Cron Schedule Explainer",
+      "description": "Check on.schedule cron expressions for GitHub Actions workflows: plain-language meaning, next UTC runs and the 5-minute minimum interval.",
+      "h1": "GitHub Actions Cron Schedule Explainer",
+      "intro": "GitHub Actions starts workflows on a schedule using standard five-field cron in the on.schedule trigger. Paste your cron string to see what it means and when it will run in UTC.",
+      "sections": [
+        {
+          "h": "Using cron in a workflow",
+          "p": [
+            "Add a schedule trigger to your workflow file: on: schedule: - cron: '30 5 * * 1-5'. The expression uses the usual five fields (minute, hour, day of month, month, day of week) and must be quoted in YAML because * is a special character. You can list several cron entries, and github.event.schedule tells the job which one fired."
+          ]
+        },
+        {
+          "h": "UTC and the 5-minute limit",
+          "p": [
+            "Schedules are always evaluated in UTC, so 0 9 * * * runs at 09:00 UTC, not in your local time; use the tool’s local-time column to translate. The shortest interval GitHub supports is every five minutes. Macros such as @daily are not supported, so write out the fields."
+          ]
+        },
+        {
+          "h": "Delays and inactive repositories",
+          "p": [
+            "Scheduled runs can start late during periods of high load, especially at the top of the hour, so choose an odd minute such as 17 instead of 0 when timing isn’t critical. In public repositories, scheduled workflows are disabled automatically after 60 days without repository activity."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "What time zone does GitHub Actions cron use?",
+          "a": "UTC, always. There is no setting to change it, so convert your local time to UTC when writing the expression."
+        },
+        {
+          "q": "Can a workflow run every minute?",
+          "a": "No. The minimum interval is five minutes; more frequent schedules are run at most every five minutes."
+        },
+        {
+          "q": "Why didn’t my scheduled workflow run on time?",
+          "a": "Scheduled jobs are queued and may be delayed under load, and they only run on the default branch. Workflows in inactive public repositories are also paused."
+        },
+        {
+          "q": "Can I use @daily in GitHub Actions?",
+          "a": "No. Use the equivalent five fields, for example 0 0 * * *."
+        }
+      ]
+    },
+    "kubernetes": {
+      "title": "Kubernetes CronJob Schedule Explainer",
+      "description": "Explain the schedule field of a Kubernetes CronJob, preview the next runs in any time zone with spec.timeZone, and check the syntax before you apply.",
+      "h1": "Kubernetes CronJob Schedule Explainer",
+      "intro": "A Kubernetes CronJob creates Jobs on a repeating schedule written in standard cron syntax. Paste the value of spec.schedule to see what it means and when the next Jobs will be created.",
+      "sections": [
+        {
+          "h": "The schedule field",
+          "p": [
+            "spec.schedule takes a five-field cron expression, for example \"0 */6 * * *\" for every six hours. Kubernetes also accepts macros such as @hourly, @daily, @weekly, @monthly and @yearly. Quote the value in YAML so the asterisks are not misread."
+          ]
+        },
+        {
+          "h": "Time zones with spec.timeZone",
+          "p": [
+            "Without a time zone, schedules are interpreted in the time zone of the kube-controller-manager, which is usually UTC. Since Kubernetes 1.27 you can set spec.timeZone to an IANA name such as Europe/Berlin. Select the same zone in the tool to preview the exact creation times, including daylight-saving transitions."
+          ]
+        },
+        {
+          "h": "Missed runs and concurrency",
+          "p": [
+            "If the controller misses a scheduled time, startingDeadlineSeconds decides how late a Job may still start. concurrencyPolicy controls what happens when a run is still active: Allow, Forbid or Replace. Keep those settings in mind when you choose frequent schedules such as every minute."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does a Kubernetes CronJob support seconds?",
+          "a": "No. The schedule has five fields, so the smallest interval is one minute."
+        },
+        {
+          "q": "Can I use CRON_TZ in the schedule?",
+          "a": "No. TZ and CRON_TZ prefixes are not supported; use the spec.timeZone field instead."
+        },
+        {
+          "q": "What does 0 */6 * * * mean?",
+          "a": "Every six hours on the hour: 00:00, 06:00, 12:00 and 18:00."
+        },
+        {
+          "q": "Why did my CronJob run twice or not at all?",
+          "a": "Check startingDeadlineSeconds and concurrencyPolicy, and whether the controller was down. CronJobs aim for roughly one Job per scheduled time but don’t guarantee it."
+        }
+      ]
+    },
+    "spring": {
+      "title": "Spring @Scheduled Cron Expression Explainer",
+      "description": "Explain Spring Framework @Scheduled cron expressions with seconds, L, W, # and macros, preview the next runs and convert to crontab or Quartz.",
+      "h1": "Spring Cron Expression Explainer",
+      "intro": "Spring’s @Scheduled(cron = \"...\") annotation uses a six-field cron format with seconds first. Paste a Spring expression to read it in plain language and check its next run times in your server’s time zone.",
+      "sections": [
+        {
+          "h": "Spring cron format",
+          "p": [
+            "A Spring expression has six fields: second, minute, hour, day of month, month and day of week, for example 0 0 9 * * MON-FRI for 09:00 on weekdays. Sunday can be written as 0, 7 or SUN. Since Spring Framework 5.3 the parser also understands L, W and # in the day fields, plus macros such as @hourly and @daily."
+          ]
+        },
+        {
+          "h": "Time zone of @Scheduled",
+          "p": [
+            "By default expressions are evaluated in the server’s default time zone. Set the zone attribute, for example @Scheduled(cron = \"0 0 2 * * *\", zone = \"Europe/Paris\"), to make the schedule independent of the host. Choose the same zone in the tool to preview the runs."
+          ]
+        },
+        {
+          "h": "Spring vs Quartz",
+          "p": [
+            "Spring expressions look like Quartz ones but differ in details: there is no year field, Sunday is 0 rather than 1, and “?” is accepted but not required. When both day fields are restricted Spring requires both to match. The converter shows the Quartz equivalent when it exists."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Why does Spring say my cron expression must have six fields?",
+          "a": "Spring needs a seconds field. Prepend 0 to a five-field crontab expression: 0 */5 * * * * runs every five minutes."
+        },
+        {
+          "q": "How do I disable a @Scheduled cron job?",
+          "a": "Use the special value \"-\" (Scheduled.CRON_DISABLED), usually through a property placeholder."
+        },
+        {
+          "q": "Does Spring support the last day of the month?",
+          "a": "Yes, since 5.3: 0 0 0 L * * runs at midnight on the last day of every month."
+        },
+        {
+          "q": "Can I read the cron expression from configuration?",
+          "a": "Yes, for example @Scheduled(cron = \"${jobs.cleanup.cron}\"), so the schedule can change per environment."
+        }
+      ]
+    },
+    "cheatsheet": {
+      "title": "Cron Syntax Cheatsheet: Fields, Symbols & Examples",
+      "description": "A compact cron syntax reference: field order and ranges for crontab, Quartz and AWS, special characters * , - / ? L W #, macros and common examples.",
+      "h1": "Cron Syntax Cheatsheet",
+      "intro": "A one-page reference for cron syntax across the common dialects: which fields exist, what values they accept, and what every special character does. Try any example in the explainer above.",
+      "fieldsTitle": "Fields and allowed values",
+      "fieldsHead": [
+        "Field",
+        "Values",
+        "Notes"
+      ],
+      "fields": [
+        [
+          "Second",
+          "0–59",
+          "Quartz, Spring and 6-field crons only"
+        ],
+        [
+          "Minute",
+          "0–59",
+          "First field in crontab and AWS"
+        ],
+        [
+          "Hour",
+          "0–23",
+          "24-hour clock"
+        ],
+        [
+          "Day of month",
+          "1–31",
+          "L, W and LW in Quartz, Spring, AWS"
+        ],
+        [
+          "Month",
+          "1–12 or JAN–DEC",
+          "Names are case-insensitive"
+        ],
+        [
+          "Day of week",
+          "0–7 or SUN–SAT",
+          "Quartz and AWS: 1–7, 1 = Sunday"
+        ],
+        [
+          "Year",
+          "1970–2199",
+          "Optional in Quartz, required in AWS"
+        ]
+      ],
+      "symbolsTitle": "Special characters",
+      "symbolsHead": [
+        "Symbol",
+        "Meaning",
+        "Example"
+      ],
+      "symbols": [
+        [
+          "*",
+          "Any value",
+          "* * * * * — every minute"
+        ],
+        [
+          ",",
+          "List of values",
+          "0 9,17 * * * — 09:00 and 17:00"
+        ],
+        [
+          "-",
+          "Range",
+          "0 9 * * 1-5 — weekdays at 09:00"
+        ],
+        [
+          "/",
+          "Step",
+          "*/15 * * * * — every 15 minutes"
+        ],
+        [
+          "?",
+          "No specific value (day fields)",
+          "0 0 12 ? * MON — Quartz"
+        ],
+        [
+          "L",
+          "Last day / last weekday",
+          "0 0 0 L * ? — last day of month"
+        ],
+        [
+          "W",
+          "Nearest weekday",
+          "0 0 9 15W * ? — weekday nearest the 15th"
+        ],
+        [
+          "#",
+          "Nth weekday of the month",
+          "0 0 9 ? * 2#1 — first Monday"
+        ]
+      ],
+      "macrosTitle": "Macros",
+      "macros": [
+        [
+          "@yearly / @annually",
+          "0 0 1 1 *"
+        ],
+        [
+          "@monthly",
+          "0 0 1 * *"
+        ],
+        [
+          "@weekly",
+          "0 0 * * 0"
+        ],
+        [
+          "@daily / @midnight",
+          "0 0 * * *"
+        ],
+        [
+          "@hourly",
+          "0 * * * *"
+        ]
+      ],
+      "sections": [
+        {
+          "h": "Reading order",
+          "p": [
+            "Read an expression from the smallest unit to the largest: 30 2 * * 1 is minute 30 of hour 2 on any day of the month, in any month, when the weekday is Monday — 02:30 every Monday. In Quartz and Spring, prepend the seconds field; in AWS, append the year."
+          ]
+        },
+        {
+          "h": "Common pitfalls",
+          "p": [
+            "*/7 in the minute field does not mean “every seven minutes forever”: it restarts at each hour, so it fires at 0, 7, … 56 and then at 0 again. Restricting both day fields in crontab means either can match. And 0 in the day-of-week field is invalid in Quartz and AWS, where the week starts at 1."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "What is the order of cron fields?",
+          "a": "Minute, hour, day of month, month, day of week. Quartz and Spring put seconds in front; AWS adds a year at the end."
+        },
+        {
+          "q": "What does the question mark mean in cron?",
+          "a": "“No specific value”. Quartz and AWS require it in one of the two day fields; standard crontab doesn’t accept it."
+        },
+        {
+          "q": "How do I write “every 90 minutes”?",
+          "a": "Cron can’t express intervals that don’t divide the hour or day evenly in one line. Use two entries, such as 0 0-21/3 * * * and 30 1-22/3 * * *."
+        },
+        {
+          "q": "Are month and weekday names case-sensitive?",
+          "a": "No. JAN, Jan and jan are equivalent in every dialect covered here."
+        }
+      ]
+    },
+    "about": {
+      "title": "About CronExplain – Free Cron Expression Tool",
+      "description": "CronExplain is a free, open, browser-only tool to explain, build and convert cron expressions for crontab, Quartz, Spring, AWS, GitHub and Kubernetes.",
+      "h1": "About CronExplain",
+      "intro": "CronExplain is a small, free utility for developers and operators who need to read or write cron expressions quickly and get them right the first time.",
+      "sections": [
+        {
+          "h": "What it does",
+          "p": [
+            "The explainer turns an expression into a plain-language sentence in seven languages, lists the next ten run times in any IANA time zone and converts the schedule between standard crontab, Quartz, Spring and AWS EventBridge syntax. The visual builder and presets help when you are starting from scratch."
+          ]
+        },
+        {
+          "h": "How it works",
+          "p": [
+            "The parser and scheduler are written in TypeScript and run entirely in your browser. Run times are calculated on wall-clock time with the time-zone data built into your browser, so no external service is involved. Descriptions are generated with the open-source cronstrue library. Each dialect’s rules — field counts, weekday numbering, the question-mark requirement and special characters — are validated separately, so errors point to the exact field."
+          ]
+        },
+        {
+          "h": "Who makes it",
+          "p": [
+            "CronExplain is an independent project, made by the team behind ContrastCheck and the Aspect Ratio Calculator. It is free to use, has no accounts and shows no pop-ups. Suggestions for new dialects or schedules are welcome."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Is CronExplain free?",
+          "a": "Yes, completely free with no sign-up."
+        },
+        {
+          "q": "Which cron dialects are supported?",
+          "a": "Standard crontab, 6-field cron with seconds, Quartz, Spring, AWS EventBridge, GitHub Actions and Kubernetes CronJob."
+        },
+        {
+          "q": "How accurate are the next run times?",
+          "a": "They follow each dialect’s documented rules, including daylight-saving transitions. Real schedulers can still start jobs a little late under load."
+        },
+        {
+          "q": "Can I link to a specific expression?",
+          "a": "Yes. The URL updates as you type; use “Copy share link” to share it."
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Privacy Policy | CronExplain",
+      "description": "CronExplain processes every cron expression in your browser. No accounts, no tracking cookies; only cookieless, aggregate Vercel Analytics.",
+      "h1": "Privacy Policy",
+      "intro": "Short version: what you type stays on your device. This page explains the little data the site does handle.",
+      "sections": [
+        {
+          "h": "Processing happens in your browser",
+          "p": [
+            "Cron expressions, time-zone choices and builder selections are processed entirely by JavaScript in your browser. They are never sent to a server. The expression appears in the page URL only so that you can share or bookmark it; if you share that link, the recipient can see the expression."
+          ]
+        },
+        {
+          "h": "Analytics",
+          "p": [
+            "We use Vercel Web Analytics to count page views and a few anonymous events, such as copying a result, clicking a preset or switching language. Vercel Analytics is cookieless: it does not set cookies, does not build cross-site profiles and reports only aggregate numbers. No advertising or third-party trackers are loaded."
+          ]
+        },
+        {
+          "h": "Hosting and contact",
+          "p": [
+            "The site is a set of static files served by Vercel, which, like any web host, processes your IP address to deliver the pages. We do not store personal data, run accounts or send email. If this policy changes, the updated version will be published on this page."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Do you store the cron expressions I enter?",
+          "a": "No. They are processed in your browser and are not transmitted."
+        },
+        {
+          "q": "Does the site use cookies?",
+          "a": "No. Neither the tool nor Vercel Analytics sets cookies."
+        },
+        {
+          "q": "What do the analytics events contain?",
+          "a": "Only the event name and a short label, such as which preset was clicked — never the expression you typed."
+        },
+        {
+          "q": "Can I use the tool offline?",
+          "a": "Once the page has loaded, all calculations work without a network connection."
+        }
+      ]
+    }
+  },
+  "every": {
+    "title": "Cron Expression for {name} ({expr})",
+    "description": "Cron expression for {name}: {expr}. Ready to copy for crontab, Quartz, AWS, GitHub Actions and Kubernetes, with next run times.",
+    "h1": "Cron expression for {name}",
+    "tableTitle": "The same schedule in every dialect",
+    "tableDialect": "Dialect",
+    "tableExpr": "Expression",
+    "sections": [
+      {
+        "h": "How this expression works",
+        "p": [
+          "The expression {expr} is written in {dialect} syntax. Read it field by field from left to right: each field narrows down when the job may run, and the scheduler starts the job whenever the current time matches all of them. In plain language it means: {meaning}."
+        ]
+      },
+      {
+        "h": "Adapting it to your scheduler",
+        "p": [
+          "Crontab, Kubernetes and GitHub Actions use the five-field form. Quartz and Spring expect a seconds field in front, and Quartz and AWS also need “?” in one of the two day fields — the table above already takes care of those differences. Remember that GitHub Actions and AWS EventBridge rules run in UTC, while crontab uses the server’s time zone, so the same expression can fire at different local times depending on where it runs."
+        ]
+      },
+      {
+        "h": "Check before you deploy",
+        "p": [
+          "Paste your final expression into the explainer above and choose the time zone of the machine that will run it. The list of next runs shows exactly when the job will start, including around daylight-saving changes, so you can catch an off-by-one-hour mistake before it reaches production."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is the cron expression for {name}?",
+        "a": "In standard crontab it is {standard}. In Quartz it is {quartz}, and in AWS EventBridge it is {aws}."
+      },
+      {
+        "q": "Which time zone will it run in?",
+        "a": "Crontab uses the server’s local time zone, Kubernetes the controller’s zone or spec.timeZone, and GitHub Actions and AWS EventBridge rules use UTC."
+      },
+      {
+        "q": "How can I test the schedule?",
+        "a": "Paste it into the explainer on this page: it shows the next 10 run times in any time zone, next to your local time."
+      },
+      {
+        "q": "Can I change it slightly?",
+        "a": "Yes. Edit the expression in the tool or use the visual builder; the description and run times update as you type."
+      }
+    ],
+    "items": {
+      "every-minute": {
+        "name": "every minute",
+        "useCase": "Running a job every minute is the most frequent schedule classic cron allows. It suits lightweight health checks, queue pollers and metric collectors, but make sure each run finishes well within 60 seconds so runs don’t overlap."
+      },
+      "every-5-minutes": {
+        "name": "every 5 minutes",
+        "useCase": "Every five minutes is a popular interval for syncing data, refreshing caches and checking external services. It is also the shortest schedule GitHub Actions supports."
+      },
+      "every-10-minutes": {
+        "name": "every 10 minutes",
+        "useCase": "A ten-minute interval balances freshness and load, which makes it a good fit for importing feeds, sending batched notifications or cleaning temporary files."
+      },
+      "every-15-minutes": {
+        "name": "every 15 minutes",
+        "useCase": "Quarter-hourly jobs line up with the clock at :00, :15, :30 and :45, which keeps logs and reports easy to read. They are common for report snapshots and incremental backups."
+      },
+      "every-30-minutes": {
+        "name": "every 30 minutes",
+        "useCase": "Running twice an hour, on the hour and at half past, is a good default for tasks such as sitemap regeneration, price updates or reminder emails."
+      },
+      "every-hour": {
+        "name": "every hour",
+        "useCase": "An hourly job at minute 0 is the classic choice for log rotation, aggregating statistics and rebuilding search indexes. If many jobs run on the hour, consider an odd minute to spread the load."
+      },
+      "every-2-hours": {
+        "name": "every 2 hours",
+        "useCase": "Every two hours, on even hours starting at midnight, gives twelve runs a day — enough for periodic data exports or certificate checks without constant load."
+      },
+      "every-6-hours": {
+        "name": "every 6 hours",
+        "useCase": "Four runs a day at 00:00, 06:00, 12:00 and 18:00 suit tasks such as dependency updates, database maintenance or pulling exchange rates."
+      },
+      "every-12-hours": {
+        "name": "every 12 hours",
+        "useCase": "Twice a day, at midnight and at noon, is a common schedule for backups, security scans and report e-mails that should cover both halves of the day."
+      },
+      "every-day-at-midnight": {
+        "name": "every day at midnight",
+        "useCase": "A daily job at 00:00 is the default for nightly batches: backups, data warehouse loads, invoice generation and cleanup. Mind the time zone, since midnight on the server may not be midnight for your users."
+      },
+      "every-day-at-noon": {
+        "name": "every day at noon",
+        "useCase": "Running at 12:00 every day is useful for daily summaries and digests that should be ready during working hours, or for tasks you want to watch while the team is online."
+      },
+      "every-day-at-9am": {
+        "name": "every day at 9 AM",
+        "useCase": "A 09:00 daily job is ideal for morning reports, stand-up reminders and dashboards that people check at the start of the day."
+      },
+      "every-monday": {
+        "name": "every Monday",
+        "useCase": "A weekly job at midnight between Sunday and Monday is a natural fit for weekly reports, rotating credentials and resetting usage quotas."
+      },
+      "every-weekday": {
+        "name": "every weekday at 9 AM",
+        "useCase": "Monday to Friday at 09:00 covers business-day tasks such as stand-up reminders, daily sales reports or opening a support queue, while skipping weekends."
+      },
+      "every-weekend": {
+        "name": "weekends at 10 AM",
+        "useCase": "Saturday and Sunday at 10:00 is handy for heavier maintenance, full re-indexing or weekend-only promotions, when traffic is usually lower."
+      },
+      "every-sunday-at-3am": {
+        "name": "every Sunday at 3 AM",
+        "useCase": "Sunday 03:00 is a classic maintenance window: full backups, database vacuuming and system updates run when almost nobody is using the service."
+      },
+      "first-day-of-month": {
+        "name": "the first day of the month",
+        "useCase": "Midnight on the 1st is the standard schedule for monthly billing, invoices, usage resets and monthly reports."
+      },
+      "last-day-of-month": {
+        "name": "the last day of the month",
+        "useCase": "Month-end jobs such as closing the books or archiving data need the last day of every month, whether it has 28, 29, 30 or 31 days. Quartz, Spring and AWS express this with L; standard crontab cannot, so a common workaround is to run on days 28–31 and check the date in the script."
+      },
+      "every-quarter": {
+        "name": "every quarter",
+        "useCase": "Midnight on the first day of January, April, July and October marks the start of each quarter — the right time for quarterly reports, audits and archive rotations."
+      },
+      "every-year": {
+        "name": "every year",
+        "useCase": "Midnight on January 1 runs a job once a year, for tasks such as annual rollovers, yearly archives or renewing long-lived settings."
+      }
+    },
+    "unsupported": "not directly expressible (see the table above)"
+  }
+}
