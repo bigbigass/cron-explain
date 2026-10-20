@@ -26,7 +26,7 @@ npm run build    # static production build
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | `https://cron-explain.vercel.app` | Absolute base URL for canonical, hreflang, sitemap, robots, OG and JSON-LD |
+| `NEXT_PUBLIC_SITE_URL` | `https://cronexplain.top` | Absolute base URL for canonical, hreflang, sitemap, robots, OG and JSON-LD |
 
 ## Pages
 
