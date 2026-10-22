@@ -36,11 +36,15 @@ Every page exists in 7 locales: English at the root, others under `/zh/`, `/es/`
 | --- | --- |
 | `/` | Explainer + builder |
 | `/quartz-cron/`, `/aws-cron/`, `/github-actions-cron/`, `/kubernetes-cronjob/`, `/spring-cron/` | Dialect landing pages |
-| `/every/[slug]/` | 20 schedule pages (every-minute … every-year) with the expression in every dialect |
+| `/every/[slug]/` | 48 schedule pages (every-minute … second-sunday-of-month) with the expression in every dialect |
+| `/guide/[slug]/` | 14 guides (what-is-a-cron-expression, cron-syntax-explained, crontab-examples, cron-timezone, aws-rate-vs-cron, …) |
+| `/cron-vs-quartz/`, `/crontab-vs-github-actions/` | Comparison hubs |
+| `/common-cron-errors/`, `/cron-invalid-expression/` | Troubleshooting hubs |
+| `/spring-scheduled-examples/`, `/kubernetes-cronjob-examples/` | Example hubs (link to the Spring / Kubernetes dialect pages) |
 | `/cron-syntax-cheatsheet/` | Syntax reference |
 | `/about/`, `/privacy/` | About, privacy policy |
 
-29 pages × 7 locales = **203 static pages**, plus `/sitemap.xml`, `/robots.txt`, `/opengraph-image/` and a global 404.
+77 pages × 7 locales = **539 static pages**, plus `/sitemap.xml`, `/robots.txt`, `/opengraph-image/` and a global 404.
 
 ## Structure
 
@@ -53,6 +57,8 @@ app/opengraph-image/  static OG PNG (next/og)
 app/global-not-found.tsx
 components/           CronTool (client), CronBuilder, LanguageSwitcher, page templates
 lib/cron/             parse, schedule (next runs), convert, describe, presets — pure, unit-tested
+lib/guides.ts         /guide/ slugs, tool seed expressions and related links (copy in guides.items)
+lib/routes.ts         static/hub paths, dialect + hub config, allPaths() for the sitemap
 lib/i18n/             config + dictionaries/{en,zh,es,de,fr,ja,pt}.json (typed from en.json)
 lib/seo.ts, lib/jsonld.ts
 tests/                i18n, sitemap and metadata tests

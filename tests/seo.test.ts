@@ -3,18 +3,36 @@ import sitemap from "@/app/sitemap";
 import robots from "@/app/robots";
 import { staticMetadata } from "@/components/pages/StaticPages";
 import { everyMetadata } from "@/components/pages/EveryPage";
+import { guideMetadata } from "@/components/pages/GuidePage";
+import { parseCron } from "@/lib/cron/parse";
 import { EVERY_SLUGS } from "@/lib/cron/presets";
+import { GUIDES, GUIDE_SLUGS } from "@/lib/guides";
 import { LOCALES, localizedPath } from "@/lib/i18n/config";
-import { allPaths, PAGE_PATHS } from "@/lib/routes";
+import { allPaths, HUB_PAGES, PAGE_PATHS } from "@/lib/routes";
 import { languageAlternates } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 
 describe("routes", () => {
-  it("lists all 9 static pages and 20 /every/ pages", () => {
-    expect(Object.keys(PAGE_PATHS)).toHaveLength(9);
-    expect(EVERY_SLUGS).toHaveLength(20);
-    expect(allPaths()).toHaveLength(29);
-    expect(new Set(allPaths()).size).toBe(29);
+  it("lists 15 static pages, 48 /every/ pages and 14 /guide/ pages", () => {
+    expect(Object.keys(PAGE_PATHS)).toHaveLength(15);
+    expect(EVERY_SLUGS).toHaveLength(48);
+    expect(GUIDE_SLUGS).toHaveLength(14);
+    expect(allPaths()).toHaveLength(77);
+    expect(new Set(allPaths()).size).toBe(77);
+  });
+
+  it("guides and hubs only link to pages that exist", () => {
+    for (const x of [...GUIDES, ...HUB_PAGES]) {
+      for (const s of x.relatedEvery) expect(EVERY_SLUGS).toContain(s);
+      for (const s of x.relatedGuides) expect(GUIDE_SLUGS).toContain(s);
+      expect(x.relatedEvery.length).toBeGreaterThanOrEqual(3);
+      expect(x.relatedGuides.length).toBeGreaterThanOrEqual(2);
+      expect(x.relatedDialects.length).toBeGreaterThanOrEqual(1);
+    }
+  });
+
+  it("guide tool seeds are valid expressions", () => {
+    for (const g of GUIDES) expect(() => parseCron(g.expr, g.dialect)).not.toThrow();
   });
 });
 
@@ -23,6 +41,7 @@ describe("sitemap", () => {
   const urls = entries.map((e) => e.url);
 
   it("contains every page × 7 locales", () => {
+    expect(entries).toHaveLength(539);
     expect(entries).toHaveLength(allPaths().length * LOCALES.length);
     for (const path of allPaths()) {
       for (const l of LOCALES) expect(urls).toContain(`${SITE_URL}${localizedPath(l, path)}`);
@@ -66,6 +85,12 @@ describe("metadata", () => {
     const m = everyMetadata("ja", "every-hour");
     expect(m.alternates?.canonical).toBe(`${SITE_URL}/ja/every/every-hour/`);
     expect(m.openGraph?.url).toBe(`${SITE_URL}/ja/every/every-hour/`);
+  });
+
+  it("guide and hub pages have a self-referencing canonical", () => {
+    expect(guideMetadata("de", "cron-timezone").alternates?.canonical).toBe(`${SITE_URL}/de/guide/cron-timezone/`);
+    expect(guideMetadata("en", "crontab-examples").alternates?.canonical).toBe(`${SITE_URL}/guide/crontab-examples/`);
+    expect(staticMetadata("pt", "k8sExamples").alternates?.canonical).toBe(`${SITE_URL}/pt/kubernetes-cronjob-examples/`);
   });
 
   it("English canonical lives at the root", () => {

@@ -1,11 +1,12 @@
 import JsonLd from "@/components/JsonLd";
 import { getDictionary } from "@/lib/i18n";
-import { localizedPath, ucfirst, type Locale } from "@/lib/i18n/config";
+import { localizedPath, type Locale } from "@/lib/i18n/config";
 import { webApplication } from "@/lib/jsonld";
-import { DIALECT_PAGES, everyPath, PAGE_PATHS, type DialectPageKey, type StaticPageKey } from "@/lib/routes";
+import { DIALECT_PAGES, HUB_PAGES, PAGE_PATHS, type DialectPageKey, type HubPageKey, type StaticPageKey } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
-import { Breadcrumbs, Faq, PageHeader, Related, Sections, Tool, type EverySlugKey } from "./parts";
+import { cheatsheetLink, dialectLinks, everyLinks, guideLinks, hubLinks } from "./links";
+import { Breadcrumbs, Faq, PageHeader, Related, Sections, Tool } from "./parts";
 
 type PageKey = Exclude<StaticPageKey, never>;
 
@@ -16,21 +17,19 @@ export function staticMetadata(locale: Locale, key: PageKey) {
 
 const POPULAR = ["every-5-minutes", "every-hour", "every-day-at-midnight", "every-weekday", "first-day-of-month", "last-day-of-month"];
 
-function everyLinks(locale: Locale, slugs: string[]) {
-  const d = getDictionary(locale);
-  return slugs.map((slug) => ({
-    href: localizedPath(locale, everyPath(slug)),
-    label: ucfirst(d.every.items[slug as EverySlugKey].name, locale),
-  }));
-}
+const POPULAR_GUIDES = ["what-is-a-cron-expression", "crontab-examples", "cron-timezone", "how-to-test-a-cron-expression"];
+const HUBS: HubPageKey[] = ["cronVsQuartz", "crontabVsGithub", "commonCronErrors"];
 
-function dialectLinks(locale: Locale, exclude?: DialectPageKey) {
-  const d = getDictionary(locale);
-  return DIALECT_PAGES.filter((p) => p.key !== exclude).map((p) => ({
-    href: localizedPath(locale, PAGE_PATHS[p.key]),
-    label: d.pages[p.key].h1,
-  }));
-}
+/** Comparison / examples hub (or guide) that belongs to each dialect landing. */
+const DIALECT_EXTRAS: Record<DialectPageKey, { hubs: HubPageKey[]; guides: string[] }> = {
+  quartz: { hubs: ["cronVsQuartz"], guides: ["cron-question-mark"] },
+  aws: { hubs: [], guides: ["aws-rate-vs-cron", "cron-question-mark"] },
+  github: { hubs: ["crontabVsGithub"], guides: ["cron-timezone"] },
+  kubernetes: { hubs: ["k8sExamples"], guides: ["cron-timezone"] },
+  spring: { hubs: ["springExamples"], guides: ["cron-seconds-field"] },
+};
+
+const allDialects = DIALECT_PAGES.map((p) => p.key);
 
 export function HomePage({ locale }: { locale: Locale }) {
   const d = getDictionary(locale);
@@ -46,8 +45,10 @@ export function HomePage({ locale }: { locale: Locale }) {
           title={d.common.related}
           links={[
             ...dialectLinks(locale),
-            { href: localizedPath(locale, PAGE_PATHS.cheatsheet), label: d.pages.cheatsheet.h1 },
+            cheatsheetLink(locale),
             ...everyLinks(locale, POPULAR),
+            ...guideLinks(locale, POPULAR_GUIDES),
+            ...hubLinks(locale, HUBS),
           ]}
         />
       </article>
@@ -74,8 +75,10 @@ export function DialectPage({ locale, page }: { locale: Locale; page: DialectPag
           title={d.common.related}
           links={[
             { href: localizedPath(locale, "/"), label: d.pages.home.h1 },
-            ...dialectLinks(locale, page),
-            { href: localizedPath(locale, PAGE_PATHS.cheatsheet), label: d.pages.cheatsheet.h1 },
+            ...dialectLinks(locale, allDialects.filter((k) => k !== page)),
+            cheatsheetLink(locale),
+            ...hubLinks(locale, DIALECT_EXTRAS[page].hubs),
+            ...guideLinks(locale, DIALECT_EXTRAS[page].guides),
             ...everyLinks(locale, POPULAR.slice(0, 4)),
           ]}
         />
@@ -139,7 +142,13 @@ export function CheatsheetPage({ locale }: { locale: Locale }) {
         <Faq locale={locale} title={d.common.faqTitle} faq={p.faq} />
         <Related
           title={d.common.related}
-          links={[{ href: localizedPath(locale, "/"), label: d.pages.home.h1 }, ...dialectLinks(locale), ...everyLinks(locale, POPULAR)]}
+          links={[
+            { href: localizedPath(locale, "/"), label: d.pages.home.h1 },
+            ...dialectLinks(locale),
+            ...everyLinks(locale, POPULAR),
+            ...guideLinks(locale, ["cron-syntax-explained", "cron-special-characters", "cron-day-of-week", "crontab-examples"]),
+            ...hubLinks(locale, HUBS),
+          ]}
         />
       </article>
     </>
@@ -161,11 +170,42 @@ export function InfoPage({ locale, page }: { locale: Locale; page: "about" | "pr
           title={d.common.related}
           links={[
             { href: localizedPath(locale, "/"), label: d.pages.home.h1 },
-            { href: localizedPath(locale, PAGE_PATHS.cheatsheet), label: d.pages.cheatsheet.h1 },
+            cheatsheetLink(locale),
             { href: localizedPath(locale, PAGE_PATHS[page === "about" ? "privacy" : "about"]), label: d.pages[page === "about" ? "privacy" : "about"].h1 },
           ]}
         />
       </article>
+    </>
+  );
+}
+
+/** Top-level comparison / examples / troubleshooting hub (Batch C pages). */
+export function HubPage({ locale, page }: { locale: Locale; page: HubPageKey }) {
+  const d = getDictionary(locale);
+  const p = d.pages[page];
+  const cfg = HUB_PAGES.find((x) => x.key === page)!;
+  const path = PAGE_PATHS[page];
+  return (
+    <>
+      <PageHeader h1={p.h1} intro={p.intro}>
+        <Breadcrumbs locale={locale} trail={[{ name: p.name, path }]} />
+      </PageHeader>
+      <Tool locale={locale} expr={cfg.example} dialect={cfg.dialect} />
+      <article className="mt-4">
+        <Sections sections={p.sections} />
+        <Faq locale={locale} title={d.common.faqTitle} faq={p.faq} />
+        <Related
+          title={d.common.related}
+          links={[
+            ...dialectLinks(locale, cfg.relatedDialects),
+            cheatsheetLink(locale),
+            ...guideLinks(locale, cfg.relatedGuides),
+            ...hubLinks(locale, cfg.relatedHubs),
+            ...everyLinks(locale, cfg.relatedEvery),
+          ]}
+        />
+      </article>
+      <JsonLd data={webApplication(locale, p.h1, absoluteUrl(localizedPath(locale, path)), p.description)} />
     </>
   );
 }
