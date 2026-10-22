@@ -10,6 +10,7 @@ import { breadcrumbList, faqPage } from "@/lib/jsonld";
 import { absoluteUrl } from "@/lib/site";
 
 export type EverySlugKey = keyof Dictionary["every"]["items"];
+export type GuideSlugKey = keyof Dictionary["guides"]["items"];
 
 export interface Section {
   h: string;

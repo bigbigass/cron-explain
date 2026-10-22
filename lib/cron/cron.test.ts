@@ -166,6 +166,15 @@ describe("next runs (UTC)", () => {
     expect(iso(nextRuns(parseCron("0 0 10 LW * ?"), from, 1))).toEqual(["2026-01-30T10:00:00.000Z"]);
   });
 
+  it("Quartz first Monday (2#1) and second Sunday (1#2) presets", () => {
+    // Jan 1 2026 is a Thursday → Monday Jan 5, Sundays Jan 4 and 11
+    expect(iso(nextRuns(parseCron("0 0 0 ? * 2#1", "quartz"), from, 2))).toEqual([
+      "2026-01-05T00:00:00.000Z",
+      "2026-02-02T00:00:00.000Z",
+    ]);
+    expect(iso(nextRuns(parseCron("0 0 0 ? * 1#2", "quartz"), from, 1))).toEqual(["2026-01-11T00:00:00.000Z"]);
+  });
+
   it("nearest weekday (W) never leaves the month", () => {
     // 2026-08-01 is a Saturday → Monday Aug 3; 2026-05-31 is a Sunday → Friday May 29
     expect(nearestWeekday(2026, 8, 1)).toBe(3);
@@ -243,6 +252,13 @@ describe("conversion", () => {
     expect(a.ok && a.expression).toBe("cron(0 10 ? * 6#3 *)");
     const q = convertCron("cron(0 10 ? * 6L *)", "aws", "quartz");
     expect(q.ok && q.expression).toBe("0 0 10 ? * 6L");
+  });
+
+  it("nth-weekday presets convert to Spring (0 = Sunday) and AWS but not crontab", () => {
+    expect(convertCron("0 0 0 ? * 2#1", "quartz", "spring")).toMatchObject({ ok: true, expression: "0 0 0 * * 1#1" });
+    expect(convertCron("0 0 0 ? * 1#2", "quartz", "spring")).toMatchObject({ ok: true, expression: "0 0 0 * * 0#2" });
+    expect(convertCron("0 0 0 ? * 2#1", "quartz", "aws")).toMatchObject({ ok: true, expression: "cron(0 0 ? * 2#1 *)" });
+    expect(convertCron("0 0 0 ? * 2#1", "quartz", "standard")).toEqual({ ok: false, reason: "specialNotSupported" });
   });
 
   it("reports what can't be represented", () => {

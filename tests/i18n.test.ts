@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { EVERY } from "@/lib/cron/presets";
+import { GUIDE_SLUGS } from "@/lib/guides";
 import { dictionaries } from "@/lib/i18n";
 import { interpolate, LOCALES, localizedPath, splitLocale } from "@/lib/i18n/config";
 import { everyData } from "@/components/pages/EveryPage";
@@ -44,6 +45,10 @@ describe("dictionaries", () => {
       expect(Object.keys(dictionaries[l].every.items).sort()).toEqual(EVERY.map((e) => e.slug).sort());
     }
   });
+
+  it("has copy for every /guide/ page", () => {
+    for (const l of LOCALES) expect(Object.keys(dictionaries[l].guides.items).sort()).toEqual([...GUIDE_SLUGS].sort());
+  });
 });
 
 describe("SEO copy lengths", () => {
@@ -67,6 +72,13 @@ describe("SEO copy lengths", () => {
     }
   });
 
+  it.each(LOCALES)("%s: /guide/ titles < 60 and descriptions < 155 chars", (l) => {
+    for (const [slug, g] of Object.entries(dictionaries[l].guides.items)) {
+      expect(g.title.length, `${l} ${slug}: ${g.title}`).toBeLessThan(60);
+      expect(g.description.length, `${l} ${slug}: ${g.description}`).toBeLessThan(155);
+    }
+  });
+
   it("titles are unique per locale", () => {
     for (const l of LOCALES) {
       const titles = [
@@ -75,6 +87,7 @@ describe("SEO copy lengths", () => {
           const { d, vars } = everyData(l, e.slug);
           return interpolate(d.every.title, vars);
         }),
+        ...Object.values(dictionaries[l].guides.items).map((g) => g.title),
       ];
       expect(new Set(titles).size).toBe(titles.length);
     }
